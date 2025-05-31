@@ -36,6 +36,7 @@
             width: 100%;
             z-index: 1000;
             transition: all 0.3s ease;
+            border-radius: 0 0 40px 40px;
         }
 
         .header-scrolled {
@@ -49,7 +50,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
+            flex-wrap: wrap;
+            height: auto;
         }
 
         .site-logo {
@@ -68,7 +70,57 @@
             transition: background-color 0.3s, box-shadow 0.3s;
             font-size: 14px;
             box-shadow: 0 0 10px #a020f0;
+            white-space: nowrap;
         }
+
+        .phone-link:hover {
+            background-color: #007bff;
+            color: #fff;
+            box-shadow: 0 0 15px #007bff;
+        }
+
+        .logo {
+            color: #daa520;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #f5f5dc;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #a020f0;
+            text-shadow: 0 0 8px #a020f0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+                width: 100%;
+                gap: 10px;
+                margin: 10px 0;
+            }
+
+            .phone-link {
+                align-self: flex-start;
+                margin-top: 10px;
+            }
 
         .phone-link:hover {
             background-color: #007bff;
