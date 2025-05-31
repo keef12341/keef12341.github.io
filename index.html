@@ -15,12 +15,44 @@
             line-height: 1.6;
             color: #f5f5f5;
             background-color: #000;
+            overflow-x: hidden;
         }
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
+        
+        /* Meteor Shower Animation */
+        .meteor-shower {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .meteor {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 6px #fff, 0 0 12px #fff, 0 0 18px #fff;
+            animation: meteor-fall linear infinite;
+        }
+        @keyframes meteor-fall {
+            0% {
+                transform: translateY(-100vh) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(-200px);
+                opacity: 0;
+            }
+        }
+        
         .modern-header {
             position: fixed;
             top: 0;
@@ -40,11 +72,11 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            gap: 15px;
         }
         .site-logo {
             height: 40px;
             width: auto;
-            margin-right: 20px;
         }
         .phone-link {
             color: #1e1e1e;
@@ -57,6 +89,18 @@
             box-shadow: 0 0 10px rgba(160, 32, 240, 0.5);
             white-space: nowrap;
             transition: all 0.3s ease;
+            animation: phone-flicker 8s infinite;
+        }
+        @keyframes phone-flicker {
+            0%, 90%, 100% {
+                background-color: #a020f0;
+                box-shadow: 0 0 10px rgba(160, 32, 240, 0.5);
+            }
+            92%, 94%, 96% {
+                background-color: #ffffff;
+                color: #000;
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            }
         }
         .phone-link:hover {
             background-color: #ffffff;
@@ -93,6 +137,7 @@
             }
             .nav-container {
                 padding: 15px 20px;
+                gap: 10px;
             }
             .phone-link {
                 display: none;
@@ -217,21 +262,82 @@
                 padding: 30px 20px;
             }
         }
-        /* Hero Section */
+        
+        /* Billboard Hero Section */
         .hero {
-            background: linear-gradient(135deg, #1a1a1a 0%, #333 50%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
             color: #f5f5f5;
             padding: 150px 0 100px;
             text-align: center;
             margin-top: 70px;
             border-bottom: 2px solid #ffffff;
             box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .billboard {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #1a1a1a;
+            border: 8px solid #333;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(160, 32, 240, 0.4);
+        }
+        .billboard::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, #a020f0, #ffffff, #a020f0);
+            border-radius: 20px;
+            z-index: -1;
+            animation: billboard-glow 3s ease-in-out infinite alternate;
+        }
+        @keyframes billboard-glow {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+        .flickering-lights {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            height: 8px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                #ffff00 10%, 
+                transparent 20%,
+                #ff0080 30%,
+                transparent 40%,
+                #00ff80 50%,
+                transparent 60%,
+                #8000ff 70%,
+                transparent 80%,
+                #ff8000 90%,
+                transparent 100%);
+            border-radius: 4px;
+            animation: light-flicker 2s linear infinite;
+        }
+        @keyframes light-flicker {
+            0%, 100% { opacity: 1; }
+            25% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+            75% { opacity: 0.1; }
         }
         .hero-content h2 {
             font-size: 3rem;
             margin-bottom: 20px;
             color: #ffffff;
             text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            animation: text-glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes text-glow {
+            0% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+            100% { text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 40px rgba(160, 32, 240, 0.6); }
         }
         .hero-content p {
             font-size: 1.2rem;
@@ -254,10 +360,13 @@
             transform: translateY(-2px);
             box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
         }
+        
         /* Services Section */
         .services {
             padding: 80px 0;
             background: #111;
+            position: relative;
+            z-index: 2;
         }
         .services h2 {
             text-align: center;
@@ -268,9 +377,9 @@
         }
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
         }
         .service-card {
@@ -281,6 +390,7 @@
             text-align: center;
             transition: transform 0.3s;
             border: 1px solid #333;
+            position: relative;
         }
         .service-card:hover {
             transform: translateY(-5px);
@@ -301,28 +411,63 @@
             font-size: 2.5rem;
             font-weight: bold;
             color: #a020f0;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             text-shadow: 0 0 15px rgba(160, 32, 240, 0.6);
+        }
+        .monthly-fee {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
         }
         .service-card ul {
             list-style: none;
             text-align: left;
+            margin-bottom: 20px;
         }
         .service-card li {
             padding: 8px 0;
-            border-bottom: 1px solid #333;
             color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .service-card li:before {
-            content: "✓ ";
-            color: #ffffff;
+        .service-card li.included:before {
+            content: "✓";
+            color: #00ff00;
             font-weight: bold;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            font-size: 18px;
+            text-shadow: 0 0 8px #00ff00;
+            animation: glow-check 2s ease-in-out infinite alternate;
         }
+        .service-card li.not-included:before {
+            content: "✗";
+            color: #ff0000;
+            font-weight: bold;
+            font-size: 18px;
+            text-shadow: 0 0 8px #ff0000;
+        }
+        @keyframes glow-check {
+            0% { text-shadow: 0 0 8px #00ff00; }
+            100% { text-shadow: 0 0 15px #00ff00, 0 0 20px #00ff00; }
+        }
+        .domain-note {
+            font-size: 0.9rem;
+            color: #a020f0;
+            font-style: italic;
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(160, 32, 240, 0.1);
+            border-radius: 5px;
+            border: 1px solid rgba(160, 32, 240, 0.3);
+        }
+        
         /* Portfolio Section */
         .portfolio {
             padding: 80px 0;
             background: #000;
+            position: relative;
+            z-index: 2;
         }
         .portfolio h2 {
             text-align: center;
@@ -472,10 +617,13 @@
             transform: translateY(-2px);
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
         }
+        
         /* Contact Section */
         .contact {
             padding: 80px 0;
             background: #111;
+            position: relative;
+            z-index: 2;
         }
         .contact h2 {
             text-align: center;
@@ -546,6 +694,7 @@
             transform: translateY(-2px);
             box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
         }
+        
         /* Footer */
         footer {
             background: #000;
@@ -554,13 +703,19 @@
             padding: 30px 0;
             border-top: 2px solid #ffffff;
             box-shadow: 0 -5px 15px rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 2;
         }
+        
         @media (max-width: 480px) {
             .hero {
                 padding: 120px 20px 80px;
             }
             .hero-content h2 {
                 font-size: 1.8rem;
+            }
+            .billboard {
+                padding: 30px 20px;
             }
             .services,
             .portfolio,
@@ -579,10 +734,15 @@
                 width: 45px;
                 height: 90px;
             }
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="meteor-shower" id="meteor-shower"></div>
+    
     <header class="modern-header" id="main-header">
         <div class="nav-container">
             <img src="images/logo1.png" alt="Logo" class="site-logo">
@@ -608,10 +768,13 @@
 
     <main>
         <section id="home" class="hero">
-            <div class="hero-content">
-                <h2>Professional Static Websites by Jeremiah</h2>
-                <p>Mobile-friendly, fast-loading websites starting at just $50</p>
-                <a href="#contact" class="cta-button">Get Started</a>
+            <div class="billboard">
+                <div class="flickering-lights"></div>
+                <div class="hero-content">
+                    <h2>Lightning-Fast Affordable Websites</h2>
+                    <p>Fully hand-coded static websites that load instantly and convert visitors into customers</p>
+                    <a href="#contact" class="cta-button">Get Started Today</a>
+                </div>
             </div>
         </section>
 
@@ -620,26 +783,44 @@
                 <h2>Services & Pricing</h2>
                 <div class="service-grid">
                     <div class="service-card">
-                        <h3>Basic Website</h3>
-                        <div class="price">$50</div>
+                        <h3>Static Website Package</h3>
+                        <div class="price">$0 Down</div>
+                        <div class="monthly-fee">$50/month maintenance</div>
                         <ul>
-                            <li>Mobile-friendly design</li>
-                            <li>Fast-loading static site</li>
-                            <li>Up to 5 pages</li>
-                            <li>Basic contact form</li>
-                            <li>SEO optimized</li>
+                            <li class="included">Up to 3 pages</li>
+                            <li class="included">Mobile-friendly design</li>
+                            <li class="included">Lightning-fast loading</li>
+                            <li class="included">Basic contact form</li>
+                            <li class="included">SEO optimized</li>
+                            <li class="included">Free domain included</li>
+                            <li class="not-included">E-commerce functionality</li>
+                            <li class="not-included">Advanced forms</li>
+                            <li class="not-included">Custom integrations</li>
                         </ul>
+                        <div class="domain-note">
+                            Additional pages: $50 each<br>
+                            Domain renewal charged yearly based on domain type
+                        </div>
                     </div>
                     <div class="service-card featured">
-                        <h3>Custom Features</h3>
-                        <div class="price">$50+</div>
+                        <h3>Full E-Commerce Package</h3>
+                        <div class="price">$0 Down</div>
+                        <div class="monthly-fee">$125/month maintenance</div>
                         <ul>
-                            <li>Everything in Basic</li>
-                            <li>Custom functionality</li>
-                            <li>Advanced forms</li>
-                            <li>E-commerce integration</li>
-                            <li>Custom pricing based on needs</li>
+                            <li class="included">Everything in Static Package</li>
+                            <li class="included">Full online store</li>
+                            <li class="included">Payment processing</li>
+                            <li class="included">Inventory management</li>
+                            <li class="included">Advanced forms</li>
+                            <li class="included">Custom integrations</li>
+                            <li class="included">Customer accounts</li>
+                            <li class="included">Order tracking</li>
+                            <li class="included">Analytics dashboard</li>
                         </ul>
+                        <div class="domain-note">
+                            Unlimited pages and features included<br>
+                            Domain renewal charged yearly based on domain type
+                        </div>
                     </div>
                 </div>
             </div>
@@ -712,7 +893,8 @@
                     <div class="form-group">
                         <label for="project-type">Project Type</label>
                         <select id="project-type" name="project-type">
-                            <option value="basic">Basic Website ($50)</option>
+                            <option value="static">Static Website ($0 down, $50/month)</option>
+                            <option value="ecommerce">E-Commerce Package ($0 down, $125/month)</option>
                             <option value="custom">Custom Project (Quote needed)</option>
                             <option value="unsure">Not sure yet</option>
                         </select>
@@ -734,6 +916,24 @@
     </footer>
 
     <script>
+        // Meteor shower effect
+        function createMeteor() {
+            const meteor = document.createElement('div');
+            meteor.className = 'meteor';
+            meteor.style.left = Math.random() * 100 + '%';
+            meteor.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            meteor.style.animationDelay = Math.random() * 2 + 's';
+            
+            document.getElementById('meteor-shower').appendChild(meteor);
+            
+            setTimeout(() => {
+                meteor.remove();
+            }, 5000);
+        }
+
+        // Create meteors periodically
+        setInterval(createMeteor, 800);
+
         // Wait for DOM to be fully loaded
         document.addEventListener('DOMContentLoaded', function() {
             // Mobile hamburger menu functionality
