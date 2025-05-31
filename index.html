@@ -81,34 +81,6 @@
             100% { width: 0; }
         }
         
-        /* Billboard Flicker Animation */
-        @keyframes flicker {
-            0%, 100% { 
-                opacity: 1; 
-                box-shadow: 0 0 15px #fff, 0 0 25px #fff, 0 0 35px #fff;
-            }
-            10% { 
-                opacity: 0.4; 
-                box-shadow: 0 0 5px #fff;
-            }
-            20% { 
-                opacity: 0.2; 
-                box-shadow: 0 0 2px #fff;
-            }
-            30% { 
-                opacity: 0.7; 
-                box-shadow: 0 0 10px #fff, 0 0 20px #fff;
-            }
-            40% { 
-                opacity: 0.5; 
-                box-shadow: 0 0 8px #fff;
-            }
-            50% { 
-                opacity: 1; 
-                box-shadow: 0 0 15px #fff, 0 0 25px #fff, 0 0 35px #fff;
-            }
-        }
-        
         /* Outer Space Billboard Section */
         .billboard-wrapper {
             background: radial-gradient(ellipse at center, #1a237e 0%, #0d1421 30%, #000814 60%, #000 100%);
@@ -152,51 +124,28 @@
             box-shadow: 0 0 25px rgba(160, 32, 240, 0.5);
             display: block;
         }
-        .flicker-dot {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #ffffff;
-            border-radius: 50%;
-            bottom: 45px;
-            animation: flicker 2s infinite;
-            border: 2px solid #666;
-        }
-        .flicker-dot::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            border: 1px solid #333;
-            border-radius: 50%;
-            background: radial-gradient(circle, transparent 60%, #222 100%);
-        }
-        .dot1 { left: 18%; animation-delay: 0s; }
-        .dot2 { left: 32%; animation-delay: 0.4s; }
-        .dot3 { left: 47%; animation-delay: 0.8s; }
-        .dot4 { left: 62%; animation-delay: 1.2s; }
-        .dot5 { left: 77%; animation-delay: 1.6s; }
         .get-started-link {
             position: absolute;
-            top: 50%;
-            right: 7%;
-            transform: translateY(-50%);
+            top: 62%;
+            left: 50%;
+            transform: translateX(-50%);
             background: linear-gradient(to right, #ffffff, #cccccc);
             color: #000;
-            font-weight: bold;
+            font-weight: 900;
             padding: 15px 30px;
             border-radius: 40px;
             text-decoration: none;
             box-shadow: 0 0 10px rgba(255,255,255,0.2);
             transition: all 0.3s ease;
             z-index: 10;
+            font-size: 18px;
+            border: 2px solid #333;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
         .get-started-link:hover {
             background: linear-gradient(to right, #cccccc, #ffffff);
             box-shadow: 0 0 20px rgba(255,255,255,0.5);
-            transform: translateY(-50%) scale(1.05);
+            transform: translateX(-50%) scale(1.05);
         }
         
         .modern-header {
@@ -275,6 +224,106 @@
         }
         .mobile-phone {
             display: none;
+        }
+        
+        /* Form Status Modal */
+        .form-status-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+        .status-square {
+            width: 300px;
+            height: 300px;
+            background: #1a1a1a;
+            border: 3px solid #a020f0;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 0 30px rgba(160, 32, 240, 0.5);
+        }
+        .spinner {
+            width: 80px;
+            height: 80px;
+            border: 6px solid #333;
+            border-top: 6px solid #a020f0;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            background: #00ff00;
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            color: white;
+            animation: checkmark-appear 0.5s ease-in-out;
+        }
+        @keyframes checkmark-appear {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .thank-you-text {
+            display: none;
+            text-align: center;
+            color: #fff;
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+        .thank-you-text h3 {
+            color: #00ff00;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        .thank-you-text p {
+            font-size: 16px;
+            line-height: 1.4;
+        }
+        .close-x {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: #a020f0;
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 30px;
+            color: white;
+            font-weight: bold;
+            z-index: 10001;
+            transition: all 0.3s ease;
+            animation: x-appear 0.5s ease-in-out;
+        }
+        @keyframes x-appear {
+            0% { transform: scale(0) rotate(180deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+        .close-x:hover {
+            background: #ffffff;
+            color: #a020f0;
+            transform: scale(1.1);
         }
         
         /* Mobile Styles */
@@ -364,40 +413,36 @@
                 z-index: 1001;
                 background: none;
                 border: none;
-                padding: 0;
+                padding:  0;
             }
             .hamburger span {
                 width: 100%;
                 height: 3px;
                 background-color: #f5f5f5;
+                border-radius: 2px;
                 transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 transform-origin: center;
-                display: block;
             }
             .hamburger.active span:nth-child(1) {
-                transform: rotate(45deg) translate(6px, 6px);
+                transform: rotate(45deg) translate(8px, 8px);
                 background-color: #a020f0;
             }
             .hamburger.active span:nth-child(2) {
                 opacity: 0;
+                transform: scale(0);
             }
             .hamburger.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(6px, -6px);
+                transform: rotate(-45deg) translate(8px, -8px);
                 background-color: #a020f0;
             }
-            .billboard-wrapper {
-                padding: 100px 15px 60px;
-            }
             .get-started-link {
-                position: static;
-                transform: none;
-                margin-top: 20px;
-                display: inline-block;
+                top: 65%;
+                padding: 12px 25px;
+                font-size: 16px;
             }
-            .flicker-dot {
-                width: 15px;
-                height: 15px;
-                bottom: 35px;
+            .status-square {
+                width: 250px;
+                height: 250px;
             }
         }
         
@@ -758,55 +803,6 @@
             transform: none;
         }
         
-        /* Form Status Animation */
-        .form-status {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10000;
-            display: none;
-        }
-        .status-circle {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            color: white;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
-        }
-        .status-loading {
-            background: #a020f0;
-            border: 4px solid #fff;
-            border-top: 4px solid transparent;
-            animation: spin 1s linear infinite;
-        }
-        .status-success {
-            background: #00ff00;
-            animation: success-pulse 0.5s ease-in-out;
-        }
-        .status-error {
-            background: #ff0000;
-            animation: error-shake 0.5s ease-in-out;
-        }
-        @keyframes spin {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-        @keyframes success-pulse {
-            0% { transform: translate(-50%, -50%) scale(0.5); }
-            50% { transform: translate(-50%, -50%) scale(1.2); }
-            100% { transform: translate(-50%, -50%) scale(1); }
-        }
-        @keyframes error-shake {
-            0%, 100% { transform: translate(-50%, -50%) translateX(0); }
-            25% { transform: translate(-50%, -50%) translateX(-10px); }
-            75% { transform: translate(-50%, -50%) translateX(10px); }
-        }
-        
         /* Footer */
         footer {
             background: #000;
@@ -827,23 +823,10 @@
                 max-width: 100%;
             }
             .get-started-link {
-                position: static;
-                transform: none;
-                margin-top: 20px;
-                display: inline-block;
-                padding: 12px 25px;
+                top: 68%;
+                padding: 10px 20px;
                 font-size: 14px;
             }
-            .flicker-dot {
-                width: 12px;
-                height: 12px;
-                bottom: 25px;
-            }
-            .dot1 { left: 15%; }
-            .dot2 { left: 28%; }
-            .dot3 { left: 44%; }
-            .dot4 { left: 60%; }
-            .dot5 { left: 75%; }
             .services,
             .portfolio,
             .contact {
@@ -863,6 +846,19 @@
             }
             .service-grid {
                 grid-template-columns: 1fr;
+            }
+            .status-square {
+                width: 200px;
+                height: 200px;
+            }
+            .spinner {
+                width: 60px;
+                height: 60px;
+            }
+            .checkmark {
+                width: 60px;
+                height: 60px;
+                font-size: 35px;
             }
         }
     </style>
@@ -899,11 +895,6 @@
             <div class="billboard-container">
                 <img src="images/billboard.png" alt="Ready to Get the Site You Always Wanted?" class="billboard-img">
                 <a href="#contact" class="get-started-link">Get Started Today</a>
-                <div class="flicker-dot dot1"></div>
-                <div class="flicker-dot dot2"></div>
-                <div class="flicker-dot dot3"></div>
-                <div class="flicker-dot dot4"></div>
-                <div class="flicker-dot dot5"></div>
             </div>
         </div>
 
@@ -1076,10 +1067,18 @@
         </div>
     </footer>
 
-    <!-- Form Status Indicator -->
-    <div class="form-status" id="form-status">
-        <div class="status-circle" id="status-circle"></div>
+    <!-- Form Status Modal -->
+    <div class="form-status-modal" id="form-status-modal">
+        <div class="status-square">
+            <div class="spinner" id="spinner"></div>
+            <div class="checkmark" id="checkmark">✓</div>
+            <div class="thank-you-text" id="thank-you-text">
+                <h3>Thank You!</h3>
+                <p>Your message has been sent successfully! I will contact you within 24 hours using your preferred method.</p>
+            </div>
+        </div>
     </div>
+    <div class="close-x" id="close-x">×</div>
 
     <script>
         // Enhanced shooting stars effect
@@ -1161,10 +1160,13 @@
                 });
             });
 
-            // Form submission handler
+            // Form submission handler with modal
             const contactForm = document.getElementById('contact-form');
-            const formStatus = document.getElementById('form-status');
-            const statusCircle = document.getElementById('status-circle');
+            const modal = document.getElementById('form-status-modal');
+            const spinner = document.getElementById('spinner');
+            const checkmark = document.getElementById('checkmark');
+            const thankYouText = document.getElementById('thank-you-text');
+            const closeX = document.getElementById('close-x');
             
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
@@ -1190,9 +1192,10 @@
                         alert('Please enter a valid email address.');
                         return;
                     }
-                    
-                    // Show loading status
-                    showFormStatus('loading');
+
+                                        
+                    // Show modal with spinner
+                    showModal();
                     
                     // Submit form to Formspree
                     fetch('https://formspree.io/f/mqabzwgp', {
@@ -1204,107 +1207,81 @@
                     })
                     .then(response => {
                         if (response.ok) {
-                            showFormStatus('success');
+                            // After 5 seconds, show checkmark
                             setTimeout(() => {
-                                hideFormStatus();
-                                showSuccessMessage();
-                                contactForm.reset();
-                            }, 2000);
+                                showCheckmark();
+                                
+                                // After 2 more seconds, show thank you text
+                                setTimeout(() => {
+                                    showThankYou();
+                                    
+                                    // After 2 more seconds, show close X
+                                    setTimeout(() => {
+                                        showCloseX();
+                                        contactForm.reset();
+                                    }, 2000);
+                                }, 2000);
+                            }, 5000);
                         } else {
                             throw new Error('Form submission failed');
                         }
                     })
                     .catch(error => {
                         console.error('Error:', error);
-                        showFormStatus('error');
-                        setTimeout(() => {
-                            hideFormStatus();
-                            alert('There was an error sending your message. Please try again or call us directly at 865-438-5840.');
-                        }, 2000);
+                        hideModal();
+                        alert('There was an error sending your message. Please try again or call us directly at 865-438-5840.');
                     });
                 });
             }
 
-            function showFormStatus(type) {
-                formStatus.style.display = 'block';
-                statusCircle.className = 'status-circle';
-                
-                if (type === 'loading') {
-                    statusCircle.classList.add('status-loading');
-                    statusCircle.innerHTML = '';
-                } else if (type === 'success') {
-                    statusCircle.classList.remove('status-loading');
-                    statusCircle.classList.add('status-success');
-                    statusCircle.innerHTML = '✓';
-                } else if (type === 'error') {
-                    statusCircle.classList.remove('status-loading');
-                    statusCircle.classList.add('status-error');
-                    statusCircle.innerHTML = '✗';
-                }
+            function showModal() {
+                modal.style.display = 'flex';
+                spinner.style.display = 'block';
+                checkmark.style.display = 'none';
+                thankYouText.style.display = 'none';
+                closeX.style.display = 'none';
             }
 
-            function hideFormStatus() {
-                formStatus.style.display = 'none';
-                statusCircle.className = 'status-circle';
-                statusCircle.innerHTML = '';
+            function showCheckmark() {
+                spinner.style.display = 'none';
+                checkmark.style.display = 'flex';
             }
 
-            function showSuccessMessage() {
-                const successMessage = document.createElement('div');
-                successMessage.style.cssText = `
-                    position: fixed;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    background: linear-gradient(45deg, #00ff00, #ffffff);
-                    color: #000;
-                    padding: 30px;
-                    border-radius: 15px;
-                    box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
-                    z-index: 10001;
-                    text-align: center;
-                    max-width: 400px;
-                    font-weight: bold;
-                    animation: success-popup 0.5s ease-in-out;
-                `;
-                
-                successMessage.innerHTML = `
-                    <h3 style="margin-bottom: 15px; color: #000;">Thank You!</h3>
-                    <p style="color: #000; line-height: 1.5;">Your message has been sent successfully! I will contact you within 24 hours using your preferred method.</p>
-                    <button onclick="this.parentElement.remove()" style="
-                        margin-top: 20px;
-                        background: #000;
-                        color: #fff;
-                        border: none;
-                        padding: 10px 20px;
-                        border-radius: 5px;
-                        cursor: pointer;
-                        font-weight: bold;
-                    ">Close</button>
-                `;
-                
-                // Add animation keyframes
-                if (!document.getElementById('success-animation-style')) {
-                    const style = document.createElement('style');
-                    style.id = 'success-animation-style';
-                    style.textContent = `
-                        @keyframes success-popup {
-                            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
-                            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
-                            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-                        }
-                    `;
-                    document.head.appendChild(style);
-                }
-                
-                document.body.appendChild(successMessage);
-                
-                // Auto-remove after 8 seconds
-                setTimeout(() => {
-                    if (successMessage.parentElement) {
-                        successMessage.remove();
+            function showThankYou() {
+                thankYouText.style.display = 'block';
+            }
+
+            function showCloseX() {
+                closeX.style.display = 'flex';
+            }
+
+            function hideModal() {
+                modal.style.display = 'none';
+                spinner.style.display = 'block';
+                checkmark.style.display = 'none';
+                thankYouText.style.display = 'none';
+                closeX.style.display = 'none';
+            }
+
+            // Close X click handler
+            if (closeX) {
+                closeX.addEventListener('click', function() {
+                    hideModal();
+                    // Scroll to top of page
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Close modal when clicking outside
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        hideModal();
                     }
-                }, 8000);
+                });
             }
         });
 
