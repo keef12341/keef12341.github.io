@@ -30,7 +30,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #1e1e1e;
+            background-color: #2e2e2e; /* Lightened from #1e1e1e */
             border-bottom: 2px solid #a020f0;
             box-shadow: 0 5px 15px rgba(160, 32, 240, 0.4);
             width: 100%;
@@ -73,6 +73,54 @@
             white-space: nowrap;
         }
 
+        .phone-link:hover {
+            background-color: #007bff;
+            color: #fff;
+            box-shadow: 0 0 15px #007bff;
+        }
+
+        .logo {
+            color: #daa520;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #f5f5dc;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #a020f0;
+            text-shadow: 0 0 8px #a020f0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+                width: 100%;
+                gap: 10px;
+                margin: 10px 0;
+            }
+
+            .phone-link {
+                align-self: flex-start;
+                margin-top: 10px;
+            }
         .phone-link:hover {
             background-color: #007bff;
             color: #fff;
@@ -620,7 +668,7 @@
             }
         });
         
-         window.addEventListener('scroll', function () {
+          window.addEventListener('scroll', function () {
             const header = document.getElementById('main-header');
             if (window.scrollY > 40) {
                 header.classList.add('header-scrolled');
