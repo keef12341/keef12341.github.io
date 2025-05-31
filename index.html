@@ -402,8 +402,7 @@
             width: 220px;
             height: 8px;
             background: #1a1a1a;
-            border-radius: 0 0 12px
-            12px;
+            border-radius: 0 0 12px 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
         .phone {
@@ -431,9 +430,15 @@
             left: 12px;
             right: 12px;
             bottom: 19px;
-            background: linear-gradient(135deg, #a020f0, #ffffff);
             border-radius: 2px;
-            opacity: 0.8;
+            overflow: hidden;
+            z-index: 2;
+        }
+        .macbook-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 2px;
         }
         .phone-screen {
             position: absolute;
@@ -441,9 +446,15 @@
             left: 6px;
             right: 6px;
             bottom: 12px;
-            background: linear-gradient(135deg, #ffffff, #a020f0);
             border-radius: 6px;
-            opacity: 0.8;
+            overflow: hidden;
+            z-index: 2;
+        }
+        .phone-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
         }
         .portfolio-link {
             display: inline-block;
@@ -575,7 +586,7 @@
     <header class="modern-header" id="main-header">
         <div class="nav-container">
             <img src="images/logo1.png" alt="Logo" class="site-logo">
-                        
+            
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#services">What We Offer?</a></li>
                 <li><a href="#portfolio">Our Work?</a></li>
@@ -584,9 +595,9 @@
                     <a href="tel:8654385840">Call: 865-438-5840</a>
                 </li>
             </ul>
-                        
+            
             <a class="phone-link" href="tel:8654385840">Call: 865-438-5840</a>
-                        
+            
             <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -635,42 +646,50 @@
         </section>
 
         <section id="portfolio" class="portfolio">
-          <div class="container">
-            <h2>Portfolio</h2>
-            <p>Here are some websites I've created:</p>
-            <div class="portfolio-grid">
-              <div class="portfolio-item">
-                <div class="portfolio-card">
-                  <h3>The Checkered Flag Slot</h3>
-                  <div class="device-mockup">
-                    <div class="macbook">
-                      <img src="images/IMG_2580 2.jpg" class="macbook-screen" alt="MacBook Website Preview">
+            <div class="container">
+                <h2>Portfolio</h2>
+                <p>Here are some websites I've created:</p>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <div class="portfolio-card">
+                            <h3>The Checkered Flag Store</h3>
+                            <div class="device-mockup">
+                                <div class="macbook">
+                                    <div class="macbook-screen">
+                                        <img src="images/IMG_2580 2.jpg" alt="Checkered Flag Desktop View">
+                                    </div>
+                                </div>
+                                <div class="phone">
+                                    <div class="phone-screen">
+                                        <img src="images/IMG_2581.jpg" alt="Checkered Flag Mobile View">
+                                    </div>
+                                </div>
+                            </div>
+                            <p>E-commerce website with modern design and mobile optimization</p>
+                            <a href="https://thecheckeredflag.store" target="_blank" class="portfolio-link">View Site</a>
+                        </div>
                     </div>
-                    <div class="phone">
-                      <img src="images/IMG_2581.jpg" class="phone-screen" alt="Phone Website Preview">
+                    <div class="portfolio-item">
+                        <div class="portfolio-card">
+                            <h3>Browning's Repair Co</h3>
+                            <div class="device-mockup">
+                                <div class="macbook">
+                                    <div class="macbook-screen">
+                                        <img src="images/brownings-desktop.jpg" alt="Brownings Desktop View">
+                                    </div>
+                                </div>
+                                <div class="phone">
+                                    <div class="phone-screen">
+                                        <img src="images/brownings-mobile.jpg" alt="Brownings Mobile View">
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Professional repair company website with clean layout and user-friendly navigation</p>
+                            <a href="https://browningsrc.store" target="_blank" class="portfolio-link">View Site</a>
+                        </div>
                     </div>
-                  </div>
-                  <p>E-commerce website with modern design and mobile optimization</p>
-                  <a href="https://thecheckeredflag.store" target="_blank" class="portfolio-link">View Site</a>
                 </div>
-              </div>
-              <div class="portfolio-item">
-                <div class="portfolio-card">
-                  <h3>Browning's Repair Co</h3>
-                  <div class="device-mockup">
-                    <div class="macbook">
-                      <img src="images/IMG_2580 2.jpg" class="macbook-screen" alt="MacBook Website Preview">
-                    </div>
-                    <div class="phone">
-                      <img src="images/IMG_2581.jpg" class="phone-screen" alt="Phone Website Preview">
-                    </div>
-                  </div>
-                  <p>Professional store website with clean layout and user-friendly navigation</p>
-                  <a href="https://browningsrc.store" target="_blank" class="portfolio-link">View Site</a>
-                </div>
-              </div>
             </div>
-          </div>
         </section>
 
         <section id="contact" class="contact">
