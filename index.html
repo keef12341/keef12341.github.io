@@ -89,6 +89,7 @@
             position: relative;
             margin-top: 70px;
             overflow: hidden;
+            min-height: 500px;
         }
         .billboard-wrapper::before {
             content: '';
@@ -114,38 +115,129 @@
         }
         .billboard-container {
             position: relative;
-            display: inline-block;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             z-index: 3;
-        }
-        .billboard-img {
-            width: 100%;
+            min-height: 400px;
             max-width: 1200px;
-            border-radius: 10px;
-            box-shadow: 0 0 25px rgba(160, 32, 240, 0.5);
-            display: block;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            border-radius: 20px;
+            border: 3px solid #a020f0;
+            box-shadow: 
+                0 0 30px rgba(160, 32, 240, 0.6),
+                inset 0 0 50px rgba(160, 32, 240, 0.1);
+            padding: 60px 40px;
+            animation: billboard-glow 3s ease-in-out infinite alternate;
+        }
+        @keyframes billboard-glow {
+            0% { 
+                box-shadow: 
+                    0 0 30px rgba(160, 32, 240, 0.6),
+                    inset 0 0 50px rgba(160, 32, 240, 0.1);
+            }
+            100% { 
+                box-shadow: 
+                    0 0 50px rgba(160, 32, 240, 0.8),
+                    inset 0 0 70px rgba(160, 32, 240, 0.2);
+            }
+        }
+        .billboard-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.8),
+                0 0 40px rgba(160, 32, 240, 0.6);
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.2;
+            animation: title-flicker 4s ease-in-out infinite;
+        }
+        @keyframes title-flicker {
+            0%, 90%, 100% {
+                text-shadow: 
+                    0 0 20px rgba(255, 255, 255, 0.8),
+                    0 0 40px rgba(160, 32, 240, 0.6);
+            }
+            92%, 94%, 96% {
+                text-shadow: 
+                    0 0 30px rgba(255, 255, 255, 1),
+                    0 0 60px rgba(160, 32, 240, 0.9),
+                    0 0 80px rgba(255, 255, 255, 0.5);
+            }
+        }
+        .billboard-subtitle {
+            font-size: 1.8rem;
+            color: #cccccc;
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            font-weight: 600;
+        }
+        .billboard-features {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #00ff00;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+        }
+        .feature-item::before {
+            content: "✓";
+            font-size: 1.5rem;
+            animation: check-glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes check-glow {
+            0% { text-shadow: 0 0 10px rgba(0, 255, 0, 0.6); }
+            100% { text-shadow: 0 0 20px rgba(0, 255, 0, 1); }
         }
         .get-started-link {
-            position: absolute;
-            top: 62%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(to right, #ffffff, #cccccc);
+            background: linear-gradient(45deg, #a020f0, #ffffff, #a020f0);
+            background-size: 200% 200%;
             color: #000;
             font-weight: 900;
-            padding: 15px 30px;
-            border-radius: 40px;
+            padding: 18px 40px;
+            border-radius: 50px;
             text-decoration: none;
-            box-shadow: 0 0 10px rgba(255,255,255,0.2);
+            box-shadow: 
+                0 0 20px rgba(160, 32, 240, 0.6),
+                0 0 40px rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
             z-index: 10;
-            font-size: 18px;
-            border: 2px solid #333;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            font-size: 1.3rem;
+            border: 3px solid #ffffff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            animation: button-pulse 2s ease-in-out infinite alternate;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        @keyframes button-pulse {
+            0% { 
+                background-position: 0% 50%;
+                transform: scale(1);
+            }
+            100% { 
+                background-position: 100% 50%;
+                transform: scale(1.05);
+            }
         }
         .get-started-link:hover {
-            background: linear-gradient(to right, #cccccc, #ffffff);
-            box-shadow: 0 0 20px rgba(255,255,255,0.5);
-            transform: translateX(-50%) scale(1.05);
+            background: linear-gradient(45deg, #ffffff, #a020f0, #ffffff);
+            box-shadow: 
+                0 0 30px rgba(255, 255, 255, 0.8),
+                0 0 50px rgba(160, 32, 240, 0.8);
+            transform: scale(1.1);
+            color: #000;
         }
         
         .modern-header {
@@ -297,126 +389,97 @@
             font-size: 16px;
             line-height: 1.4;
         }
-        .close-x {
+        .close-        .close-x {
             position: fixed;
             top: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: #a020f0;
-            border-radius: 50%;
+            right: 30px;
+            font-size: 40px;
+            color: #a020f0;
+            cursor: pointer;
             display: none;
+            z-index: 10001;
+            background: rgba(0, 0, 0, 0.8);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
-            font-size: 30px;
-            color: white;
-            font-weight: bold;
-            z-index: 10001;
+            border: 2px solid #a020f0;
             transition: all 0.3s ease;
-            animation: x-appear 0.5s ease-in-out;
-        }
-        @keyframes x-appear {
-            0% { transform: scale(0) rotate(180deg); }
-            100% { transform: scale(1) rotate(0deg); }
         }
         .close-x:hover {
-            background: #ffffff;
-            color: #a020f0;
+            background: #a020f0;
+            color: #fff;
             transform: scale(1.1);
         }
         
-        /* Mobile Styles */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .modern-header {
-                border-radius: 0;
-            }
             .nav-container {
-                padding: 15px 20px;
-                gap: 10px;
-            }
-            .phone-link {
-                display: none;
+                padding: 10px 20px;
             }
             .nav-menu {
                 position: fixed;
                 top: 70px;
-                left: 0;
+                left: -100%;
                 width: 100%;
-                background-color: rgba(46, 46, 46, 0.98);
-                backdrop-filter: blur(10px);
+                height: calc(100vh - 70px);
+                background: rgba(26, 26, 26, 0.98);
                 flex-direction: column;
-                gap: 0;
-                margin: 0;
-                padding: 0;
-                height: 0;
-                overflow: hidden;
-                opacity: 0;
-                transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
-                border-bottom: 2px solid #a020f0;
-                box-shadow: 0 5px 15px rgba(160, 32, 240, 0.4);
-                z-index: 999;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 50px;
+                transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                backdrop-filter: blur(10px);
+                border-top: 2px solid #a020f0;
             }
             .nav-menu.active {
-                height: 320px;
-                opacity: 1;
+                left: 0;
             }
             .nav-menu li {
-                width: 100%;
-                text-align: center;
-                border-bottom: 1px solid #333;
-                transform: translateY(-20px);
-                opacity: 0;
-                transition: transform 0.3s ease, opacity 0.3s ease;
-            }
-            .nav-menu.active li {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            .nav-menu.active li:nth-child(1) { transition-delay: 0.1s; }
-            .nav-menu.active li:nth-child(2) { transition-delay: 0.2s; }
-            .nav-menu.active li:nth-child(3) { transition-delay: 0.3s; }
-            .nav-menu.active li:nth-child(4) { transition-delay: 0.4s; }
-            .nav-menu li:last-child {
-                border-bottom: none;
-                border-top: 2px solid #a020f0;
-                background-color: rgba(160, 32, 240, 0.1);
+                margin: 20px 0;
             }
             .nav-menu a {
-                display: block;
-                padding: 20px;
-                font-size: 18px;
-                font-weight: bold;
-                color: #f5f5f5;
-                text-decoration: none;
-                transition: background-color 0.3s ease, color 0.3s ease;
+                font-size: 20px;
+                padding: 15px 30px;
+                border-radius: 10px;
+                transition: all 0.3s;
             }
             .nav-menu a:hover {
-                background-color: rgba(160, 32, 240, 0.2);
-                color: #a020f0;
+                background: rgba(160, 32, 240, 0.2);
+                box-shadow: 0 0 15px rgba(160, 32, 240, 0.4);
+            }
+            .phone-link {
+                display: none;
             }
             .mobile-phone {
                 display: block;
             }
             .mobile-phone a {
-                color: #a020f0;
+                background: #a020f0;
+                color: #fff;
+                padding: 15px 25px;
+                border-radius: 25px;
                 font-weight: bold;
-                font-size: 18px;
+                box-shadow: 0 0 15px rgba(160, 32, 240, 0.5);
             }
             .hamburger {
                 display: flex;
                 flex-direction: column;
                 cursor: pointer;
-                width: 30px;
-                height: 24px;
-                justify-content: space-between;
-                z-index: 1001;
-                background: none;
-                border: none;
-                padding:  0;
+                gap: 6px;
+                padding: 10px;
+                border-radius: 8px;
+                transition: background-color 0.3s;
+                background: rgba(160, 32, 240, 0.1);
+                border: 2px solid transparent;
+            }
+            .hamburger:hover {
+                background: rgba(160, 32, 240, 0.2);
+                border-color: #a020f0;
             }
             .hamburger span {
-                width: 100%;
+                width: 25px;
                 height: 3px;
                 background-color: #f5f5f5;
                 border-radius: 2px;
@@ -435,29 +498,25 @@
                 transform: rotate(-45deg) translate(8px, -8px);
                 background-color: #a020f0;
             }
+            .billboard-title {
+                font-size: 2.5rem;
+            }
+            .billboard-subtitle {
+                font-size: 1.4rem;
+            }
+            .billboard-features {
+                gap: 20px;
+            }
+            .feature-item {
+                font-size: 1rem;
+            }
             .get-started-link {
-                position: absolute;
-                top: 62%;
-                right: 8%;
-                background: linear-gradient(to right, #ffffff, #cccccc);
-                color: #000;
-                font-weight: 900;
                 padding: 15px 30px;
-                border-radius: 40px;
-                text-decoration: none;
-                box-shadow: 0 0 10px rgba(255,255,255,0.2);
-                transition: all 0.3s ease;
-                z-index: 10;
-                font-size: 18px;
-                border: 2px solid #333;
-                text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+                font-size: 1.1rem;
             }
-            .get-started-link:hover {
-                background: linear-gradient(to right, #cccccc, #ffffff);
-                box-shadow: 0 0 20px rgba(255,255,255,0.5);
-                transform: scale(1.05);
+            .billboard-container {
+                padding: 40px 20px;
             }
-
             .status-square {
                 width: 250px;
                 height: 250px;
@@ -769,14 +828,13 @@
             border: 1px solid #333;
         }
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
+            margin-bottom: 5px;
             color: #ffffff;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            font-weight: bold;
         }
         .form-group input,
         .form-group select,
@@ -785,17 +843,21 @@
             padding: 12px;
             border: 2px solid #333;
             border-radius: 5px;
+            background: #2a2a2a;
+            color: #ffffff;
             font-size: 16px;
             transition: border-color 0.3s;
-            background: #222;
-            color: #f5f5f5;
         }
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: #a020f0;
-            box-shadow: 0 0 10px rgba(160, 32, 240, 0.4);
+            box-shadow: 0 0 10px rgba(160, 32, 240, 0.3);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
         }
         .submit-button {
             width: 100%;
@@ -815,41 +877,50 @@
             transform: translateY(-2px);
             box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
         }
-        .submit-button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
         
         /* Footer */
         footer {
             background: #000;
-            color: #f5f5f5;
-            text-align: center;
             padding: 30px 0;
-            border-top: 2px solid #ffffff;
-            box-shadow: 0 -5px 15px rgba(255, 255, 255, 0.2);
+            text-align: center;
+            border-top: 2px solid #a020f0;
             position: relative;
             z-index: 2;
         }
+        footer p {
+            color: #f5f5f5;
+            font-size: 14px;
+        }
         
-        @media (max-width: 768px) {
-            .billboard-wrapper {
-                padding: 100px 15px 60px;
+        /* Additional Mobile Responsive */
+        @media (max-width: 480px) {
+            .billboard-title {
+                font-size: 2rem;
             }
-            .billboard-img {
-                max-width: 100%;
+            .billboard-subtitle {
+                font-size: 1.2rem;
+            }
+            .billboard-features {
+                flex-direction: column;
+                gap: 15px;
             }
             .get-started-link {
-                top: 65%;
-                right: 5%;
                 padding: 12px 25px;
-                font-size: 16px;
-                    }
-            .services,
-            .portfolio,
-            .contact {
-                padding: 60px 0;
+                font-size: 1rem;
+            }
+            .billboard-container {
+                padding: 30px 15px;
+            }
+            .services h2,
+            .portfolio h2,
+            .contact h2 {
+                font-size: 2rem;
+            }
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
             }
             .device-mockup {
                 height: 150px;
@@ -912,7 +983,13 @@
         <!-- New Billboard Section -->
         <div class="billboard-wrapper">
             <div class="billboard-container">
-                <img src="images/billboard.png" alt="Ready to Get the Site You Always Wanted?" class="billboard-img">
+                <h1 class="billboard-title">Ready to Get the Site You Always Wanted?</h1>
+                <p class="billboard-subtitle">Professional websites starting at $0 down</p>
+                <div class="billboard-features">
+                    <div class="feature-item">Mobile Friendly</div>
+                    <div class="feature-item">Lightning Fast</div>
+                    <div class="feature-item">SEO Optimized</div>
+                </div>
                 <a href="#contact" class="get-started-link">Get Started Today</a>
             </div>
         </div>
@@ -1100,56 +1177,43 @@
     <div class="close-x" id="close-x">×</div>
 
     <script>
-        // Enhanced shooting stars effect
+        // Enhanced shooting stars
         function createShootingStar() {
-            const star = document.createElement('div');
-            star.className = 'shooting-star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.animationDuration = (Math.random() * 1.5 + 2) + 's';
-            star.style.animationDelay = Math.random() * 1 + 's';
+            const shootingStar = document.createElement('div');
+            shootingStar.className = 'shooting-star';
             
-            document.getElementById('shooting-stars').appendChild(star);
+            // Random starting position
+            shootingStar.style.left = Math.random() * 100 + 'vw';
+            shootingStar.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            shootingStar.style.animationDelay = Math.random() * 2 + 's';
             
+            document.getElementById('shooting-stars').appendChild(shootingStar);
+            
+            // Remove after animation
             setTimeout(() => {
-                star.remove();
-            }, 5000);
-        }
-
-        // Create shooting stars more frequently for better visibility
-        setInterval(createShootingStar, 800);
-
-        // Package selection function
-        function selectPackage(packageType) {
-            // Scroll to contact form
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-            
-            // Set the project type in the form
-            setTimeout(() => {
-                const projectTypeSelect = document.getElementById('project-type');
-                if (packageType === 'static') {
-                    projectTypeSelect.value = 'static';
-                } else if (packageType === 'ecommerce') {
-                    projectTypeSelect.value = 'ecommerce';
+                if (shootingStar.parentNode) {
+                    shootingStar.parentNode.removeChild(shootingStar);
                 }
-            }, 1000);
+            }, 8000);
         }
 
-        // Wait for DOM to be fully loaded
+        // Create shooting stars periodically
+        setInterval(createShootingStar, 3000);
+
+        // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile hamburger menu functionality
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
-            
+
             if (hamburger && navMenu) {
-                hamburger.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
+                hamburger.addEventListener('click', function() {
                     hamburger.classList.toggle('active');
                     navMenu.classList.toggle('active');
                 });
 
-                // Close menu when clicking on a nav link
-                document.querySelectorAll('.nav-menu a').forEach(link => {
+                // Close menu when clicking on a link
+                const navLinks = navMenu.querySelectorAll('a');
+                navLinks.forEach(link => {
                     link.addEventListener('click', function() {
                         hamburger.classList.remove('active');
                         navMenu.classList.remove('active');
@@ -1157,15 +1221,15 @@
                 });
 
                 // Close menu when clicking outside
-                document.addEventListener('click', function(e) {
-                    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                document.addEventListener('click', function(event) {
+                    if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
                         hamburger.classList.remove('active');
                         navMenu.classList.remove('active');
                     }
                 });
             }
 
-            // Smooth scrolling for navigation links
+            // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -1179,40 +1243,38 @@
                 });
             });
 
-            // Form submission handler with modal
+            // Package selection function
+            window.selectPackage = function(packageType) {
+                const projectTypeSelect = document.getElementById('project-type');
+                if (projectTypeSelect) {
+                    if (packageType === 'static') {
+                        projectTypeSelect.value = 'static';
+                    } else if (packageType === 'ecommerce') {
+                        projectTypeSelect.value = 'ecommerce';
+                    }
+                }
+                
+                // Scroll to contact form
+                document.getElementById('contact').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            };
+
+            // Form submission with modal
             const contactForm = document.getElementById('contact-form');
             const modal = document.getElementById('form-status-modal');
             const spinner = document.getElementById('spinner');
             const checkmark = document.getElementById('checkmark');
             const thankYouText = document.getElementById('thank-you-text');
             const closeX = document.getElementById('close-x');
-            
+
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    // Get form data
-                    const formData = new FormData(this);
+                    const formData = new FormData(contactForm);
                     
-                    // Basic validation
-                    const name = formData.get('name');
-                    const email = formData.get('email');
-                    const message = formData.get('message');
-                    const contactMethod = formData.get('contact-method');
-                    
-                    if (!name || !email || !message || !contactMethod) {
-                        alert('Please fill in all required fields.');
-                        return;
-                    }
-                    
-                    // Email validation
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(email)) {
-                        alert('Please enter a valid email address.');
-                        return;
-                    }
-
-                                        
                     // Show modal with spinner
                     showModal();
                     
