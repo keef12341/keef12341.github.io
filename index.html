@@ -91,6 +91,7 @@
                 max-width: none;
                 border-radius: 0;
                 background-color: rgba(46, 46, 46, 0.98);
+                z-index: 1000;
             }
             
             .nav-container {
@@ -106,47 +107,59 @@
             
             .nav-menu {
                 position: fixed;
-                top: 70px;
+                top: 70px; /* Adjust based on your header height */
                 left: 0;
                 width: 100%;
                 background-color: rgba(46, 46, 46, 0.98);
+                backdrop-filter: blur(10px);
                 flex-direction: column;
                 gap: 0;
                 margin: 0;
-                padding: 20px 0;
-                transform: translateY(-100%);
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease, opacity 0.3s ease;
                 opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
                 border-bottom: 2px solid #a020f0;
                 box-shadow: 0 5px 15px rgba(160, 32, 240, 0.4);
+                z-index: 999;
             }
             
             .nav-menu.active {
-                transform: translateY(0);
+                max-height: 400px; /* Adjust as needed */
                 opacity: 1;
-                visibility: visible;
             }
             
             .nav-menu li {
                 width: 100%;
                 text-align: center;
-                padding: 15px 0;
                 border-bottom: 1px solid #333;
+            }
+            
+            .nav-menu li:last-child {
+                border-bottom: none;
             }
             
             .nav-menu a {
                 font-size: 18px;
                 display: block;
-                padding: 10px 20px;
+                padding: 20px;
+                color: #f5f5dc;
+                text-decoration: none;
+                transition: background-color 0.3s ease;
+            }
+            
+            .nav-menu a:hover {
+                background-color: rgba(160, 32, 240, 0.2);
+                color: #a020f0;
             }
             
             .mobile-phone {
                 display: block;
                 text-align: center;
-                padding: 20px;
+                padding: 0;
                 border-top: 2px solid #a020f0;
-                margin-top: 10px;
+                background-color: rgba(160, 32, 240, 0.1);
             }
             
             .mobile-phone a {
@@ -154,6 +167,8 @@
                 text-decoration: none;
                 font-weight: bold;
                 font-size: 18px;
+                padding: 20px;
+                display: block;
             }
             
             /* Hamburger Menu */
@@ -162,9 +177,12 @@
                 flex-direction: column;
                 cursor: pointer;
                 width: 30px;
-                height: 30px;
-                justify-content: space-around;
+                height: 24px;
+                justify-content: space-between;
                 z-index: 1001;
+                padding: 0;
+                background: none;
+                border: none;
             }
             
             .hamburger span {
@@ -173,10 +191,12 @@
                 background-color: #f5f5dc;
                 transition: all 0.3s ease;
                 transform-origin: center;
+                display: block;
             }
             
             .hamburger.active span:nth-child(1) {
                 transform: rotate(45deg) translate(6px, 6px);
+                background-color: #a020f0;
             }
             
             .hamburger.active span:nth-child(2) {
@@ -185,6 +205,13 @@
             
             .hamburger.active span:nth-child(3) {
                 transform: rotate(-45deg) translate(6px, -6px);
+                background-color: #a020f0;
+            }
+            
+            /* Adjust hero section for fixed header */
+            .hero {
+                padding: 120px 20px 80px;
+                margin-top: 0;
             }
         }
         
@@ -197,7 +224,6 @@
                 display: none;
             }
         }
-
 
         .logo {
             color: #daa520;
