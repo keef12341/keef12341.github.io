@@ -23,8 +23,8 @@
             padding: 0 20px;
         }
         
-        /* Meteor Shower Animation */
-        .meteor-shower {
+        /* Shooting Stars Animation */
+        .shooting-stars {
             position: fixed;
             top: 0;
             left: 0;
@@ -33,24 +33,39 @@
             pointer-events: none;
             z-index: 1;
         }
-        .meteor {
+        .shooting-star {
             position: absolute;
-            width: 2px;
-            height: 2px;
+            width: 4px;
+            height: 4px;
             background: #fff;
             border-radius: 50%;
             box-shadow: 0 0 6px #fff, 0 0 12px #fff, 0 0 18px #fff;
-            animation: meteor-fall linear infinite;
+            animation: shooting-star-fall linear infinite;
         }
-        @keyframes meteor-fall {
+        .shooting-star::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #fff, transparent);
+            transform: translateY(-50%);
+            animation: shooting-star-tail linear infinite;
+        }
+        @keyframes shooting-star-fall {
             0% {
-                transform: translateY(-100vh) translateX(0);
+                transform: translateY(-100vh) translateX(0) rotate(45deg);
                 opacity: 1;
             }
             100% {
-                transform: translateY(100vh) translateX(-200px);
+                transform: translateY(100vh) translateX(-300px) rotate(45deg);
                 opacity: 0;
             }
+        }
+        @keyframes shooting-star-tail {
+            0% { width: 0; }
+            30% { width: 100px; }
+            100% { width: 0; }
         }
         
         .modern-header {
@@ -72,7 +87,7 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
         }
         .site-logo {
             height: 40px;
@@ -130,6 +145,7 @@
         .mobile-phone {
             display: none;
         }
+        
         /* Mobile Styles */
         @media (max-width: 768px) {
             .modern-header {
@@ -238,52 +254,58 @@
                 transform: rotate(-45deg) translate(6px, -6px);
                 background-color: #a020f0;
             }
-            .hero {
-                padding: 120px 20px 80px;
-                margin-top: 0;
-            }
-            .hero-content h2 {
-                font-size: 2rem;
-            }
-            .hero-content p {
-                font-size: 1rem;
-            }
-            .services h2,
-            .portfolio h2,
-            .contact h2 {
-                font-size: 2rem;
-            }
-            .service-grid,
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            .contact-form {
-                margin: 0 20px;
-                padding: 30px 20px;
-            }
         }
         
         /* Billboard Hero Section */
         .hero {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            background: linear-gradient(to bottom, 
+                #1a4c96 0%, 
+                #2d5aa0 20%, 
+                #4a7c59 40%, 
+                #2d4a2d 60%, 
+                #1a1a1a 80%, 
+                #000 100%);
             color: #f5f5f5;
-            padding: 150px 0 100px;
+            padding: 150px 0 200px;
             text-align: center;
             margin-top: 70px;
-            border-bottom: 2px solid #ffffff;
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
             position: relative;
             overflow: hidden;
         }
-        .billboard {
+        .mountain-silhouette {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(to top, #000 0%, transparent 100%);
+            clip-path: polygon(0 100%, 15% 60%, 25% 80%, 35% 40%, 50% 70%, 65% 30%, 80% 60%, 90% 45%, 100% 80%, 100% 100%);
+            z-index: 1;
+        }
+        .trees-silhouette {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: #000;
+            z-index: 2;
+            clip-path: polygon(0 100%, 5% 70%, 8% 100%, 12% 60%, 15% 100%, 20% 80%, 25% 100%, 30% 65%, 35% 100%, 40% 75%, 45% 100%, 50% 55%, 55% 100%, 60% 70%, 65% 100%, 70% 60%, 75% 100%, 80% 85%, 85% 100%, 90% 75%, 95% 100%, 100% 90%, 100% 100%);
+        }
+        .billboard-container {
             position: relative;
+            z-index: 3;
             max-width: 900px;
             margin: 0 auto;
+        }
+        .billboard {
+            position: relative;
             background: #1a1a1a;
             border: 8px solid #333;
             border-radius: 15px;
             padding: 40px;
-            box-shadow: 0 0 30px rgba(160, 32, 240, 0.4);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            margin-bottom: 40px;
         }
         .billboard::before {
             content: '';
@@ -292,42 +314,60 @@
             left: -10px;
             right: -10px;
             bottom: -10px;
-            background: linear-gradient(45deg, #a020f0, #ffffff, #a020f0);
+            background: linear-gradient(45deg, #333, #666, #333);
             border-radius: 20px;
             z-index: -1;
-            animation: billboard-glow 3s ease-in-out infinite alternate;
         }
-        @keyframes billboard-glow {
-            0% { opacity: 0.6; }
-            100% { opacity: 1; }
+        .billboard-lights {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            gap: 15px;
         }
-        .flickering-lights {
+        .light-bulb {
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #fff, 0 0 25px #fff, 0 0 35px #fff;
+            animation: bulb-flicker 3s ease-in-out infinite;
+            position: relative;
+        }
+        .light-bulb::before {
+            content: '';
             position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            height: 8px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                #ffff00 10%, 
-                transparent 20%,
-                #ff0080 30%,
-                transparent 40%,
-                #00ff80 50%,
-                transparent 60%,
-                #8000ff 70%,
-                transparent 80%,
-                #ff8000 90%,
-                transparent 100%);
-            border-radius: 4px;
-            animation: light-flicker 2s linear infinite;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid #666;
+            border-radius: 50%;
+            background: radial-gradient(circle, transparent 60%, #333 100%);
         }
-        @keyframes light-flicker {
-            0%, 100% { opacity: 1; }
-            25% { opacity: 0.3; }
-            50% { opacity: 0.8; }
-            75% { opacity: 0.1; }
+        @keyframes bulb-flicker {
+            0%, 100% { 
+                opacity: 1; 
+                box-shadow: 0 0 15px #fff, 0 0 25px #fff, 0 0 35px #fff;
+            }
+            25% { 
+                opacity: 0.3; 
+                box-shadow: 0 0 5px #fff;
+            }
+            50% { 
+                opacity: 0.8; 
+                box-shadow: 0 0 20px #fff, 0 0 30px #fff;
+            }
+            75% { 
+                opacity: 0.1; 
+                box-shadow: 0 0 2px #fff;
+            }
         }
+        .light-bulb:nth-child(2) { animation-delay: 0.5s; }
+        .light-bulb:nth-child(3) { animation-delay: 1s; }
+        .light-bulb:nth-child(4) { animation-delay: 1.5s; }
+        .light-bulb:nth-child(5) { animation-delay: 2s; }
+        .light-bulb:nth-child(6) { animation-delay: 2.5s; }
+        
         .hero-content h2 {
             font-size: 3rem;
             margin-bottom: 20px;
@@ -423,7 +463,7 @@
         .service-card ul {
             list-style: none;
             text-align: left;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         .service-card li {
             padding: 8px 0;
@@ -455,11 +495,29 @@
             font-size: 0.9rem;
             color: #a020f0;
             font-style: italic;
-            margin-top: 15px;
+            margin-bottom: 20px;
             padding: 10px;
             background: rgba(160, 32, 240, 0.1);
             border-radius: 5px;
             border: 1px solid rgba(160, 32, 240, 0.3);
+        }
+        .select-button {
+            background: linear-gradient(45deg, #a020f0, #ffffff);
+            color: #000;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(160, 32, 240, 0.4);
+            font-size: 16px;
+            width: 100%;
+        }
+        .select-button:hover {
+            background: linear-gradient(45deg, #ffffff, #a020f0);
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
         }
         
         /* Portfolio Section */
@@ -694,6 +752,60 @@
             transform: translateY(-2px);
             box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
         }
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Form Status Animation */
+        .form-status {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+            display: none;
+        }
+        .status-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+        }
+        .status-loading {
+            background: #a020f0;
+            border: 4px solid #fff;
+            border-top: 4px solid transparent;
+            animation: spin 1s linear infinite;
+        }
+        .status-success {
+            background: #00ff00;
+            animation: success-pulse 0.5s ease-in-out;
+        }
+        .status-error {
+            background: #ff0000;
+            animation: error-shake 0.5s ease-in-out;
+        }
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @keyframes success-pulse {
+            0% { transform: translate(-50%,-50%) scale(0.5); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+        @keyframes error-shake {
+            0%, 100% { transform: translate(-50%, -50%) translateX(0); }
+            25% { transform: translate(-50%, -50%) translateX(-10px); }
+            75% { transform: translate(-50%, -50%) translateX(10px); }
+        }
         
         /* Footer */
         footer {
@@ -709,13 +821,20 @@
         
         @media (max-width: 480px) {
             .hero {
-                padding: 120px 20px 80px;
+                padding: 120px 20px 150px;
             }
             .hero-content h2 {
                 font-size: 1.8rem;
             }
             .billboard {
                 padding: 30px 20px;
+            }
+            .billboard-lights {
+                gap: 10px;
+            }
+            .light-bulb {
+                width: 15px;
+                height: 15px;
             }
             .services,
             .portfolio,
@@ -741,7 +860,7 @@
     </style>
 </head>
 <body>
-    <div class="meteor-shower" id="meteor-shower"></div>
+    <div class="shooting-stars" id="shooting-stars"></div>
     
     <header class="modern-header" id="main-header">
         <div class="nav-container">
@@ -768,12 +887,25 @@
 
     <main>
         <section id="home" class="hero">
-            <div class="billboard">
-                <div class="flickering-lights"></div>
-                <div class="hero-content">
-                    <h2>Lightning-Fast Affordable Websites</h2>
-                    <p>Fully hand-coded static websites that load instantly and convert visitors into customers</p>
-                    <a href="#contact" class="cta-button">Get Started Today</a>
+            <div class="mountain-silhouette"></div>
+            <div class="trees-silhouette"></div>
+            <div class="billboard-container">
+                <div class="billboard">
+                    <div class="hero-content">
+                        <h2>Lightning-Fast Affordable Websites</h2>
+                        <p>Fully hand-coded static websites that load instantly and convert visitors into customers</p>
+                        <a href="#contact" class="cta-button">Get Started Today</a>
+                    </div>
+                    <div class="billboard-lights">
+                        <div class="light-bulb"></div>
+                        <div class="light-bulb"></div>
+                        <div class="light-bulb"></div>
+                        <div class="light-bulb"></div>
+                        <div class="light-bulb"></div>
+                        <div class="light-bulb"></div>
+                        <div class="light-bulb"></div>
+                        <div class="light-bulb"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -792,15 +924,16 @@
                             <li class="included">Lightning-fast loading</li>
                             <li class="included">Basic contact form</li>
                             <li class="included">SEO optimized</li>
-                            <li class="included">Free domain included</li>
+                            <li class="not-included">Domain (customer provides)</li>
                             <li class="not-included">E-commerce functionality</li>
                             <li class="not-included">Advanced forms</li>
                             <li class="not-included">Custom integrations</li>
                         </ul>
                         <div class="domain-note">
                             Additional pages: $50 each<br>
-                            Domain renewal charged yearly based on domain type
+                            Domain must be purchased separately by customer
                         </div>
+                        <button class="select-button" onclick="selectPackage('static')">Select Package</button>
                     </div>
                     <div class="service-card featured">
                         <h3>Full E-Commerce Package</h3>
@@ -819,8 +952,9 @@
                         </ul>
                         <div class="domain-note">
                             Unlimited pages and features included<br>
-                            Domain renewal charged yearly based on domain type
+                            Domain must be purchased separately by customer
                         </div>
+                        <button class="select-button" onclick="selectPackage('ecommerce')">Select Package</button>
                     </div>
                 </div>
             </div>
@@ -877,7 +1011,7 @@
             <div class="container">
                 <h2>Get In Touch</h2>
                 <p>Ready to get your website started? Fill out the form below and I'll get back to you soon!</p>
-                <form class="contact-form" action="#" method="POST">
+                <form class="contact-form" action="https://formspree.io/f/mqabzwgp" method="POST" id="contact-form">
                     <div class="form-group">
                         <label for="name">Name *</label>
                         <input type="text" id="name" name="name" required>
@@ -900,8 +1034,38 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="contact-method">Preferred Contact Method *</label>
+                        <select id="contact-method" name="contact-method" required>
+                            <option value="">Select preferred method</option>
+                            <option value="email">Email</option>
+                            <option value="phone">Phone Call</option>
+                            <option value="text">Text Message</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="preferred-time">Preferred Contact Time</label>
+                        <select id="preferred-time" name="preferred-time">
+                            <option value="">Select preferred time</option>
+                            <option value="morning">Morning (8AM - 12PM)</option>
+                            <option value="afternoon">Afternoon (12PM - 5PM)</option>
+                            <option value="evening">Evening (5PM - 8PM)</option>
+                            <option value="anytime">Anytime</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="timeline">When would you like to start?</label>
+                        <select id="timeline" name="timeline">
+                            <option value="">Select timeline</option>
+                            <option value="asap">As soon as possible</option>
+                            <option value="1-2weeks">Within 1-2 weeks</option>
+                            <option value="1month">Within a month</option>
+                            <option value="2-3months">2-3 months</option>
+                            <option value="flexible">I'm flexible</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="message">Project Details *</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, what features you need, timeline, etc." required></textarea>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, what features you need, your business, etc." required></textarea>
                     </div>
                     <button type="submit" class="submit-button">Send Message</button>
                 </form>
@@ -915,24 +1079,45 @@
         </div>
     </footer>
 
+    <!-- Form Status Indicator -->
+    <div class="form-status" id="form-status">
+        <div class="status-circle" id="status-circle"></div>
+    </div>
+
     <script>
-        // Meteor shower effect
-        function createMeteor() {
-            const meteor = document.createElement('div');
-            meteor.className = 'meteor';
-            meteor.style.left = Math.random() * 100 + '%';
-            meteor.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            meteor.style.animationDelay = Math.random() * 2 + 's';
+        // Shooting stars effect
+        function createShootingStar() {
+            const star = document.createElement('div');
+            star.className = 'shooting-star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            star.style.animationDelay = Math.random() * 2 + 's';
             
-            document.getElementById('meteor-shower').appendChild(meteor);
+            document.getElementById('shooting-stars').appendChild(star);
             
             setTimeout(() => {
-                meteor.remove();
-            }, 5000);
+                star.remove();
+            }, 6000);
         }
 
-        // Create meteors periodically
-        setInterval(createMeteor, 800);
+        // Create shooting stars periodically
+        setInterval(createShootingStar, 1200);
+
+        // Package selection function
+        function selectPackage(packageType) {
+            // Scroll to contact form
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            
+            // Set the project type in the form
+            setTimeout(() => {
+                const projectTypeSelect = document.getElementById('project-type');
+                if (packageType === 'static') {
+                    projectTypeSelect.value = 'static';
+                } else if (packageType === 'ecommerce') {
+                    projectTypeSelect.value = 'ecommerce';
+                }
+            }, 1000);
+        }
 
         // Wait for DOM to be fully loaded
         document.addEventListener('DOMContentLoaded', function() {
@@ -980,42 +1165,149 @@
             });
 
             // Form submission handler
-            const contactForm = document.querySelector('.contact-form');
+            const contactForm = document.getElementById('contact-form');
+            const formStatus = document.getElementById('form-status');
+            const statusCircle = document.getElementById('status-circle');
+            
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
                     // Get form data
                     const formData = new FormData(this);
-                    const data = Object.fromEntries(formData);
                     
                     // Basic validation
-                    if (!data.name || !data.email || !data.message) {
+                    const name = formData.get('name');
+                    const email = formData.get('email');
+                    const message = formData.get('message');
+                    const contactMethod = formData.get('contact-method');
+                    
+                    if (!name || !email || !message || !contactMethod) {
                         alert('Please fill in all required fields.');
                         return;
                     }
                     
                     // Email validation
                     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(data.email)) {
+                    if (!emailRegex.test(email)) {
                         alert('Please enter a valid email address.');
                         return;
                     }
                     
-                    // Show loading state
-                    const submitButton = this.querySelector('.submit-button');
-                    const originalText = submitButton.textContent;
-                    submitButton.textContent = 'Sending...';
-                    submitButton.disabled = true;
+                    // Show loading status
+                    showFormStatus('loading');
                     
-                    // Simulate form submission
-                    setTimeout(() => {
-                        alert('Thank you for your message! I\'ll get back to you soon.');
-                        this.reset();
-                        submitButton.textContent = originalText;
-                        submitButton.disabled = false;
-                    }, 1000);
+                    // Submit form to Formspree
+                    fetch('https://formspree.io/f/mqabzwgp', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            showFormStatus('success');
+                            setTimeout(() => {
+                                hideFormStatus();
+                                showSuccessMessage();
+                                contactForm.reset();
+                            }, 2000);
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        showFormStatus('error');
+                        setTimeout(() => {
+                            hideFormStatus();
+                            alert('There was an error sending your message. Please try again or call us directly at 865-438-5840.');
+                        }, 2000);
+                    });
                 });
+            }
+
+            function showFormStatus(type) {
+                formStatus.style.display = 'block';
+                statusCircle.className = 'status-circle';
+                
+                if (type === 'loading') {
+                    statusCircle.classList.add('status-loading');
+                    statusCircle.innerHTML = '';
+                } else if (type === 'success') {
+                    statusCircle.classList.remove('status-loading');
+                    statusCircle.classList.add('status-success');
+                    statusCircle.innerHTML = '✓';
+                } else if (type === 'error') {
+                    statusCircle.classList.remove('status-loading');
+                    statusCircle.classList.add('status-error');
+                    statusCircle.innerHTML = '✗';
+                }
+            }
+
+            function hideFormStatus() {
+                formStatus.style.display = 'none';
+                statusCircle.className = 'status-circle';
+                statusCircle.innerHTML = '';
+            }
+
+            function showSuccessMessage() {
+                const successMessage = document.createElement('div');
+                successMessage.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: linear-gradient(45deg, #00ff00, #ffffff);
+                    color: #000;
+                    padding: 30px;
+                    border-radius: 15px;
+                    box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+                    z-index: 10001;
+                    text-align: center;
+                    max-width: 400px;
+                    font-weight: bold;
+                    animation: success-popup 0.5s ease-in-out;
+                `;
+                
+                successMessage.innerHTML = `
+                    <h3 style="margin-bottom: 15px; color: #000;">Thank You!</h3>
+                    <p style="color: #000; line-height: 1.5;">Your message has been sent successfully! I will contact you within 24 hours using your preferred method.</p>
+                    <button onclick="this.parentElement.remove()" style="
+                        margin-top: 20px;
+                        background: #000;
+                        color: #fff;
+                        border: none;
+                        padding: 10px 20px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        font-weight: bold;
+                    ">Close</button>
+                `;
+                
+                // Add animation keyframes
+                if (!document.getElementById('success-animation-style')) {
+                    const style = document.createElement('style');
+                    style.id = 'success-animation-style';
+                    style.textContent = `
+                        @keyframes success-popup {
+                            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+                            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+                            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+                
+                document.body.appendChild(successMessage);
+                
+                // Auto-remove after 8 seconds
+                setTimeout(() => {
+                    if (successMessage.parentElement) {
+                        successMessage.remove();
+                    }
+                }, 8000);
             }
         });
 
@@ -1045,6 +1337,11 @@
                 header.classList.add('header-scrolled');
             }
         });
+
+        // Create initial shooting stars
+        for (let i = 0; i < 3; i++) {
+            setTimeout(createShootingStar, i * 400);
+        }
     </script>
 </body>
 </html>
