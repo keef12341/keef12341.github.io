@@ -23,7 +23,7 @@
             padding: 0 20px;
         }
         
-        /* Shooting Stars Animation */
+        /* Enhanced Shooting Stars Animation */
         .shooting-stars {
             position: fixed;
             top: 0;
@@ -35,11 +35,11 @@
         }
         .shooting-star {
             position: absolute;
-            width: 4px;
-            height: 4px;
+            width: 6px;
+            height: 6px;
             background: #fff;
             border-radius: 50%;
-            box-shadow: 0 0 6px #fff, 0 0 12px #fff, 0 0 18px #fff;
+            box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
             animation: shooting-star-fall linear infinite;
         }
         .shooting-star::before {
@@ -47,25 +47,156 @@
             position: absolute;
             top: 50%;
             right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #fff, transparent);
+            height: 3px;
+            background: linear-gradient(90deg, #fff, rgba(255,255,255,0.8), transparent);
             transform: translateY(-50%);
             animation: shooting-star-tail linear infinite;
+            border-radius: 2px;
+        }
+        .shooting-star::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, #a020f0, rgba(160,32,240,0.6), transparent);
+            transform: translateY(-50%);
+            animation: shooting-star-tail linear infinite;
+            animation-delay: 0.1s;
         }
         @keyframes shooting-star-fall {
             0% {
-                transform: translateY(-100vh) translateX(0) rotate(45deg);
+                transform: translateY(-100vh) translateX(100px) rotate(45deg);
                 opacity: 1;
             }
             100% {
-                transform: translateY(100vh) translateX(-300px) rotate(45deg);
+                transform: translateY(100vh) translateX(-400px) rotate(45deg);
                 opacity: 0;
             }
         }
         @keyframes shooting-star-tail {
             0% { width: 0; }
-            30% { width: 100px; }
+            20% { width: 150px; }
+            80% { width: 200px; }
             100% { width: 0; }
+        }
+        
+        /* Billboard Flicker Animation */
+        @keyframes flicker {
+            0%, 100% { 
+                opacity: 1; 
+                box-shadow: 0 0 15px #fff, 0 0 25px #fff, 0 0 35px #fff;
+            }
+            10% { 
+                opacity: 0.4; 
+                box-shadow: 0 0 5px #fff;
+            }
+            20% { 
+                opacity: 0.2; 
+                box-shadow: 0 0 2px #fff;
+            }
+            30% { 
+                opacity: 0.7; 
+                box-shadow: 0 0 10px #fff, 0 0 20px #fff;
+            }
+            40% { 
+                opacity: 0.5; 
+                box-shadow: 0 0 8px #fff;
+            }
+            50% { 
+                opacity: 1; 
+                box-shadow: 0 0 15px #fff, 0 0 25px #fff, 0 0 35px #fff;
+            }
+        }
+        
+        /* Outer Space Billboard Section */
+        .billboard-wrapper {
+            background: radial-gradient(ellipse at center, #1a237e 0%, #0d1421 30%, #000814 60%, #000 100%);
+            padding: 120px 20px 80px;
+            text-align: center;
+            position: relative;
+            margin-top: 70px;
+            overflow: hidden;
+        }
+        .billboard-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: twinkle 4s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+        .billboard-container {
+            position: relative;
+            display: inline-block;
+            z-index: 3;
+        }
+        .billboard-img {
+            width: 100%;
+            max-width: 1200px;
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(160, 32, 240, 0.5);
+            display: block;
+        }
+        .flicker-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ffffff;
+            border-radius: 50%;
+            bottom: 45px;
+            animation: flicker 2s infinite;
+            border: 2px solid #666;
+        }
+        .flicker-dot::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 1px solid #333;
+            border-radius: 50%;
+            background: radial-gradient(circle, transparent 60%, #222 100%);
+        }
+        .dot1 { left: 18%; animation-delay: 0s; }
+        .dot2 { left: 32%; animation-delay: 0.4s; }
+        .dot3 { left: 47%; animation-delay: 0.8s; }
+        .dot4 { left: 62%; animation-delay: 1.2s; }
+        .dot5 { left: 77%; animation-delay: 1.6s; }
+        .get-started-link {
+            position: absolute;
+            top: 50%;
+            right: 7%;
+            transform: translateY(-50%);
+            background: linear-gradient(to right, #ffffff, #cccccc);
+            color: #000;
+            font-weight: bold;
+            padding: 15px 30px;
+            border-radius: 40px;
+            text-decoration: none;
+            box-shadow: 0 0 10px rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        .get-started-link:hover {
+            background: linear-gradient(to right, #cccccc, #ffffff);
+            box-shadow: 0 0 20px rgba(255,255,255,0.5);
+            transform: translateY(-50%) scale(1.05);
         }
         
         .modern-header {
@@ -254,151 +385,20 @@
                 transform: rotate(-45deg) translate(6px, -6px);
                 background-color: #a020f0;
             }
-        }
-        
-        /* Billboard Hero Section */
-        .hero {
-            background: linear-gradient(to bottom, 
-                #1a4c96 0%, 
-                #2d5aa0 20%, 
-                #4a7c59 40%, 
-                #2d4a2d 60%, 
-                #1a1a1a 80%, 
-                #000 100%);
-            color: #f5f5f5;
-            padding: 150px 0 200px;
-            text-align: center;
-            margin-top: 70px;
-            position: relative;
-            overflow: hidden;
-        }
-        .mountain-silhouette {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(to top, #000 0%, transparent 100%);
-            clip-path: polygon(0 100%, 15% 60%, 25% 80%, 35% 40%, 50% 70%, 65% 30%, 80% 60%, 90% 45%, 100% 80%, 100% 100%);
-            z-index: 1;
-        }
-        .trees-silhouette {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 150px;
-            background: #000;
-            z-index: 2;
-            clip-path: polygon(0 100%, 5% 70%, 8% 100%, 12% 60%, 15% 100%, 20% 80%, 25% 100%, 30% 65%, 35% 100%, 40% 75%, 45% 100%, 50% 55%, 55% 100%, 60% 70%, 65% 100%, 70% 60%, 75% 100%, 80% 85%, 85% 100%, 90% 75%, 95% 100%, 100% 90%, 100% 100%);
-        }
-        .billboard-container {
-            position: relative;
-            z-index: 3;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .billboard {
-            position: relative;
-            background: #1a1a1a;
-            border: 8px solid #333;
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
-            margin-bottom: 40px;
-        }
-        .billboard::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: linear-gradient(45deg, #333, #666, #333);
-            border-radius: 20px;
-            z-index: -1;
-        }
-        .billboard-lights {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-            gap: 15px;
-        }
-        .light-bulb {
-            width: 20px;
-            height: 20px;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 0 15px #fff, 0 0 25px #fff, 0 0 35px #fff;
-            animation: bulb-flicker 3s ease-in-out infinite;
-            position: relative;
-        }
-        .light-bulb::before {
-            content: '';
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            border: 2px solid #666;
-            border-radius: 50%;
-            background: radial-gradient(circle, transparent 60%, #333 100%);
-        }
-        @keyframes bulb-flicker {
-            0%, 100% { 
-                opacity: 1; 
-                box-shadow: 0 0 15px #fff, 0 0 25px #fff, 0 0 35px #fff;
+            .billboard-wrapper {
+                padding: 100px 15px 60px;
             }
-            25% { 
-                opacity: 0.3; 
-                box-shadow: 0 0 5px #fff;
+            .get-started-link {
+                position: static;
+                transform: none;
+                margin-top: 20px;
+                display: inline-block;
             }
-            50% { 
-                opacity: 0.8; 
-                box-shadow: 0 0 20px #fff, 0 0 30px #fff;
+            .flicker-dot {
+                width: 15px;
+                height: 15px;
+                bottom: 35px;
             }
-            75% { 
-                opacity: 0.1; 
-                box-shadow: 0 0 2px #fff;
-            }
-        }
-        .light-bulb:nth-child(2) { animation-delay: 0.5s; }
-        .light-bulb:nth-child(3) { animation-delay: 1s; }
-        .light-bulb:nth-child(4) { animation-delay: 1.5s; }
-        .light-bulb:nth-child(5) { animation-delay: 2s; }
-        .light-bulb:nth-child(6) { animation-delay: 2.5s; }
-        
-        .hero-content h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #ffffff;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-            animation: text-glow 2s ease-in-out infinite alternate;
-        }
-        @keyframes text-glow {
-            0% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
-            100% { text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 40px rgba(160, 32, 240, 0.6); }
-        }
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: #f5f5f5;
-        }
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #a020f0, #ffffff);
-            color: #000;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: all 0.3s;
-            box-shadow: 0 0 15px rgba(160, 32, 240, 0.5);
-        }
-        .cta-button:hover {
-            background: linear-gradient(45deg, #ffffff, #a020f0);
-            transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
         }
         
         /* Services Section */
@@ -797,7 +797,7 @@
             100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
         @keyframes success-pulse {
-            0% { transform: translate(-50%,-50%) scale(0.5); }
+            0% { transform: translate(-50%, -50%) scale(0.5); }
             50% { transform: translate(-50%, -50%) scale(1.2); }
             100% { transform: translate(-50%, -50%) scale(1); }
         }
@@ -820,22 +820,30 @@
         }
         
         @media (max-width: 480px) {
-            .hero {
-                padding: 120px 20px 150px;
+            .billboard-wrapper {
+                padding: 100px 15px 60px;
             }
-            .hero-content h2 {
-                font-size: 1.8rem;
+            .billboard-img {
+                max-width: 100%;
             }
-            .billboard {
-                padding: 30px 20px;
+            .get-started-link {
+                position: static;
+                transform: none;
+                margin-top: 20px;
+                display: inline-block;
+                padding: 12px 25px;
+                font-size: 14px;
             }
-            .billboard-lights {
-                gap: 10px;
+            .flicker-dot {
+                width: 12px;
+                height: 12px;
+                bottom: 25px;
             }
-            .light-bulb {
-                width: 15px;
-                height: 15px;
-            }
+            .dot1 { left: 15%; }
+            .dot2 { left: 28%; }
+            .dot3 { left: 44%; }
+            .dot4 { left: 60%; }
+            .dot5 { left: 75%; }
             .services,
             .portfolio,
             .contact {
@@ -886,29 +894,18 @@
     </header>
 
     <main>
-        <section id="home" class="hero">
-            <div class="mountain-silhouette"></div>
-            <div class="trees-silhouette"></div>
+        <!-- New Billboard Section -->
+        <div class="billboard-wrapper">
             <div class="billboard-container">
-                <div class="billboard">
-                    <div class="hero-content">
-                        <h2>Need A Website?</h2>
-                        <p>I Build fully hand-coded static websites that load instantly and convert visitors into customers</p>
-                        <a href="#contact" class="cta-button">Get Started Today</a>
-                    </div>
-                    <div class="billboard-lights">
-                        <div class="light-bulb"></div>
-                        <div class="light-bulb"></div>
-                        <div class="light-bulb"></div>
-                        <div class="light-bulb"></div>
-                        <div class="light-bulb"></div>
-                        <div class="light-bulb"></div>
-                        <div class="light-bulb"></div>
-                        <div class="light-bulb"></div>
-                    </div>
-                </div>
+                <img src="images/billboard.png" alt="Ready to Get the Site You Always Wanted?" class="billboard-img">
+                <a href="#contact" class="get-started-link">Get Started Today</a>
+                <div class="flicker-dot dot1"></div>
+                <div class="flicker-dot dot2"></div>
+                <div class="flicker-dot dot3"></div>
+                <div class="flicker-dot dot4"></div>
+                <div class="flicker-dot dot5"></div>
             </div>
-        </section>
+        </div>
 
         <section id="services" class="services">
             <div class="container">
@@ -1085,23 +1082,23 @@
     </div>
 
     <script>
-        // Shooting stars effect
+        // Enhanced shooting stars effect
         function createShootingStar() {
             const star = document.createElement('div');
             star.className = 'shooting-star';
             star.style.left = Math.random() * 100 + '%';
-            star.style.animationDuration = (Math.random() * 2 + 3) + 's';
-            star.style.animationDelay = Math.random() * 2 + 's';
+            star.style.animationDuration = (Math.random() * 1.5 + 2) + 's';
+            star.style.animationDelay = Math.random() * 1 + 's';
             
             document.getElementById('shooting-stars').appendChild(star);
             
             setTimeout(() => {
                 star.remove();
-            }, 6000);
+            }, 5000);
         }
 
-        // Create shooting stars periodically
-        setInterval(createShootingStar, 1200);
+        // Create shooting stars more frequently for better visibility
+        setInterval(createShootingStar, 800);
 
         // Package selection function
         function selectPackage(packageType) {
@@ -1339,8 +1336,8 @@
         });
 
         // Create initial shooting stars
-        for (let i = 0; i < 3; i++) {
-            setTimeout(createShootingStar, i * 400);
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createShootingStar, i * 200);
         }
     </script>
 </body>
