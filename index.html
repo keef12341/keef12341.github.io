@@ -621,6 +621,38 @@
         </div>
     </footer>
     <script>
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // Mobile hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Close menu when clicking on a nav link
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        }
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -636,108 +668,71 @@
         });
 
         // Form submission handler
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Basic validation
-            if (!data.name || !data.email || !data.message) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-            
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(data.email)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-            
-            // Show loading state
-            const submitButton = this.querySelector('.submit-button');
-            const originalText = submitButton.textContent;
-            submitButton.textContent = 'Sending...';
-            submitButton.disabled = true;
-            
-            // Simulate form submission (replace with actual form handling)
-            setTimeout(() => {
-                alert('Thank you for your message! I\'ll get back to you soon.');
-                this.reset();
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-            }, 1000);
-            
-            // For actual implementation, you would send the data to your server:
-            fetch('/submit-form', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(result => {
-                alert('Thank you for your message! I\'ll get back to you soon.');
-                this.reset();
-            })
-            .catch(error => {
-                alert('Sorry, there was an error sending your message. Please try again.');
-            })
-            .finally(() => {
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Basic validation
+                if (!data.name || !data.email || !data.message) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(data.email)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+                
+                // Show loading state
+                const submitButton = this.querySelector('.submit-button');
+                const originalText = submitButton.textContent;
+                submitButton.textContent = 'Sending...';
+                submitButton.disabled = true;
+                
+                // Simulate form submission
+                setTimeout(() => {
+                    alert('Thank you for your message! I\'ll get back to you soon.');
+                    this.reset();
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                }, 1000);
             });
-            */
-        });
+        }
+    });
 
-        // Add scroll effect to header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(0, 0, 0, 0.98)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'rgba(0, 0, 0, 0.95)';
-                header.style.backdropFilter = 'none';
-            }
-        });
+    // Header transformation on scroll
+    let lastScrollY = window.scrollY;
+    
+    window.addEventListener('scroll', function() {
+        const header = document.getElementById('main-header');
+        const currentScrollY = window.scrollY;
         
-        window.addEventListener('scroll', function () {
-            const header = document.getElementById('main-header');
-            if (window.scrollY > 40) {
+        // Only apply scroll effects on desktop
+        if (window.innerWidth > 768) {
+            if (currentScrollY > 50) {
                 header.classList.add('header-scrolled');
             } else {
                 header.classList.remove('header-scrolled');
             }
-        });
+        }
+        
+        lastScrollY = currentScrollY;
+    });
 
-        // Mobile hamburger menu functionality
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-        
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-        
-        // Close menu when clicking on a nav link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', function() {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            }
-        });
-    </script>
+    // Initial check in case page loads scrolled
+    window.addEventListener('load', function() {
+        const header = document.getElementById('main-header');
+        if (window.scrollY > 50 && window.innerWidth > 768) {
+            header.classList.add('header-scrolled');
+        }
+    });
+</script>
 </body>
 </html>
