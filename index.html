@@ -80,21 +80,124 @@
             color: #a020f0;
             text-shadow: 0 0 8px #a020f0;
         }
+        /* Mobile Hamburger Menu Styles */
         @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                align-items: center;
+            .modern-header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                transform: none;
+                width: 100%;
+                max-width: none;
+                border-radius: 0;
+                background-color: rgba(46, 46, 46, 0.98);
             }
+            
+            .nav-container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px 20px;
+            }
+            
+            .phone-link {
+                display: none; /* Hide phone number on mobile */
+            }
+            
             .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(46, 46, 46, 0.98);
+                flex-direction: column;
+                gap: 0;
+                margin: 0;
+                padding: 20px 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                border-bottom: 2px solid #a020f0;
+                box-shadow: 0 5px 15px rgba(160, 32, 240, 0.4);
+            }
+            
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+                padding: 15px 0;
+                border-bottom: 1px solid #333;
+            }
+            
+            .nav-menu a {
+                font-size: 18px;
+                display: block;
+                padding: 10px 20px;
+            }
+            
+            .mobile-phone {
+                display: block;
+                text-align: center;
+                padding: 20px;
+                border-top: 2px solid #a020f0;
+                margin-top: 10px;
+            }
+            
+            .mobile-phone a {
+                color: #a020f0;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 18px;
+            }
+            
+            /* Hamburger Menu */
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+                width: 30px;
+                height: 30px;
+                justify-content: space-around;
+                z-index: 1001;
+            }
+            
+            .hamburger span {
+                width: 100%;
+                height: 3px;
+                background-color: #f5f5dc;
+                transition: all 0.3s ease;
+                transform-origin: center;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .hamburger {
                 display: none;
             }
-            .site-logo {
-                margin-bottom: 10px;
+            
+            .mobile-phone {
+                display: none;
             }
-            .phone-link {
-                margin-top: 5px;
-                font-size: 13px;
-            }
+        }
+
 
         .logo {
             color: #daa520;
@@ -394,17 +497,31 @@
 </head>
 <body>
      <header class="modern-header" id="main-header">
-        <div class="nav-container">
-            <img src="images/logo1.png" alt="Logo" class="site-logo">
-            <a class="phone-link" href="tel:8654385840">Call: 865-438-5840</a>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">What We Offer?</a></li>
-                <li><a href="#portfolio">Our Work?</a></li>
-                <li><a href="#contact">Why Us?</a></li>
-            </ul>
+    <div class="nav-container">
+        <img src="images/logo1.png" alt="Logo" class="site-logo">
+        
+        <!-- Desktop Navigation -->
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">What We Offer?</a></li>
+            <li><a href="#portfolio">Our Work?</a></li>
+            <li><a href="#contact">Why Us?</a></li>
+            <li class="mobile-phone">
+                <a href="tel:8654385840">Call: 865-438-5840</a>
+            </li>
+        </ul>
+        
+        <!-- Desktop Phone Link -->
+        <a class="phone-link" href="tel:8654385840">Call: 865-438-5840</a>
+        
+        <!-- Mobile Hamburger -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-    </header>
+    </div>
+</header>
     <main>
         <section id="home" class="hero">
             <div class="hero-content">
@@ -594,6 +711,31 @@
                 header.classList.add('header-scrolled');
             } else {
                 header.classList.remove('header-scrolled');
+            }
+        });
+
+        // Mobile hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a nav link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
             }
         });
     </script>
