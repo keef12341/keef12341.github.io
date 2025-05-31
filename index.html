@@ -87,7 +87,7 @@
                 max-height: 0;
                 overflow: hidden;
                 opacity: 0;
-                transition: max-height 0.5s ease, opacity 0.5s ease;
+                transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
                 background-color: rgba(46, 46, 46, 0.98);
                 backdrop-filter: blur(10px);
                 position: absolute;
@@ -468,32 +468,22 @@
     </style>
 </head>
 <body>
-     <header class="modern-header" id="main-header">
-    <div class="nav-container">
-        <img src="images/logo1.png" alt="Logo" class="site-logo">
-        
-        <!-- Desktop Navigation -->
-        <ul class="nav-menu" id="nav-menu">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">What We Offer?</a></li>
-            <li><a href="#portfolio">Our Work?</a></li>
-            <li><a href="#contact">Why Us?</a></li>
-            <li class="mobile-phone">
-                <a href="tel:8654385840">Call: 865-438-5840</a>
-            </li>
-        </ul>
-        
-        <!-- Desktop Phone Link -->
-        <a class="phone-link" href="tel:8654385840">Call: 865-438-5840</a>
-        
-        <!-- Mobile Hamburger -->
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+    <header class="modern-header" id="main-header">
+        <div class="nav-container">
+            <img src="images/logo1.png" alt="Logo" class="site-logo">
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#services">What We Offer?</a></li>
+                <li><a href="#portfolio">Our Work?</a></li>
+                <li><a href="#contact">Why Us?</a></li>
+            </ul>
+            <a class="phone-link" href="tel:8654385840">Call: 865-438-5840</a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
     <main>
         <section id="home" class="hero">
             <div class="hero-content">
@@ -705,6 +695,14 @@
             header.classList.add('header-scrolled');
         }
     });
-</script>
+
+    const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', function () {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
