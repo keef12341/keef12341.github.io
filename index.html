@@ -72,7 +72,7 @@
         .nav-menu a {
             text-decoration: none;
             color: #f5f5dc;
-            font-weight: 500;
+            font-weight: bold;
             transition: color 0.3s;
             font-size: 16px;
         }
@@ -80,98 +80,39 @@
             color: #a020f0;
             text-shadow: 0 0 8px #a020f0;
         }
-        /* Mobile Hamburger Menu Styles */
         @media (max-width: 768px) {
-            .modern-header {
-                position: fixed;
-                top: 0;
-                left: 0;
-                transform: none;
-                width: 100%;
-                max-width: none;
-                border-radius: 0;
-                background-color: rgba(46, 46, 46, 0.98);
-                z-index: 1000;
-            }
-            
-            .nav-container {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                padding: 15px 20px;
-            }
-            
-            .phone-link {
-                display: none; /* Hide phone number on mobile */
-            }
-            
             .nav-menu {
-                position: fixed;
-                top: 70px; /* Adjust based on your header height */
-                left: 0;
-                width: 100%;
-                background-color: rgba(46, 46, 46, 0.98);
-                backdrop-filter: blur(10px);
                 flex-direction: column;
-                gap: 0;
-                margin: 0;
-                padding: 0;
+                width: 100%;
                 max-height: 0;
                 overflow: hidden;
-                transition: max-height 0.3s ease, opacity 0.3s ease;
                 opacity: 0;
-                border-bottom: 2px solid #a020f0;
-                box-shadow: 0 5px 15px rgba(160, 32, 240, 0.4);
+                transition: max-height 0.5s ease, opacity 0.5s ease;
+                background-color: rgba(46, 46, 46, 0.98);
+                backdrop-filter: blur(10px);
+                position: absolute;
+                top: 70px;
+                left: 0;
                 z-index: 999;
             }
-            
             .nav-menu.active {
-                max-height: 400px; /* Adjust as needed */
+                max-height: 500px;
                 opacity: 1;
             }
-            
             .nav-menu li {
                 width: 100%;
                 text-align: center;
                 border-bottom: 1px solid #333;
             }
-            
             .nav-menu li:last-child {
                 border-bottom: none;
             }
-            
             .nav-menu a {
-                font-size: 18px;
                 display: block;
                 padding: 20px;
-                color: #f5f5dc;
-                text-decoration: none;
-                transition: background-color 0.3s ease;
-            }
-            
-            .nav-menu a:hover {
-                background-color: rgba(160, 32, 240, 0.2);
-                color: #a020f0;
-            }
-            
-            .mobile-phone {
-                display: block;
-                text-align: center;
-                padding: 0;
-                border-top: 2px solid #a020f0;
-                background-color: rgba(160, 32, 240, 0.1);
-            }
-            
-            .mobile-phone a {
-                color: #a020f0;
-                text-decoration: none;
+                font-size: 18px;
                 font-weight: bold;
-                font-size: 18px;
-                padding: 20px;
-                display: block;
             }
-            
-            /* Hamburger Menu */
             .hamburger {
                 display: flex;
                 flex-direction: column;
@@ -180,11 +121,9 @@
                 height: 24px;
                 justify-content: space-between;
                 z-index: 1001;
-                padding: 0;
                 background: none;
                 border: none;
             }
-            
             .hamburger span {
                 width: 100%;
                 height: 3px;
@@ -193,16 +132,13 @@
                 transform-origin: center;
                 display: block;
             }
-            
             .hamburger.active span:nth-child(1) {
                 transform: rotate(45deg) translate(6px, 6px);
                 background-color: #a020f0;
             }
-            
             .hamburger.active span:nth-child(2) {
                 opacity: 0;
             }
-            
             .hamburger.active span:nth-child(3) {
                 transform: rotate(-45deg) translate(6px, -6px);
                 background-color: #a020f0;
