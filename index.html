@@ -893,7 +893,7 @@
             font-size: 14px;
         }
         
-        /* Additional Mobile Responsive */
+         /* Additional Mobile Responsive */
         @media (max-width: 480px) {
             .billboard-title {
                 font-size: 2rem;
@@ -952,6 +952,66 @@
                 font-size: 35px;
             }
         }
+
+/* --- Billing Toggle Switch Styles --- */
+.billing-toggle-wrapper {
+  text-align: center;
+  margin: 40px 0 20px;
+}
+
+.billing-switch {
+  position: relative;
+  display: inline-block;
+  width: 90px;
+  height: 36px;
+}
+
+.billing-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #444;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+.billing-switch input:checked + .slider {
+  background-color: #6ae36a;
+}
+
+.billing-switch input:checked + .slider:before {
+  transform: translateX(54px);
+}
+
+.label-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 600;
+  margin-top: 8px;
+}
     </style>
 </head>
 <body>
@@ -996,67 +1056,69 @@
         </div>
 
         <section id="services" class="services">
-            <div class="container">
-                <h2>Services & Pricing</h2>
+          <div class="container">
+            <h2>Services & Pricing</h2>
         
-                <!-- Billing Toggle -->
-                <div style="text-align:center; margin-bottom: 30px;">
-                    <label style="font-weight:bold; color:#fff; margin-right:10px;">Billing:</label>
-                    <label style="color:#fff;">
-                        Monthly
-                        <input type="checkbox" id="billing-toggle" onchange="toggleBilling()" style="margin: 0 10px;">
-                        Yearly
-                    </label>
+            <!-- 💳 Billing Toggle Switch -->
+            <div class="billing-toggle-wrapper">
+              <label class="billing-switch">
+                <input type="checkbox" id="billing-toggle" onchange="toggleBilling()" />
+                <span class="slider"></span>
+                <div class="label-text">
+                  <span>Monthly</span>
+                  <span>Yearly</span>
                 </div>
-        
-                <div class="service-grid">
-                    <div class="service-card">
-                        <h3>Static Website Package</h3>
-                        <div class="price">$0 Down</div>
-                        <div class="monthly-fee billing-monthly">$50/month maintenance</div>
-                        <div class="yearly-fee billing-yearly" style="display:none;">$450/year maintenance</div>
-                        <ul>
-                            <li class="included">Up to 3 pages</li>
-                            <li class="included">Mobile-friendly design</li>
-                            <li class="included">Lightning-fast loading</li>
-                            <li class="included">Basic contact form</li>
-                            <li class="included">SEO optimized</li>
-                            <li class="not-included">Domain (customer provides)</li>
-                            <li class="not-included">E-commerce functionality</li>
-                            <li class="not-included">Advanced forms</li>
-                            <li class="not-included">Custom integrations</li>
-                        </ul>
-                        <div class="domain-note">
-                            Additional pages: $50 each<br>
-                            Domain must be purchased separately by customer
-                        </div>
-                        <button class="select-button" onclick="selectPackage('static')">Select Package</button>
-                    </div>
-        
-                    <div class="service-card featured">
-                        <h3>Full E-Commerce Package</h3>
-                        <div class="price">$0 Down</div>
-                        <div class="monthly-fee billing-monthly">$125/month maintenance</div>
-                        <div class="yearly-fee billing-yearly" style="display:none;">$1100/year maintenance</div>
-                        <ul>
-                            <li class="included">Everything in Static Package</li>
-                            <li class="included">Full online store</li>
-                            <li class="included">Payment processing</li>
-                            <li class="included">Inventory management</li>
-                            <li class="included">Advanced forms</li>
-                            <li class="included">Custom integrations</li>
-                            <li class="included">Customer accounts</li>
-                            <li class="included">Order tracking</li>
-                            <li class="included">Analytics dashboard</li>
-                        </ul>
-                        <div class="domain-note">
-                            Unlimited pages and features included<br>
-                            Domain must be purchased separately by customer
-                        </div>
-                        <button class="select-button" onclick="selectPackage('ecommerce')">Select Package</button>
-                    </div>
-                </div>
+              </label>
             </div>
+        
+            <div class="service-grid">
+              <div class="service-card">
+                <h3>Static Website Package</h3>
+                <div class="price">$0 Down</div>
+                <div class="monthly-fee billing-monthly">$50/month maintenance</div>
+                <div class="yearly-fee billing-yearly" style="display:none;">$450/year maintenance</div>
+                <ul>
+                  <li class="included">Up to 3 pages</li>
+                  <li class="included">Mobile-friendly design</li>
+                  <li class="included">Lightning-fast loading</li>
+                  <li class="included">Basic contact form</li>
+                  <li class="included">SEO optimized</li>
+                  <li class="not-included">Domain (customer provides)</li>
+                  <li class="not-included">E-commerce functionality</li>
+                  <li class="not-included">Advanced forms</li>
+                  <li class="not-included">Custom integrations</li>
+                </ul>
+                <div class="domain-note">
+                  Additional pages: $50 each<br>
+                  Domain must be purchased separately by customer
+                </div>
+                <button class="select-button" onclick="selectPackage('static')">Select Package</button>
+              </div>
+        
+              <div class="service-card featured">
+                <h3>Full E-Commerce Package</h3>
+                <div class="price">$0 Down</div>
+                <div class="monthly-fee billing-monthly">$125/month maintenance</div>
+                <div class="yearly-fee billing-yearly" style="display:none;">$1100/year maintenance</div>
+                <ul>
+                  <li class="included">Everything in Static Package</li>
+                  <li class="included">Full online store</li>
+                  <li class="included">Payment processing</li>
+                  <li class="included">Inventory management</li>
+                  <li class="included">Advanced forms</li>
+                  <li class="included">Custom integrations</li>
+                  <li class="included">Customer accounts</li>
+                  <li class="included">Order tracking</li>
+                  <li class="included">Analytics dashboard</li>
+                </ul>
+                <div class="domain-note">
+                  Unlimited pages and features included<br>
+                  Domain must be purchased separately by customer
+                </div>
+                <button class="select-button" onclick="selectPackage('ecommerce')">Select Package</button>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section id="portfolio" class="portfolio">
