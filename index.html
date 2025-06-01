@@ -273,30 +273,32 @@
 
         }
         .phone-link {
-            font-weight: bold;
             background-color: #a020f0;
             color: #fff;
-            padding: 10px 18px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 10px 20px;
             border-radius: 25px;
             font-size: 14px;
-            text-decoration: none;
-            box-shadow: 0 0 10px rgba(160, 32, 240, 0.5);
+            box-shadow: 0 0 12px rgba(160, 32, 240, 0.6);
+            animation: phone-glow 4s ease-in-out infinite;
             transition: all 0.3s ease;
+            white-space: nowrap;
+            display: inline-block;
         }
-        @keyframes phone-flicker {
-            0%, 90%, 100% {
-                background-color: #a020f0;
-                box-shadow: 0 0 10px rgba(160, 32, 240, 0.5);
+        /* ✨ Flash Animation */
+        @keyframes phone-glow {
+            0%, 100% {
+                box-shadow: 0 0 12px rgba(160, 32, 240, 0.6);
             }
-            92%, 94%, 96% {
-                background-color: #ffffff;
-                color: #000;
-                box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            50% {
+                box-shadow: 0 0 20px rgba(160, 32, 240, 1);
             }
         }
         .phone-link:hover {
-            background-color: #fff;
+            background-color: #ffffff;
             color: #000;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
         }
         .nav-menu {
             display: flex;
