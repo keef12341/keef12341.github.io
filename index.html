@@ -23,8 +23,7 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        /* Enhanced Shooting Stars Animation */
+                /* Enhanced Shooting Stars Animation */
         .shooting-stars {
             position: fixed;
             top: 0;
@@ -81,8 +80,7 @@
             80% { width: 200px; }
             100% { width: 0; }
         }
-        
-        /* Outer Space Billboard Section */
+                /* Outer Space Billboard Section */
         .billboard-wrapper {
             background: radial-gradient(ellipse at center, #1a237e 0%, #0d1421 30%, #000814 60%, #000 100%);
             padding: 120px 20px 80px;
@@ -99,7 +97,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: 
+            background-image:
                 radial-gradient(2px 2px at 20px 30px, #fff, transparent),
                 radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
                 radial-gradient(1px 1px at 90px 40px, #fff, transparent),
@@ -124,34 +122,16 @@
             min-height: 400px;
             max-width: 1200px;
             margin: 0 auto;
-            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #0a0a0a 100%);
-            border-radius: 20px;
-            border: 3px solid #a020f0;
-            box-shadow: 
-                0 0 30px rgba(160, 32, 240, 0.6),
-                inset 0 0 50px rgba(160, 32, 240, 0.1);
             padding: 60px 40px;
-            animation: billboard-glow 3s ease-in-out infinite alternate;
-        }
-        @keyframes billboard-glow {
-            0% { 
-                box-shadow: 
-                    0 0 30px rgba(160, 32, 240, 0.6),
-                    inset 0 0 50px rgba(160, 32, 240, 0.1);
-            }
-            100% { 
-                box-shadow: 
-                    0 0 50px rgba(160, 32, 240, 0.8),
-                    inset 0 0 70px rgba(160, 32, 240, 0.2);
-            }
         }
         .billboard-title {
             font-size: 3.5rem;
             font-weight: 900;
             color: #ffffff;
-            text-shadow: 
+            text-shadow:
                 0 0 20px rgba(255, 255, 255, 0.8),
-                0 0 40px rgba(160, 32, 240, 0.6);
+                0 0 40px rgba(160, 32, 240, 0.6),
+                2px 2px 4px rgba(0,0,0,0.8);
             margin-bottom: 20px;
             text-align: center;
             line-height: 1.2;
@@ -159,22 +139,24 @@
         }
         @keyframes title-flicker {
             0%, 90%, 100% {
-                text-shadow: 
+                text-shadow:
                     0 0 20px rgba(255, 255, 255, 0.8),
-                    0 0 40px rgba(160, 32, 240, 0.6);
+                    0 0 40px rgba(160, 32, 240, 0.6),
+                    2px 2px 4px rgba(0,0,0,0.8);
             }
             92%, 94%, 96% {
-                text-shadow: 
+                text-shadow:
                     0 0 30px rgba(255, 255, 255, 1),
                     0 0 60px rgba(160, 32, 240, 0.9),
-                    0 0 80px rgba(255, 255, 255, 0.5);
+                    0 0 80px rgba(255, 255, 255, 0.5),
+                    2px 2px 4px rgba(0,0,0,0.8);
             }
         }
         .billboard-subtitle {
             font-size: 1.8rem;
             color: #cccccc;
             margin-bottom: 30px;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4), 1px 1px 2px rgba(0,0,0,0.8);
             font-weight: 600;
         }
         .billboard-features {
@@ -191,7 +173,7 @@
             color: #00ff00;
             font-weight: bold;
             font-size: 1.1rem;
-            text-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.6), 1px 1px 2px rgba(0,0,0,0.8);
         }
         .feature-item::before {
             content: "✓";
@@ -210,7 +192,7 @@
             padding: 18px 40px;
             border-radius: 50px;
             text-decoration: none;
-            box-shadow: 
+            box-shadow:
                 0 0 20px rgba(160, 32, 240, 0.6),
                 0 0 40px rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
@@ -223,25 +205,69 @@
             letter-spacing: 1px;
         }
         @keyframes button-pulse {
-            0% { 
+            0% {
                 background-position: 0% 50%;
                 transform: scale(1);
             }
-            100% { 
+            100% {
                 background-position: 100% 50%;
                 transform: scale(1.05);
             }
         }
         .get-started-link:hover {
             background: linear-gradient(45deg, #ffffff, #a020f0, #ffffff);
-            box-shadow: 
+            box-shadow:
                 0 0 30px rgba(255, 255, 255, 0.8),
                 0 0 50px rgba(160, 32, 240, 0.8);
             transform: scale(1.1);
             color: #000;
         }
-        
-        .modern-header {
+
+        /* Draggable Planets */
+        .planet {
+            position: absolute;
+            width: 21px;
+            height: 21px;
+            border-radius: 50%;
+            cursor: grab;
+            z-index: 2;
+            user-select: none;
+            transition: transform 0.1s ease;
+            pointer-events: auto;
+        }
+        .planet:hover {
+            transform: scale(1.1);
+        }
+        .planet:active {
+            cursor: grabbing;
+        }
+        /* Sun */
+        .sun {
+            background: radial-gradient(circle at 30% 30%, #ffff99, #ffcc00, #ff9900);
+            box-shadow: 0 0 20px #ffcc00, 0 0 40px #ff9900;
+            animation: pulse 2s infinite alternate;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 20px #ffcc00, 0 0 40px #ff9900; }
+            100% { box-shadow: 0 0 30px #ffcc00, 0 0 60px #ff9900; }
+        }
+        /* Earth-like planet */
+        .earth {
+            background: radial-gradient(circle at 30% 30%, #87ceeb, #4682b4, #228b22, #006400);
+        }
+        /* Mars-like planet */
+        .mars {
+            background: radial-gradient(circle at 30% 30%, #ff6b47, #cd5c5c, #8b0000);
+        }
+        /* Jupiter-like planet */
+        .jupiter {
+            background: radial-gradient(circle at 30% 30%, #daa520, #b8860b, #8b4513);
+        }
+        /* Neptune-like planet */
+        .neptune {
+            background: radial-gradient(circle at 30% 30%, #4169e1, #0000cd, #191970);
+        }
+                .modern-header {
             position: fixed;
             top: 0;
             left: 0;
@@ -318,8 +344,7 @@
         .mobile-phone {
             display: none;
         }
-        
-        /* Form Status Modal */
+                /* Form Status Modal */
         .form-status-modal {
             position: fixed;
             top: 0;
@@ -352,1063 +377,1143 @@
             border-top: 6px solid #a020f0;
             border-radius: 50%;
             animation: spin 1s linear infinite;
+            margin-bottom: 20px;
         }
+
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        .checkmark {
-            width: 80px;
-            height: 80px;
-            background: #00ff00;
-            border-radius: 50%;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            font-size: 50px;
-            color: white;
-            animation: checkmark-appear 0.5s ease-in-out;
-        }
-        @keyframes checkmark-appear {
-            0% { transform: scale(0); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-        .thank-you-text {
-            display: none;
-            text-align: center;
+
+        .status-message {
             color: #fff;
-            margin-top: 20px;
-            padding: 0 20px;
-        }
-        .thank-you-text h3 {
-            color: #00ff00;
-            margin-bottom: 10px;
-            font-size: 24px;
-        }
-        .thank-you-text p {
-            font-size: 16px;
-            line-height: 1.4;
-        }
-        .close-        .close-x {
-            position: fixed;
-            top: 20px;
-            right: 30px;
-            font-size: 40px;
-            color: #a020f0;
-            cursor: pointer;
-            display: none;
-            z-index: 10001;
-            background: rgba(0, 0, 0, 0.8);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            justify-content: center;
-            align-items: center;
-            border: 2px solid #a020f0;
-            transition: all 0.3s ease;
-        }
-        .close-x:hover {
-            background: #a020f0;
-            color: #fff;
-            transform: scale(1.1);
-        }
-        
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .nav-container {
-                padding: 10px 20px;
-            }
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background: rgba(26, 26, 26, 0.98);
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                padding-top: 50px;
-                transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                backdrop-filter: blur(10px);
-                border-top: 2px solid #a020f0;
-            }
-            .nav-menu.active {
-                left: 0;
-            }
-            .nav-menu li {
-                margin: 20px 0;
-            }
-            .nav-menu a {
-                font-size: 20px;
-                padding: 15px 30px;
-                border-radius: 10px;
-                transition: all 0.3s;
-            }
-            .nav-menu a:hover {
-                background: rgba(160, 32, 240, 0.2);
-                box-shadow: 0 0 15px rgba(160, 32, 240, 0.4);
-            }
-            .phone-link {
-                display: none;
-            }
-            .mobile-phone {
-                display: block;
-            }
-            .mobile-phone a {
-                background: #a020f0;
-                color: #fff;
-                padding: 15px 25px;
-                border-radius: 25px;
-                font-weight: bold;
-                box-shadow: 0 0 15px rgba(160, 32, 240, 0.5);
-            }
-            .hamburger {
-                display: flex;
-                flex-direction: column;
-                cursor: pointer;
-                gap: 6px;
-                padding: 10px;
-                border-radius: 8px;
-                transition: background-color 0.3s;
-                background: rgba(160, 32, 240, 0.1);
-                border: 2px solid transparent;
-            }
-            .hamburger:hover {
-                background: rgba(160, 32, 240, 0.2);
-                border-color: #a020f0;
-            }
-            .hamburger span {
-                width: 25px;
-                height: 3px;
-                background-color: #f5f5f5;
-                border-radius: 2px;
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                transform-origin: center;
-            }
-            .hamburger.active span:nth-child(1) {
-                transform: rotate(45deg) translate(8px, 8px);
-                background-color: #a020f0;
-            }
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-                transform: scale(0);
-            }
-            .hamburger.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(8px, -8px);
-                background-color: #a020f0;
-            }
-            .billboard-title {
-                font-size: 2.5rem;
-            }
-            .billboard-subtitle {
-                font-size: 1.4rem;
-            }
-            .billboard-features {
-                gap: 20px;
-            }
-            .feature-item {
-                font-size: 1rem;
-            }
-            .get-started-link {
-                padding: 15px 30px;
-                font-size: 1.1rem;
-            }
-            .billboard-container {
-                padding: 40px 20px;
-            }
-            .status-square {
-                width: 250px;
-                height: 250px;
-            }
-        }
-        
-        /* Services Section */
-        .services {
-            padding: 80px 0;
-            background: #111;
-            position: relative;
-            z-index: 2;
-        }
-        .services h2 {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.5rem;
-            color: #ffffff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-        }
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .service-card {
-            background: #1a1a1a;
-            padding: 40px 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(160, 32, 240, 0.3);
-            text-align: center;
-            transition: transform 0.3s;
-            border: 1px solid #333;
-            position: relative;
-        }
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: #a020f0;
-            box-shadow: 0 10px 25px rgba(160, 32, 240, 0.5);
-        }
-        .service-card.featured {
-            border: 3px solid #a020f0;
-            background: #222;
-            box-shadow: 0 0 20px rgba(160, 32, 240, 0.4);
-        }
-        .service-card h3 {
-            margin-bottom: 20px;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        .price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #a020f0;
-            margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(160, 32, 240, 0.6);
-        }
-        .monthly-fee {
-            font-size: 1.2rem;
-            color: #ffffff;
-            margin-bottom: 20px;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-        }
-        .service-card ul {
-            list-style: none;
-            text-align: left;
-            margin-bottom: 30px;
-        }
-        .service-card li {
-            padding: 8px 0;
-            color: #f5f5f5;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .service-card li.included:before {
-            content: "✓";
-            color: #00ff00;
-            font-weight: bold;
             font-size: 18px;
-            text-shadow: 0 0 8px #00ff00;
-            animation: glow-check 2s ease-in-out infinite alternate;
-        }
-        .service-card li.not-included:before {
-            content: "✗";
-            color: #ff0000;
             font-weight: bold;
-            font-size: 18px;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        @keyframes glow-check {
-            0% { text-shadow: 0 0 8px #00ff00; }
-            100% { text-shadow: 0 0 15px #00ff00, 0 0 20px #00ff00; }
-        }
-        .domain-note {
-            font-size: 0.9rem;
-            color: #a020f0;
-            font-style: italic;
+            text-align: center;
             margin-bottom: 20px;
-            padding: 10px;
-            background: rgba(160, 32, 240, 0.1);
-            border-radius: 5px;
-            border: 1px solid rgba(160, 32, 240, 0.3);
         }
-        .select-button {
-            background: linear-gradient(45deg, #a020f0, #ffffff);
-            color: #000;
-            padding: 12px 30px;
+
+        .status-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
             border: none;
-            border-radius: 5px;
-            font-weight: bold;
+            color: #a020f0;
+            font-size: 24px;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 0 15px rgba(160, 32, 240, 0.4);
-            font-size: 16px;
-            width: 100%;
-        }
-        .select-button:hover {
-            background: linear-gradient(45deg, #ffffff, #a020f0);
-            transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
-        }
-        
-        /* Portfolio Section */
-        .portfolio {
-            padding: 80px 0;
-            background: #000;
-            position: relative;
-            z-index: 2;
-        }
-        .portfolio h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 2.5rem;
-            color: #ffffff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-        }
-        .portfolio > .container > p {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 1.1rem;
-            color: #f5f5f5;
-        }
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
-        .portfolio-card {
-            background: #1a1a1a;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(160, 32, 240, 0.3);
-            transition: transform 0.3s;
-            border: 1px solid #333;
-            position: relative;
-        }
-        .portfolio-card:hover {
-            transform: translateY(-5px);
-            border-color: #a020f0;
-            box-shadow: 0 10px 25px rgba(160, 32, 240, 0.5);
-        }
-        .portfolio-card h3 {
-            margin-bottom: 15px;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        .portfolio-card p {
-            margin-bottom: 20px;
-            color: #f5f5f5;
-        }
-        .device-mockup {
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            margin: 20px 0;
-            position: relative;
-            height: 200px;
-        }
-        .macbook {
-            width: 200px;
-            height: 130px;
-            background: #2c2c2c;
-            border-radius: 8px 8px 0 0;
-            position: relative;
-            margin-right: 20px;
-            box-shadow: 0 0 15px rgba(160, 32, 240, 0.3);
-        }
-        .macbook::before {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            right: 8px;
-            bottom: 15px;
-            background: #000;
-            border-radius: 4px;
-            border: 2px solid #333;
-        }
-        .macbook::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 220px;
-            height: 8px;
-            background: #1a1a1a;
-            border-radius: 0 0 12px 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-        }
-        .phone {
-            width: 60px;
-            height: 120px;
-            background: #2c2c2c;
-            border-radius: 12px;
-            position: relative;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-        }
-        .phone::before {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 4px;
-            right: 4px;
-            bottom: 8px;
-            background: #000;
-            border-radius: 8px;
-            border: 1px solid #333;
-        }
-        .macbook-screen {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            right: 12px;
-            bottom: 19px;
-            border-radius: 2px;
-            overflow: hidden;
-            z-index: 2;
-        }
-        .macbook-screen img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 2px;
-        }
-        .phone-screen {
-            position: absolute;
-            top: 12px;
-            left: 6px;
-            right: 6px;
-            bottom: 12px;
-            border-radius: 6px;
-            overflow: hidden;
-            z-index: 2;
-        }
-        .phone-screen img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 6px;
-        }
-        .portfolio-link {
-            display: inline-block;
-            background: linear-gradient(45deg, #a020f0, #ffffff);
-            color: #000;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s;
             font-weight: bold;
-            box-shadow: 0 0 10px rgba(160, 32, 240, 0.4);
         }
-        .portfolio-link:hover {
-            background: linear-gradient(45deg, #ffffff, #a020f0);
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+
+        .status-close:hover {
+            color: #fff;
         }
-        
-        /* Contact Section */
-        .contact {
-            padding: 80px 0;
-            background: #111;
-            position: relative;
-            z-index: 2;
+
+        /* Success and Error States */
+        .status-success .spinner {
+            display: none;
         }
-        .contact h2 {
-            text-align: center;
+
+        .status-success::before {
+            content: "✓";
+            font-size: 80px;
+            color: #00ff00;
             margin-bottom: 20px;
-            font-size: 2.5rem;
-            color: #ffffff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
         }
-        .contact > .container > p {
+
+        .status-error .spinner {
+            display: none;
+        }
+
+        .status-error::before {
+            content: "✗";
+            font-size: 80px;
+            color: #ff0000;
+            margin-bottom: 20px;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            position: relative;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #a020f0;
+            border-radius: 15px;
+            padding: 30px;
             text-align: center;
-            margin-bottom: 50px;
-            font-size: 1.1rem;
-            color: #f5f5f5;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(160, 32, 240, 0.3);
+            border-color: #fff;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #a020f0;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .service-description {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background: #000;
+        }
+
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
-            background: #1a1a1a;
+            background: rgba(255, 255, 255, 0.05);
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(160, 32, 240, 0.3);
-            border: 1px solid #333;
+            border-radius: 15px;
+            border: 2px solid #a020f0;
         }
+
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
+
         .form-group label {
             display: block;
-            margin-bottom: 5px;
-            color: #ffffff;
+            margin-bottom: 8px;
+            color: #fff;
             font-weight: bold;
         }
+
         .form-group input,
-        .form-group select,
         .form-group textarea {
             width: 100%;
             padding: 12px;
             border: 2px solid #333;
-            border-radius: 5px;
-            background: #2a2a2a;
-            color: #ffffff;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
             font-size: 16px;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s ease;
         }
+
         .form-group input:focus,
-        .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: #a020f0;
             box-shadow: 0 0 10px rgba(160, 32, 240, 0.3);
         }
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        .submit-button {
-            width: 100%;
-            background: linear-gradient(45deg, #a020f0, #ffffff);
+
+        .submit-btn {
+            background: linear-gradient(45deg, #a020f0, #fff);
             color: #000;
-            padding: 15px;
+            padding: 15px 30px;
             border: none;
-            border-radius: 5px;
+            border-radius: 30px;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 0 15px rgba(160, 32, 240, 0.4);
+            transition: all 0.3s ease;
+            width: 100%;
         }
-        .submit-button:hover {
-            background: linear-gradient(45deg, #ffffff, #a020f0);
+
+        .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 20px rgba(160, 32, 240, 0.4);
         }
-        
+
         /* Footer */
-        footer {
-            background: #000;
-            padding: 30px 0;
+        .footer {
+            background: #1a1a1a;
+            padding: 40px 0;
             text-align: center;
             border-top: 2px solid #a020f0;
-            position: relative;
-            z-index: 2;
         }
-        footer p {
-            color: #f5f5f5;
-            font-size: 14px;
+
+        .footer-content {
+            color: #ccc;
         }
-        
-        /* Additional Mobile Responsive */
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #a020f0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+                background: none;
+                border: none;
+                color: #fff;
+                font-size: 24px;
+                cursor: pointer;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(46, 46, 46, 0.98);
+                flex-direction: column;
+                padding: 20px;
+                border-radius: 0 0 20px 20px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .phone-link {
+                display: none;
+            }
+
+            .mobile-phone {
+                display: block;
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: #a020f0;
+                color: #fff;
+                padding: 15px;
+                border-radius: 50%;
+                text-decoration: none;
+                font-size: 20px;
+                box-shadow: 0 5px 15px rgba(160, 32, 240, 0.5);
+                z-index: 1000;
+                animation: phone-flicker 8s infinite;
+            }
+
+            .billboard-title {
+                font-size: 2.5rem;
+            }
+
+            .billboard-subtitle {
+                font-size: 1.4rem;
+            }
+
+            .billboard-features {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .get-started-link {
+                font-size: 1.1rem;
+                padding: 15px 30px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .contact-form {
+                margin: 0 20px;
+                padding: 30px 20px;
+            }
+
+            .status-square {
+                width: 250px;
+                height: 250px;
+                margin: 0 20px;
+            }
+        }
+
         @media (max-width: 480px) {
+            .billboard-wrapper {
+                padding: 100px 10px 60px;
+            }
+
             .billboard-title {
                 font-size: 2rem;
             }
+
             .billboard-subtitle {
                 font-size: 1.2rem;
             }
-            .billboard-features {
-                flex-direction: column;
-                gap: 15px;
+
+            .nav-container {
+                padding: 10px 20px;
             }
-            .get-started-link {
-                padding: 12px 25px;
-                font-size: 1rem;
-            }
-            .billboard-container {
-                padding: 30px 15px;
-            }
-            .services h2,
-            .portfolio h2,
-            .contact h2 {
-                font-size: 2rem;
-            }
-            .service-grid {
-                grid-template-columns: 1fr;
-            }
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            .device-mockup {
-                height: 150px;
-            }
-            .macbook {
-                width: 150px;
-                height: 100px;
-                margin-right: 15px;
-            }
-            .phone {
-                width: 45px;
-                height: 90px;
-            }
-            .service-grid {
-                grid-template-columns: 1fr;
-            }
-            .status-square {
-                width: 200px;
-                height: 200px;
-            }
-            .spinner {
-                width: 60px;
-                height: 60px;
-            }
-            .checkmark {
-                width: 60px;
-                height: 60px;
-                font-size: 35px;
+
+            .site-logo {
+                height: 35px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="shooting-stars" id="shooting-stars"></div>
-    
-    <header class="modern-header" id="main-header">
+    <!-- Shooting Stars Animation -->
+    <div class="shooting-stars" id="shootingStars"></div>
+
+    <!-- Header -->
+    <header class="modern-header">
         <div class="nav-container">
-            <img src="images/logo2.png" alt="Logo" class="site-logo">
-            
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#services">What We Offer?</a></li>
-                <li><a href="#portfolio">Our Work?</a></li>
-                <li><a href="#contact">Why Us?</a></li>
-                <li class="mobile-phone">
-                    <a href="tel:8654385840">Call: 865-438-5840</a>
-                </li>
-            </ul>
-            
-            <a class="phone-link" href="tel:8654385840">Call: 865-438-5840</a>
-            
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <img src="images/logo.png" alt="J Development Logo" class="site-logo">
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="hamburger" id="hamburger">☰</button>
+            </nav>
+            <a href="tel:+1234567890" class="phone-link">📞 Call Now: (123) 456-7890</a>
         </div>
     </header>
 
-    <main>
-        <!-- New Billboard Section -->
-        <div class="billboard-wrapper">
-            <div class="billboard-container">
-                <h1 class="billboard-title">Ready to Get the Site You Always Wanted?</h1>
-                <p class="billboard-subtitle">Professional websites starting at $0 down</p>
-                <div class="billboard-features">
-                    <div class="feature-item">Mobile Friendly</div>
-                    <div class="feature-item">Lightning Fast</div>
-                    <div class="feature-item">SEO Optimized</div>
+    <!-- Mobile Phone Button -->
+    <a href="tel:+1234567890" class="mobile-phone">📞</a>
+
+    <!-- Billboard Section -->
+    <section class="billboard-wrapper" id="home">
+        <!-- Draggable Planets -->
+        <div class="planet sun" style="top: 20%; left: 10%;" draggable="true"></div>
+        <div class="planet earth" style="top: 30%; right: 15%;" draggable="true"></div>
+        <div class="planet mars" style="bottom: 40%; left: 20%;" draggable="true"></div>
+        <div class="planet jupiter" style="top: 60%; right: 25%;" draggable="true"></div>
+        <div class="planet neptune" style="bottom: 20%; right: 10%;" draggable="true"></div>
+
+        <div class="billboard-container">
+            <h1 class="billboard-title">J Development</h1>
+            <p class="billboard-subtitle">Professional Web Development & Digital Solutions</p>
+            
+            <div class="billboard-features">
+                <div class="feature-item">Custom Websites</div>
+                <div class="feature-item">Mobile Responsive</div>
+                <div class="feature-item">SEO Optimized</div>
+                <div class="feature-item">24/7 Support</div>
+            </div>
+            
+            <a href="#contact" class="get-started-link">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; color: #fff;">Our Services</h2>
+            <p style="text-align: center; color: #ccc; font-size: 1.2rem; margin-bottom: 50px;">
+                Comprehensive digital solutions tailored to your business needs
+            </p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3 class="service-title">Web Development</h3>
+                    <p class="service-description">
+                        Custom websites built with modern technologies, responsive design, and optimized performance.
+                    </p>
                 </div>
-                <a href="#contact" class="get-started-link">Get Started Today</a>
+                
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3 class="service-title">Mobile Apps</h3>
+                    <p class="service-description">
+                        Native and cross-platform mobile applications for iOS and Android devices.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3 class="service-title">SEO Optimization</h3>
+                    <p class="service-description">
+                        Boost your online visibility with our comprehensive SEO strategies and techniques.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3 class="service-title">E-Commerce</h3>
+                    <p class="service-description">
+                        Complete e-commerce solutions with secure payment processing and inventory management.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3 class="service-title">UI/UX Design</h3>
+                    <p class="service-description">
+                        Beautiful, intuitive designs that provide exceptional user experiences across all devices.
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3 class="service-title">Performance Optimization</h3>
+                    <p class="service-description">
+                        Speed up your website and improve user experience with our optimization techniques.
+                    </p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <section id="services" class="services">
-            <div class="container">
-                <h2>Services & Pricing</h2>
-                <div class="service-grid">
-                    <div class="service-card">
-                        <h3>Static Website Package</h3>
-                        <div class="price">$0 Down</div>
-                        <div class="monthly-fee">$50/month maintenance</div>
-                        <ul>
-                            <li class="included">Up to 3 pages</li>
-                            <li class="included">Mobile-friendly design</li>
-                            <li class="included">Lightning-fast loading</li>
-                            <li class="included">Basic contact form</li>
-                            <li class="included">SEO optimized</li>
-                            <li class="not-included">Domain (customer provides)</li>
-                            <li class="not-included">E-commerce functionality</li>
-                            <li class="not-included">Advanced forms</li>
-                            <li class="not-included">Custom integrations</li>
-                        </ul>
-                        <div class="domain-note">
-                            Additional pages: $50 each<br>
-                            Domain must be purchased separately by customer
-                        </div>
-                        <button class="select-button" onclick="selectPackage('static')">Select Package</button>
-                    </div>
-                    <div class="service-card featured">
-                        <h3>Full E-Commerce Package</h3>
-                        <div class="price">$0 Down</div>
-                        <div class="monthly-fee">$125/month maintenance</div>
-                        <ul>
-                            <li class="included">Everything in Static Package</li>
-                            <li class="included">Full online store</li>
-                            <li class="included">Payment processing</li>
-                            <li class="included">Inventory management</li>
-                            <li class="included">Advanced forms</li>
-                            <li class="included">Custom integrations</li>
-                            <li class="included">Customer accounts</li>
-                            <li class="included">Order tracking</li>
-                            <li class="included">Analytics dashboard</li>
-                        </ul>
-                        <div class="domain-note">
-                            Unlimited pages and features included<br>
-                            Domain must be purchased separately by customer
-                        </div>
-                        <button class="select-button" onclick="selectPackage('ecommerce')">Select Package</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="portfolio" class="portfolio">
-            <div class="container">
-                <h2>Portfolio</h2>
-                <p>Here are some websites I've created:</p>
-                <div class="portfolio-grid">
-                    <div class="portfolio-item">
-                        <div class="portfolio-card">
-                            <h3>The Checkered Flag Store</h3>
-                            <div class="device-mockup">
-                                <div class="macbook">
-                                    <div class="macbook-screen">
-                                        <img src="images/Screenshot 2025-05-31 at 10.39.02.png" alt="Checkered Flag Desktop View">
-                                    </div>
-                                </div>
-                                <div class="phone">
-                                    <div class="phone-screen">
-                                        <img src="images/IMG_2581.jpg" alt="Checkered Flag Mobile View">
-                                    </div>
-                                </div>
-                            </div>
-                            <p>E-commerce website with modern design and mobile optimization</p>
-                            <a href="https://thecheckeredflag.store" target="_blank" class="portfolio-link">View Site</a>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-card">
-                            <h3>Browning's Repair Co</h3>
-                            <div class="device-mockup">
-                                <div class="macbook">
-                                    <div class="macbook-screen">
-                                        <img src="images/Screenshot 2025-05-31 at 10.38.23.png" alt="Brownings Desktop View">
-                                    </div>
-                                </div>
-                                <div class="phone">
-                                    <div class="phone-screen">
-                                        <img src="images/IMG_2580.jpg" alt="Brownings Mobile View">
-                                    </div>
-                                </div>
-                            </div>
-                            <p>Professional repair company website with clean layout and user-friendly navigation</p>
-                            <a href="https://browningsrc.store" target="_blank" class="portfolio-link">View Site</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Get In Touch</h2>
-                <p>Ready to get your website started? Fill out the form below and I'll get back to you soon!</p>
-                <form class="contact-form" action="https://formspree.io/f/mqabzwgp" method="POST" id="contact-form">
-                    <div class="form-group">
-                        <label for="name">Name *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="project-type">Project Type</label>
-                        <select id="project-type" name="project-type">
-                            <option value="static">Static Website ($0 down, $50/month)</option>
-                            <option value="ecommerce">E-Commerce Package ($0 down, $125/month)</option>
-                            <option value="custom">Custom Project (Quote needed)</option>
-                            <option value="unsure">Not sure yet</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-method">Preferred Contact Method *</label>
-                        <select id="contact-method" name="contact-method" required>
-                            <option value="">Select preferred method</option>
-                            <option value="email">Email</option>
-                            <option value="phone">Phone Call</option>
-                            <option value="text">Text Message</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="preferred-time">Preferred Contact Time</label>
-                        <select id="preferred-time" name="preferred-time">
-                            <option value="">Select preferred time</option>
-                            <option value="morning">Morning (8AM - 12PM)</option>
-                            <option value="afternoon">Afternoon (12PM - 5PM)</option>
-                            <option value="evening">Evening (5PM - 8PM)</option>
-                            <option value="anytime">Anytime</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="timeline">When would you like to start?</label>
-                        <select id="timeline" name="timeline">
-                            <option value="">Select timeline</option>
-                            <option value="asap">As soon as possible</option>
-                            <option value="1-2weeks">Within 1-2 weeks</option>
-                            <option value="1month">Within a month</option>
-                            <option value="2-3months">2-3 months</option>
-                            <option value="flexible">I'm flexible</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="referral-source">How did you find us? *</label>
-                        <select id="referral-source" name="referral-source" required>
-                            <option value="">Select an option</option>
-                            <option value="word-of-mouth">Word of Mouth</option>
-                            <option value="yelp">Yelp</option>
-                            <option value="online-search">Online Search</option>
-                            <option value="facebook">Facebook</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Project Details *</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, what features you need, your business, etc." required></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">Send Message</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer>
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
         <div class="container">
-            <p>&copy; 2024 Jeremiah's WebDev. All rights reserved.</p>
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; color: #fff;">Get In Touch</h2>
+            <p style="text-align: center; color: #ccc; font-size: 1.2rem; margin-bottom: 50px;">
+                Ready to start your project? Let's discuss your ideas and bring them to life.
+            </p>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="service">Service Needed</label>
+                    <select id="service" name="service" style="width: 100%; padding: 12px; border: 2px solid #333; border-radius: 8px; background: rgba(255, 255, 255, 0.1); color: #fff; font-size: 16px;">
+                        <option value="">Select a service</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="mobile-apps">Mobile Apps</option>
+                        <option value="seo">SEO Optimization</option>
+                        <option value="ecommerce">E-Commerce</option>
+                        <option value="design">UI/UX Design</option>
+                        <option value="optimization">Performance Optimization</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="budget">Project Budget</label>
+                    <select id="budget" name="budget" style="width: 100%; padding: 12px; border: 2px solid #333; border-radius: 8px; background: rgba(255, 255, 255, 0.1); color: #fff; font-size: 16px;">
+                        <option value="">Select budget range</option>
+                        <option value="under-5k">Under $5,000</option>
+                        <option value="5k-10k">$5,000 - $10,000</option>
+                        <option value="10k-25k">$10,000 - $25,000</option>
+                        <option value="25k-50k">$25,000 - $50,000</option>
+                        <option value="over-50k">Over $50,000</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="timeline">Project Timeline</label>
+                    <select id="timeline" name="timeline" style="width: 100%; padding: 12px; border: 2px solid #333; border-radius: 8px; background: rgba(255, 255, 255, 0.1); color: #fff; font-size: 16px;">
+                        <option value="">Select timeline</option>
+                        <option value="asap">ASAP</option>
+                        <option value="1-month">Within 1 month</option>
+                        <option value="2-3-months">2-3 months</option>
+                        <option value="3-6-months">3-6 months</option>
+                        <option value="flexible">Flexible</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Project Details *</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell us about your project, goals, and any specific requirements..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <a href="mailto:info@jdevelopment.com">Email Us</a>
+                </div>
+                <p>&copy; 2024 J Development. All rights reserved. | Professional Web Development Services</p>
+                <p style="margin-top: 10px; font-size: 14px;">
+                    📧 info@jdevelopment.com | 📞 (123) 456-7890 | 🌐 www.jdevelopment.com
+                </p>
+            </div>
         </div>
     </footer>
 
     <!-- Form Status Modal -->
-    <div class="form-status-modal" id="form-status-modal">
-        <div class="status-square">
+    <div class="form-status-modal" id="statusModal">
+        <div class="status-square" id="statusSquare">
+            <button class="status-close" id="statusClose">&times;</button>
             <div class="spinner" id="spinner"></div>
-            <div class="checkmark" id="checkmark">✓</div>
-            <div class="thank-you-text" id="thank-you-text">
-                <h3>Thank You!</h3>
-                <p>Your message has been sent successfully! I will contact you within 24 hours using your preferred method.</p>
-            </div>
+            <div class="status-message" id="statusMessage">Sending your message...</div>
         </div>
     </div>
-    <div class="close-x" id="close-x">×</div>
 
     <script>
-        // Enhanced shooting stars
+        // Shooting Stars Animation
         function createShootingStar() {
             const shootingStar = document.createElement('div');
             shootingStar.className = 'shooting-star';
             
             // Random starting position
-            shootingStar.style.left = Math.random() * 100 + 'vw';
-            shootingStar.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            shootingStar.style.animationDelay = Math.random() * 2 + 's';
+            shootingStar.style.left = Math.random() * window.innerWidth + 'px';
+            shootingStar.style.top = '-10px';
             
-            document.getElementById('shooting-stars').appendChild(shootingStar);
+            // Random animation duration
+            const duration = Math.random() * 3 + 2; // 2-5 seconds
+            shootingStar.style.animationDuration = duration + 's';
+            
+            document.getElementById('shootingStars').appendChild(shootingStar);
             
             // Remove after animation
             setTimeout(() => {
                 if (shootingStar.parentNode) {
                     shootingStar.parentNode.removeChild(shootingStar);
                 }
-            }, 8000);
+            }, duration * 1000);
         }
 
         // Create shooting stars periodically
-        setInterval(createShootingStar, 3000);
+        setInterval(createShootingStar, 2000);
 
-        // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburger = document.getElementById('hamburger');
-            const navMenu = document.getElementById('nav-menu');
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
 
-            if (hamburger && navMenu) {
-                hamburger.addEventListener('click', function() {
-                    hamburger.classList.toggle('active');
-                    navMenu.classList.toggle('active');
-                });
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
 
-                // Close menu when clicking on a link
-                const navLinks = navMenu.querySelectorAll('a');
-                navLinks.forEach(link => {
-                    link.addEventListener('click', function() {
-                        hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('.modern-header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
                     });
-                });
+                }
+            });
+        });
 
-                // Close menu when clicking outside
-                document.addEventListener('click', function(event) {
-                    if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
-                        hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
+        // Header Scroll Effect
+        let lastScrollTop = 0;
+        const header = document.querySelector('.modern-header');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Draggable Planets Functionality
+        let draggedElement = null;
+        let offset = { x: 0, y: 0 };
+
+        // Mouse events for desktop
+        document.querySelectorAll('.planet').forEach(planet => {
+            planet.addEventListener('mousedown', (e) => {
+                draggedElement = planet;
+                const rect = planet.getBoundingClientRect();
+                offset.x = e.clientX - rect.left;
+                offset.y = e.clientY - rect.top;
+                planet.style.cursor = 'grabbing';
+                e.preventDefault();
+            });
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (draggedElement) {
+                const container = document.querySelector('.billboard-wrapper');
+                const containerRect = container.getBoundingClientRect();
+                
+                let newX = e.clientX - containerRect.left - offset.x;
+                let newY = e.clientY - containerRect.top - offset.y;
+                
+                // Keep planets within container bounds
+                newX = Math.max(0, Math.min(newX, containerRect.width - 21));
+                newY = Math.max(0, Math.min(newY, containerRect.height - 21));
+                
+                draggedElement.style.left = newX + 'px';
+                draggedElement.style.top = newY + 'px';
+                draggedElement.style.right = 'auto';
+                draggedElement.style.bottom = 'auto';
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (draggedElement) {
+                draggedElement.style.cursor = 'grab';
+                draggedElement = null;
+            }
+        });
+
+        // Touch events for mobile
+        document.querySelectorAll('.planet').forEach(planet => {
+            planet.addEventListener('touchstart', (e) => {
+                draggedElement = planet;
+                const rect = planet.getBoundingClientRect();
+                const touch = e.touches[0];
+                offset.x = touch.clientX - rect.left;
+                offset.y = touch.clientY - rect.top;
+                e.preventDefault();
+            });
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            if (draggedElement) {
+                const container = document.querySelector('.billboard-wrapper');
+                const containerRect = container.getBoundingClientRect();
+                const touch = e.touches[0];
+                
+                let newX = touch.clientX - containerRect.left - offset.x;
+                let newY = touch.clientY - containerRect.top - offset.y;
+                
+                // Keep planets within container bounds
+                newX = Math.max(0, Math.min(newX, containerRect.width - 21));
+                newY = Math.max(0, Math.min(newY, containerRect.height - 21));
+                
+                draggedElement.style.left = newX + 'px';
+                draggedElement.style.top = newY + 'px';
+                draggedElement.style.right = 'auto';
+                draggedElement.style.bottom = 'auto';
+                
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener('touchend', () => {
+            draggedElement = null;
+        });
+
+        // Form Submission with Status Modal
+        const contactForm = document.getElementById('contactForm');
+        const statusModal = document.getElementById('statusModal');
+        const statusSquare = document.getElementById('statusSquare');
+        const statusMessage = document.getElementById('statusMessage');
+        const statusClose = document.getElementById('statusClose');
+        const spinner = document.getElementById('spinner');
+
+        function showModal() {
+            statusModal.style.display = 'flex';
+            statusSquare.className = 'status-square';
+            statusMessage.textContent = 'Sending your message...';
+            spinner.style.display = 'block';
+        }
+
+        function showSuccess() {
+            statusSquare.className = 'status-square status-success';
+            statusMessage.textContent = 'Message sent successfully! We\'ll get back to you soon.';
+            spinner.style.display = 'none';
+        }
+
+        function showError() {
+            statusSquare.className = 'status-square status-error';
+            statusMessage.textContent = 'Failed to send message. Please try again or contact us directly.';
+            spinner.style.display = 'none';
+        }
+
+        function hideModal() {
+            statusModal.style.display = 'none';
+        }
+
+        statusClose.addEventListener('click', hideModal);
+        statusModal.addEventListener('click', (e) => {
+            if (e.target === statusModal) {
+                hideModal();
+            }
+        });
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            showModal();
+            
+            // Simulate form submission (replace with actual form handling)
+            try {
+                // Get form data
+                const formData = new FormData(contactForm);
+                const formObject = {};
+                formData.forEach((value, key) => {
+                    formObject[key] = value;
+                });
+                
+                // Simulate API call delay
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // For demo purposes, we'll show success
+                // In a real application, you would send this data to your server
+                console.log('Form data:', formObject);
+                
+                showSuccess();
+                contactForm.reset();
+                
+                // Auto-hide modal after 3 seconds
+                setTimeout(hideModal, 3000);
+                
+            } catch (error) {
+                console.error('Form submission error:', error);
+                showError();
+                
+                // Auto-hide modal after 5 seconds
+                setTimeout(hideModal, 5000);
+            }
+        });
+
+        // Form validation styling
+        const formInputs = document.querySelectorAll('#contactForm input, #contactForm textarea, #contactForm select');
+        
+        formInputs.forEach(input => {
+            input.addEventListener('blur', () => {
+                if (input.hasAttribute('required') && !input.value.trim()) {
+                    input.style.borderColor = '#ff0000';
+                } else if (input.type === 'email' && input.value && !isValidEmail(input.value)) {
+                    input.style.borderColor = '#ff0000';
+                } else {
+                    input.style.borderColor = '#a020f0';
+                }
+            });
+            
+            input.addEventListener('focus', () => {
+                input.style.borderColor = '#a020f0';
+            });
+        });
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards for animation
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && statusModal.style.display === 'flex') {
+                hideModal();
+            }
+        });
+
+        // Prevent form submission on Enter key in input fields (except textarea)
+        document.querySelectorAll('#contactForm input, #contactForm select').forEach(input => {
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const form = e.target.form;
+                    const index = Array.prototype.indexOf.call(form, e.target);
+                    const nextElement = form.elements[index + 1];
+                    if (nextElement) {
+                        nextElement.focus();
+                    }
+                }
+            });
+        });
+
+        // Add loading states to external links
+        document.querySelectorAll('a[href^="http"], a[href^="mailto:"], a[href^="tel:"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.href.startsWith('mailto:') || link.href.startsWith('tel:')) {
+                    // For email and phone links, show a brief feedback
+                    link.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        link.style.transform = 'scale(1)';
+                    }, 150);
+                }
+            });
+        });
+
+        // Performance optimization: Lazy load background images
+        const lazyBackgrounds = document.querySelectorAll('[data-bg]');
+        
+        if ('IntersectionObserver' in window) {
+            const bgObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bg = entry.target.getAttribute('data-bg');
+                        entry.target.style.backgroundImage = `url(${bg})`;
+                        entry.target.removeAttribute('data-bg');
+                        bgObserver.unobserve(entry.target);
                     }
                 });
-            }
+            });
+            
+            lazyBackgrounds.forEach(bg => bgObserver.observe(bg));
+        }
 
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
+        // Add parallax effect to planets
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.planet');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+
+        // Add typing effect to billboard subtitle
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Initialize typing effect when page loads
+        window.addEventListener('load', () => {
+            const subtitle = document.querySelector('.billboard-subtitle');
+            const originalText = subtitle.textContent;
+            
+            setTimeout(() => {
+                typeWriter(subtitle, originalText, 50);
+            }, 1000);
+        });
+
+        // Add hover effects to service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.background = 'rgba(160, 32, 240, 0.1)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.background = 'rgba(255, 255, 255, 0.05)';
+            });
+        });
+
+        // Add click tracking for analytics (placeholder)
+        function trackEvent(category, action, label) {
+            // Replace with your analytics tracking code
+            console.log(`Analytics: ${category} - ${action} - ${label}`);
+            
+            // Example for Google Analytics 4
+            // gtag('event', action, {
+            //     event_category: category,
+            //     event_label: label
+            // });
+        }
+
+        // Track button clicks
+        document.querySelector('.get-started-link').addEventListener('click', () => {
+            trackEvent('CTA', 'click', 'Get Started Button');
+        });
+
+        document.querySelectorAll('.phone-link, .mobile-phone').forEach(link => {
+            link.addEventListener('click', () => {
+                trackEvent('Contact', 'click', 'Phone Number');
+            });
+        });
+
+        // Track form submission
+        contactForm.addEventListener('submit', () => {
+            trackEvent('Form', 'submit', 'Contact Form');
+        });
+
+        // Add accessibility improvements
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add ARIA labels to interactive elements
+            document.querySelectorAll('.planet').forEach((planet, index) => {
+                planet.setAttribute('aria-label', `Draggable planet ${index + 1}`);
+                planet.setAttribute('role', 'button');
+                planet.setAttribute('tabindex', '0');
+            });
+
+            // Add keyboard support for planets
+            document.querySelectorAll('.planet').forEach(planet => {
+                planet.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        // Simulate click for keyboard users
+                        planet.style.transform = 'scale(1.2)';
+                        setTimeout(() => {
+                            planet.style.transform = 'scale(1)';
+                        }, 200);
                     }
                 });
             });
 
-            // Package selection function
-            window.selectPackage = function(packageType) {
-                const projectTypeSelect = document.getElementById('project-type');
-                if (projectTypeSelect) {
-                    if (packageType === 'static') {
-                        projectTypeSelect.value = 'static';
-                    } else if (packageType === 'ecommerce') {
-                        projectTypeSelect.value = 'ecommerce';
-                    }
-                }
+            // Improve focus visibility
+            const focusableElements = document.querySelectorAll('a, button, input, textarea, select, [tabindex]');
+            focusableElements.forEach(element => {
+                element.addEventListener('focus', () => {
+                    element.style.outline = '2px solid #a020f0';
+                    element.style.outlineOffset = '2px';
+                });
                 
-                // Scroll to contact form
-                document.getElementById('contact').scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                element.addEventListener('blur', () => {
+                    element.style.outline = '';
+                    element.style.outlineOffset = '';
                 });
-            };
+            });
+        });
 
-            // Form submission with modal
-            const contactForm = document.getElementById('contact-form');
-            const modal = document.getElementById('form-status-modal');
-            const spinner = document.getElementById('spinner');
-            const checkmark = document.getElementById('checkmark');
-            const thankYouText = document.getElementById('thank-you-text');
-            const closeX = document.getElementById('close-x');
+        // Add error handling for images
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', () => {
+                img.style.display = 'none';
+                console.warn(`Failed to load image: ${img.src}`);
+            });
+        });
 
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const formData = new FormData(contactForm);
-                    
-                    // Show modal with spinner
-                    showModal();
-                    
-                    // Submit form to Formspree
-                    fetch('https://formspree.io/f/mqabzwgp', {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            // After 5 seconds, show checkmark
-                            setTimeout(() => {
-                                showCheckmark();
-                                
-                                // After 2 more seconds, show thank you text
-                                setTimeout(() => {
-                                    showThankYou();
-                                    
-                                    // After 2 more seconds, show close X
-                                    setTimeout(() => {
-                                        showCloseX();
-                                        contactForm.reset();
-                                    }, 2000);
-                                }, 2000);
-                            }, 5000);
-                        } else {
-                            throw new Error('Form submission failed');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        hideModal();
-                        alert('There was an error sending your message. Please try again or call us directly at 865-438-5840.');
-                    });
-                });
-            }
-
-            function showModal() {
-                modal.style.display = 'flex';
-                spinner.style.display = 'block';
-                checkmark.style.display = 'none';
-                thankYouText.style.display = 'none';
-                closeX.style.display = 'none';
-            }
-
-            function showCheckmark() {
-                spinner.style.display = 'none';
-                checkmark.style.display = 'flex';
-            }
-
-            function showThankYou() {
-                thankYouText.style.display = 'block';
-            }
-
-            function showCloseX() {
-                closeX.style.display = 'flex';
-            }
-
-            function hideModal() {
-                modal.style.display = 'none';
-                spinner.style.display = 'block';
-                checkmark.style.display = 'none';
-                thankYouText.style.display = 'none';
-                closeX.style.display = 'none';
-            }
-
-            // Close X click handler
-            if (closeX) {
-                closeX.addEventListener('click', function() {
-                    hideModal();
-                    // Scroll to top of page
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            }
-
-            // Close modal when clicking outside
-            if (modal) {
-                modal.addEventListener('click', function(e) {
-                    if (e.target === modal) {
-                        hideModal();
-                    }
-                });
+        // Add preloader functionality
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+            
+            // Hide any preloader if it exists
+            const preloader = document.querySelector('.preloader');
+            if (preloader) {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
             }
         });
 
-        // Header transformation on scroll
-        let lastScrollY = window.scrollY;
-        
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('main-header');
-            const currentScrollY = window.scrollY;
-            
-            // Only apply scroll effects on desktop
-            if (window.innerWidth > 768) {
-                if (currentScrollY > 50) {
-                    header.classList.add('header-scrolled');
-                } else {
-                    header.classList.remove('header-scrolled');
+        // Add scroll-to-top functionality
+        const scrollToTopBtn = document.createElement('button');
+        scrollToTopBtn.innerHTML = '↑';
+        scrollToTopBtn.className = 'scroll-to-top';
+        scrollToTopBtn.style.cssText = `
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: #a020f0;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(160, 32, 240, 0.3);
+        `;
+
+        document.body.appendChild(scrollToTopBtn);
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.style.opacity = '1';
+                scrollToTopBtn.style.transform = 'translateY(0)';
+            } else {
+                scrollToTopBtn.style.opacity = '0';
+                scrollToTopBtn.style.transform = 'translateY(20px)';
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add resize handler for responsive adjustments
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                // Recalculate planet positions if needed
+                const planets = document.querySelectorAll('.planet');
+                const container = document.querySelector('.billboard-wrapper');
+                
+                if (container) {
+                    const containerRect = container.getBoundingClientRect();
+                    
+                    planets.forEach(planet => {
+                        const planetRect = planet.getBoundingClientRect();
+                        
+                        // Keep planets within bounds after resize
+                        if (planetRect.right > containerRect.right) {
+                            planet.style.left = (containerRect.width - 21) + 'px';
+                        }
+                        if (planetRect.bottom > containerRect.bottom) {
+                            planet.style.top = (containerRect.height - 21) + 'px';
+                        }
+                    });
                 }
-            }
-            
-            lastScrollY = currentScrollY;
+            }, 250);
         });
 
-        // Initial check in case page loads scrolled
-        window.addEventListener('load', function() {
-            const header = document.getElementById('main-header');
-            if (window.scrollY > 50 && window.innerWidth > 768) {
-                header.classList.add('header-scrolled');
-            }
+        // Add performance monitoring
+        if ('performance' in window) {
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    const perfData = performance.getEntriesByType('navigation')[0];
+                    const loadTime = perfData.loadEventEnd - perfData.loadEventStart;
+                    
+                    console.log(`Page load time: ${loadTime}ms`);
+                    
+                    // Track performance if needed
+                    if (loadTime > 3000) {
+                        console.warn('Page load time is slower than expected');
+                    }
+                }, 0);
+            });
+        }
+
+        // Add service worker registration for PWA capabilities
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+
+        // Add dark mode toggle functionality (optional)
+        function toggleDarkMode() {
+            document.body.classList.toggle('light-mode');
+            const isLightMode = document.body.classList.contains('light-mode');
+            localStorage.setItem('lightMode', isLightMode);
+        }
+
+        // Load saved theme preference
+        const savedTheme = localStorage.getItem('lightMode');
+        if (savedTheme === 'true') {
+            document.body.classList.add('light-mode');
+        }
+
+        // Add print styles optimization
+        window.addEventListener('beforeprint', () => {
+            // Hide unnecessary elements for printing
+            document.querySelectorAll('.shooting-stars, .planet, video, .mobile-phone').forEach(el => {
+                el.style.display = 'none';
+            });
         });
 
-        // Create initial shooting stars
-        for (let i = 0; i < 5; i++) {
-            setTimeout(createShootingStar, i * 200);
+        window.addEventListener('afterprint', () => {
+            // Restore elements after printing
+            document.querySelectorAll('.shooting-stars, .planet, video, .mobile-phone').forEach(el => {
+                el.style.display = '';
+            });
+        });
+
+        // Initialize all functionality
+        console.log('J Development website loaded successfully!');
+        
+        // Add custom cursor effect for desktop
+        if (window.innerWidth > 768) {
+            const cursor = document.createElement('div');
+            cursor.className = 'custom-cursor';
+            cursor.style.cssText = `
+                position: fixed;
+                width: 20px;
+                height: 20px;
+                background: rgba(160, 32, 240, 0.5);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                transition: transform 0.1s ease;
+                mix-blend-mode: difference;
+            `;
+            document.body.appendChild(cursor);
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX - 10 + 'px';
+                cursor.style.top = e.clientY - 10 + 'px';
+            });
+
+            document.addEventListener('mousedown', () => {
+                cursor.style.transform = 'scale(1.5)';
+            });
+
+            document.addEventListener('mouseup', () => {
+                cursor.style.transform = 'scale(1)';
+            });
         }
     </script>
 </body>
 </html>
+
