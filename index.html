@@ -255,23 +255,23 @@
         }
         
         .modern-header {
-          position: relative;
-          top: auto;
-          width: fit-content;
-          background-color: rgba(0, 0, 0, 0.6);
-          border: 2px solid #a020f0;
-          box-shadow: 0 5px 15px rgba(160, 32, 240, 0.4);
-          z-index: 1000;
-          transition: all 0.4s ease;
-          border-radius: 50px;
-          backdrop-filter: blur(10px);
-          margin: 0 auto;
-          padding: 20px 25px;
-          display: flex;
-          align-items: center;
-          gap: 40px;
+            position: relative;
+            top: auto;
+            width: fit-content;
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 2px solid #a020f0;
+            box-shadow: 0 5px 15px rgba(160, 32, 240, 0.4);
+            z-index: 1000;
+            transition: all 0.4s ease;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            margin: 30px auto 0 auto; /* leaves space from top */
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
         }
-
+        
         .nav-container {
             display: flex;
             align-items: center;
@@ -283,8 +283,7 @@
             height: 40px;
             width: auto;
         }
-
-        }
+        
         .phone-link {
             background-color: #a020f0;
             color: #fff;
@@ -299,6 +298,7 @@
             white-space: nowrap;
             display: inline-block;
         }
+        
         /* ✨ Flash Animation */
         @keyframes phone-glow {
             0%, 100% {
@@ -308,11 +308,13 @@
                 box-shadow: 0 0 20px rgba(160, 32, 240, 1);
             }
         }
+        
         .phone-link:hover {
             background-color: #ffffff;
             color: #000;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
         }
+
         .nav-menu {
             display: flex;
             list-style: none;
@@ -1038,18 +1040,18 @@
     <header class="modern-header" id="main-header">
         <div class="nav-container">
             <img src="images/logo2.png" alt="Logo" class="site-logo">
-            
+    
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#services">What We Offer</a></li>
                 <li><a href="#portfolio">Our Work</a></li>
                 <li><a href="#contact">Contact Us</a></li>
                 <li class="mobile-phone">
-                    <a href="tel:8654385840">Call: 865-438-5840</a>
+                    <a href="tel:8654385840" class="phone-button">Call: 865-438-5840</a>
                 </li>
             </ul>
-            
-            <a class="phone-link" href="tel:8654385840">Call: 865-438-5840</a>
-            
+    
+            <a class="phone-button desktop-only" href="tel:8654385840">Call: 865-438-5840</a>
+    
             <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -1057,7 +1059,6 @@
             </div>
         </div>
     </header>
-
     <main>
         <!-- New Billboard Section -->
         <div class="billboard-wrapper">
