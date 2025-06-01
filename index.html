@@ -101,10 +101,12 @@
             padding: 120px 20px 80px;
             text-align: center;
             position: relative;
-            margin-top: 70px;
+            margin-top: 0; /* REMOVE top margin */
             overflow: hidden;
             min-height: 500px;
+            z-index: 0;
         }
+
         .billboard-wrapper::before {
             content: '';
             position: absolute;
