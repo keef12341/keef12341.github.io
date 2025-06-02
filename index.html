@@ -349,26 +349,29 @@
         }
     }
     
-    /* Desktop Scroll Behavior - Transform to Rectangle */
+    /* Desktop Scroll Behavior */
     @media (min-width: 769px) {
         .modern-header {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
+        /* Desktop Scroll Transformation */
         .modern-header.header-scrolled {
             top: 0;
+            left: 0;
             width: 100%;
             max-width: none;
             border-radius: 0;
-            padding: 10px 30px;
+            padding: 10px 0;
             background-color: rgba(26, 26, 26, 0.98);
             box-shadow: 0 2px 20px rgba(160, 32, 240, 0.6);
-            transform: translateX(0);
+            transform: none;
         }
         
         .modern-header.header-scrolled .nav-container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 30px;
         }
     }
 
