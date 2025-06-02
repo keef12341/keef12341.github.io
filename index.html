@@ -12,12 +12,20 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #f5f5f5;
-            background-color: #000;
-            overflow-x: hidden;
+          font-family: 'Arial', sans-serif;
+          line-height: 1.6;
+          color: #f5f5f5;
+          background-color: #000;
+          overflow-x: hidden;
+          max-width: 100%;
         }
+
+        img {
+          max-width: 100%;
+          height: auto;
+          display: block;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -85,7 +93,7 @@
         /* Outer Space Billboard Section */
         .billboard-wrapper {
             background: radial-gradient(ellipse at center, #1a237e 0%, #0d1421 30%, #000814 60%, #000 100%);
-            padding: 120px 20px 80px;
+            padding: 180px 20px 80px;
             text-align: center;
             position: relative;
             margin-top: 70px;
@@ -242,22 +250,23 @@
         }
         
         .modern-header {
-          position: relative;
-          top: auto;
-          width: fit-content;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
           background-color: rgba(0, 0, 0, 0.6);
           border: 2px solid #a020f0;
           box-shadow: 0 5px 15px rgba(160, 32, 240, 0.4);
           z-index: 1000;
           transition: all 0.4s ease;
-          border-radius: 50px;
+          border-radius: 0 0 20px 20px;
           backdrop-filter: blur(10px);
-          margin: 0 auto;
-          padding: 20px 25px;
+          padding: 20px 40px;
           display: flex;
           align-items: center;
-          gap: 40px;
+          justify-content: space-between;
         }
+
 
         .nav-container {
             display: flex;
@@ -288,13 +297,17 @@
         }
         /* ✨ Flash Animation */
         @keyframes phone-glow {
-            0%, 100% {
-                box-shadow: 0 0 12px rgba(160, 32, 240, 0.6);
-            }
-            50% {
-                box-shadow: 0 0 20px rgba(160, 32, 240, 1);
-            }
+          0%, 100% {
+            background-color: #a020f0;
+            box-shadow: 0 0 12px rgba(160, 32, 240, 0.6);
+          }
+          50% {
+            background-color: #fff;
+            color: #000;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 1);
+          }
         }
+
         .phone-link:hover {
             background-color: #ffffff;
             color: #000;
