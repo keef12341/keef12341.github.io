@@ -85,10 +85,10 @@
         /* Outer Space Billboard Section */
         .billboard-wrapper {
             background: radial-gradient(ellipse at center, #1a237e 0%, #0d1421 30%, #000814 60%, #000 100%);
-            padding: 120px 20px 80px;
+            padding: 20px 20px 80px;
             text-align: center;
             position: relative;
-            margin-top: 70px;
+            margin-top: 0;
             overflow: hidden;
             min-height: 500px;
         }
@@ -123,7 +123,7 @@
             z-index: 3;
             min-height: 400px;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 100px auto 0;
             background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #0a0a0a 100%);
             border-radius: 20px;
             border: 3px solid #a020f0;
@@ -242,8 +242,10 @@
         }
         
         .modern-header {
-            position: relative; /* not fixed */
-            top: auto;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             width: fit-content;
             background-color: rgba(46, 46, 46, 0.95);
             border: 2px solid #a020f0;
@@ -252,7 +254,6 @@
             transition: all 0.4s ease;
             border-radius: 50px;
             backdrop-filter: blur(10px);
-            margin: 40px auto; /* space from top + center it */
             padding: 12px 25px;
             display: flex;
             align-items: center;
@@ -270,8 +271,7 @@
             height: 40px;
             width: auto;
         }
-
-        }
+        
         .phone-link {
             background-color: #a020f0;
             color: #fff;
@@ -395,1092 +395,857 @@
             font-size: 16px;
             line-height: 1.4;
         }
-        .close-        .close-x {
-            position: fixed;
-            top: 20px;
-            right: 30px;
-            font-size: 40px;
-            color: #a020f0;
-            cursor: pointer;
-            display: none;
-            z-index: 10001;
-            background: rgba(0, 0, 0, 0.8);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            justify-content: center;
-            align-items: center;
-            border: 2px solid #a020f0;
-            transition: all 0.3s ease;
-        }
-        .close-x:hover {
-            background: #a020f0;
+        .close-x {
+            position: absolute;
+            top: 15px;
+            right: 20px;
             color: #fff;
-            transform: scale(1.1);
+            font-size: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: color 0.3s ease;
         }
         
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .nav-container {
-                padding: 10px 20px;
-            }
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background: rgba(26, 26, 26, 0.98);
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                padding-top: 50px;
-                transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                backdrop-filter: blur(10px);
-                border-top: 2px solid #a020f0;
-            }
-            .nav-menu.active {
-                left: 0;
-            }
-            .nav-menu li {
-                margin: 20px 0;
-            }
-            .nav-menu a {
-                font-size: 20px;
-                padding: 15px 30px;
-                border-radius: 10px;
-                transition: all 0.3s;
-            }
-            .nav-menu a:hover {
-                background: rgba(160, 32, 240, 0.2);
-                box-shadow: 0 0 15px rgba(160, 32, 240, 0.4);
-            }
-            .phone-link {
-                display: none;
-            }
-            .mobile-phone {
-                display: block;
-            }
-            .mobile-phone a {
-                background: #a020f0;
-                color: #fff;
-                padding: 15px 25px;
-                border-radius: 25px;
-                font-weight: bold;
-                box-shadow: 0 0 15px rgba(160, 32, 240, 0.5);
-            }
-            .hamburger {
-                display: flex;
-                flex-direction: column;
-                cursor: pointer;
-                gap: 6px;
-                padding: 10px;
-                border-radius: 8px;
-                transition: background-color 0.3s;
-                background: rgba(160, 32, 240, 0.1);
-                border: 2px solid transparent;
-            }
-            .hamburger:hover {
-                background: rgba(160, 32, 240, 0.2);
-                border-color: #a020f0;
-            }
-            .hamburger span {
-                width: 25px;
-                height: 3px;
-                background-color: #f5f5f5;
-                border-radius: 2px;
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                transform-origin: center;
-            }
-            .hamburger.active span:nth-child(1) {
-                transform: rotate(45deg) translate(8px, 8px);
-                background-color: #a020f0;
-            }
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-                transform: scale(0);
-            }
-            .hamburger.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(8px, -8px);
-                background-color: #a020f0;
-            }
-            .billboard-title {
-                font-size: 2.5rem;
-            }
-            .billboard-subtitle {
-                font-size: 1.4rem;
-            }
-            .billboard-features {
-                gap: 20px;
-            }
-            .feature-item {
-                font-size: 1rem;
-            }
-            .get-started-link {
-                padding: 15px 30px;
-                font-size: 1.1rem;
-            }
-            .billboard-container {
-                padding: 40px 20px;
-            }
-            .status-square {
-                width: 250px;
-                height: 250px;
-            }
+        .close-x:hover {
+            color: #a020f0;
         }
-        
+
         /* Services Section */
         .services {
-            padding: 80px 0;
-            background: #111;
+            padding: 100px 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
             position: relative;
-            z-index: 2;
         }
+
         .services h2 {
             text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.5rem;
-            color: #ffffff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            font-size: 3rem;
+            margin-bottom: 60px;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(160, 32, 240, 0.6);
         }
-        .service-grid {
+
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .service-card {
-            background: #1a1a1a;
-            padding: 40px 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(160, 32, 240, 0.3);
-            text-align: center;
-            transition: transform 0.3s;
-            border: 1px solid #333;
-            position: relative;
-        }
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: #a020f0;
-            box-shadow: 0 10px 25px rgba(160, 32, 240, 0.5);
-        }
-        .service-card.featured {
-            border: 3px solid #a020f0;
-            background: #222;
-            box-shadow: 0 0 20px rgba(160, 32, 240, 0.4);
-        }
-        .service-card h3 {
-            margin-bottom: 20px;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        .price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #a020f0;
-            margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(160, 32, 240, 0.6);
-        }
-        .monthly-fee {
-            font-size: 1.2rem;
-            color: #ffffff;
-            margin-bottom: 20px;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-        }
-        .service-card ul {
-            list-style: none;
-            text-align: left;
-            margin-bottom: 30px;
-        }
-        .service-card li {
-            padding: 8px 0;
-            color: #f5f5f5;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .service-card li.included:before {
-            content: "✓";
-            color: #00ff00;
-            font-weight: bold;
-            font-size: 18px;
-            text-shadow: 0 0 8px #00ff00;
-            animation: glow-check 2s ease-in-out infinite alternate;
-        }
-        .service-card li.not-included:before {
-            content: "✗";
-            color: #ff0000;
-            font-weight: bold;
-            font-size: 18px;
-            text-shadow: 0 0 8px #ff0000;
-        }
-        @keyframes glow-check {
-            0% { text-shadow: 0 0 8px #00ff00; }
-            100% { text-shadow: 0 0 15px #00ff00, 0 0 20px #00ff00; }
-        }
-        .domain-note {
-            font-size: 0.9rem;
-            color: #a020f0;
-            font-style: italic;
-            margin-bottom: 20px;
-            padding: 10px;
-            background: rgba(160, 32, 240, 0.1);
-            border-radius: 5px;
-            border: 1px solid rgba(160, 32, 240, 0.3);
-        }
-        .select-button {
-            background: linear-gradient(45deg, #a020f0, #ffffff);
-            color: #000;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 0 15px rgba(160, 32, 240, 0.4);
-            font-size: 16px;
-            width: 100%;
-        }
-        .select-button:hover {
-            background: linear-gradient(45deg, #ffffff, #a020f0);
-            transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
-        }
-        
-        /* Portfolio Section */
-        .portfolio {
-            padding: 80px 0;
-            background: #000;
-            position: relative;
-            z-index: 2;
-        }
-        .portfolio h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 2.5rem;
-            color: #ffffff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-        }
-        .portfolio > .container > p {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 1.1rem;
-            color: #f5f5f5;
-        }
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
+            margin-top: 50px;
         }
-        .portfolio-card {
-            background: #1a1a1a;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(160, 32, 240, 0.3);
-            transition: transform 0.3s;
-            border: 1px solid #333;
-            position: relative;
+
+        .service-card {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            padding: 40px 30px;
+            border-radius: 15px;
+            border: 2px solid #a020f0;
+            box-shadow: 0 10px 30px rgba(160, 32, 240, 0.3);
+            transition: all 0.3s ease;
+            text-align: center;
         }
-        .portfolio-card:hover {
-            transform: translateY(-5px);
-            border-color: #a020f0;
-            box-shadow: 0 10px 25px rgba(160, 32, 240, 0.5);
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(160, 32, 240, 0.5);
         }
-        .portfolio-card h3 {
-            margin-bottom: 15px;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        .portfolio-card p {
+
+        .service-card h3 {
+            font-size: 1.8rem;
             margin-bottom: 20px;
-            color: #f5f5f5;
+            color: #a020f0;
         }
-        .device-mockup {
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            margin: 20px 0;
-            position: relative;
-            height: 200px;
+
+        .service-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #ccc;
         }
-        .macbook {
-            width: 200px;
-            height: 130px;
-            background: #2c2c2c;
-            border-radius: 8px 8px 0 0;
-            position: relative;
-            margin-right: 20px;
-            box-shadow: 0 0 15px rgba(160, 32, 240, 0.3);
-        }
-        .macbook::before {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            right: 8px;
-            bottom: 15px;
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
             background: #000;
-            border-radius: 4px;
-            border: 2px solid #333;
         }
-        .macbook::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 220px;
-            height: 8px;
-            background: #1a1a1a;
-            border-radius: 0 0 12px 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
-        .phone {
-            width: 60px;
-            height: 120px;
-            background: #2c2c2c;
-            border-radius: 12px;
-            position: relative;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+
+        .about-text h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(160, 32, 240, 0.6);
         }
-        .phone::before {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 4px;
-            right: 4px;
-            bottom: 8px;
-            background: #000;
-            border-radius: 8px;
-            border: 1px solid #333;
+
+        .about-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 20px;
         }
-        .macbook-screen {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            right: 12px;
-            bottom: 19px;
-            border-radius: 2px;
-            overflow: hidden;
-            z-index: 2;
+
+        .about-image {
+            text-align: center;
         }
-        .macbook-screen img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 2px;
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 15px;
+            border: 3px solid #a020f0;
+            box-shadow: 0 0 30px rgba(160, 32, 240, 0.4);
         }
-        .phone-screen {
-            position: absolute;
-            top: 12px;
-            left: 6px;
-            right: 6px;
-            bottom: 12px;
-            border-radius: 6px;
-            overflow: hidden;
-            z-index: 2;
-        }
-        .phone-screen img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 6px;
-        }
-        .portfolio-link {
-            display: inline-block;
-            background: linear-gradient(45deg, #a020f0, #ffffff);
-            color: #000;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s;
-            font-weight: bold;
-            box-shadow: 0 0 10px rgba(160, 32, 240, 0.4);
-        }
-        .portfolio-link:hover {
-            background: linear-gradient(45deg, #ffffff, #a020f0);
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
-        }
-        
+
         /* Contact Section */
         .contact {
-            padding: 80px 0;
-            background: #111;
-            position: relative;
-            z-index: 2;
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
         }
+
         .contact h2 {
             text-align: center;
-            margin-bottom: 20px;
-            font-size: 2.5rem;
-            color: #ffffff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            font-size: 3rem;
+            margin-bottom: 60px;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(160, 32, 240, 0.6);
         }
-        .contact > .container > p {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 1.1rem;
-            color: #f5f5f5;
-        }
+
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
-            background: #1a1a1a;
+            background: rgba(42, 42, 42, 0.8);
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(160, 32, 240, 0.3);
-            border: 1px solid #333;
+            border-radius: 15px;
+            border: 2px solid #a020f0;
+            box-shadow: 0 0 30px rgba(160, 32, 240, 0.3);
         }
+
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
+
         .form-group label {
             display: block;
-            margin-bottom: 5px;
-            color: #ffffff;
+            margin-bottom: 8px;
+            color: #fff;
             font-weight: bold;
         }
+
         .form-group input,
-        .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #333;
-            border-radius: 5px;
-            background: #2a2a2a;
-            color: #ffffff;
+            padding: 15px;
+            border: 2px solid #555;
+            border-radius: 8px;
+            background: #1a1a1a;
+            color: #fff;
             font-size: 16px;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s ease;
         }
+
         .form-group input:focus,
-        .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: #a020f0;
             box-shadow: 0 0 10px rgba(160, 32, 240, 0.3);
         }
+
         .form-group textarea {
             resize: vertical;
             min-height: 120px;
         }
-        .submit-button {
+
+        .submit-btn {
             width: 100%;
+            padding: 18px;
             background: linear-gradient(45deg, #a020f0, #ffffff);
             color: #000;
-            padding: 15px;
             border: none;
-            border-radius: 5px;
+            border-radius: 50px;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 0 15px rgba(160, 32, 240, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .submit-button:hover {
+
+        .submit-btn:hover {
             background: linear-gradient(45deg, #ffffff, #a020f0);
             transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 20px rgba(160, 32, 240, 0.4);
         }
-        
+
         /* Footer */
-        footer {
+        .footer {
             background: #000;
-            padding: 30px 0;
-            text-align: center;
+            padding: 60px 0 30px;
             border-top: 2px solid #a020f0;
-            position: relative;
-            z-index: 2;
         }
-        footer p {
-            color: #f5f5f5;
-            font-size: 14px;
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
-        
-         /* Additional Mobile Responsive */
+
+        .footer-section h3 {
+            color: #a020f0;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            line-height: 1.6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #a020f0;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .modern-header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                transform: none;
+                border-radius: 0;
+                padding: 15px 20px;
+                justify-content: space-between;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(46, 46, 46, 0.98);
+                flex-direction: column;
+                padding: 20px;
+                border-top: 2px solid #a020f0;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+                background: none;
+                border: none;
+                color: #fff;
+                font-size: 24px;
+                cursor: pointer;
+            }
+
+            .phone-link {
+                display: none;
+            }
+
+            .mobile-phone {
+                display: block;
+                background-color: #a020f0;
+                color: #fff;
+                font-weight: bold;
+                text-decoration: none;
+                padding: 8px 15px;
+                border-radius: 20px;
+                font-size: 12px;
+                box-shadow: 0 0 12px rgba(160, 32, 240, 0.6);
+            }
+
+            .billboard-wrapper {
+                padding: 120px 20px 60px;
+                min-height: 400px;
+            }
+
+            .billboard-container {
+                margin: 20px auto 0;
+                padding: 40px 20px;
+            }
+
+            .billboard-title {
+                font-size: 2.5rem;
+            }
+
+            .billboard-subtitle {
+                font-size: 1.4rem;
+            }
+
+            .billboard-features {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .get-started-link {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .services h2,
+            .about-text h2,
+            .contact h2 {
+                font-size: 2.5rem;
+            }
+
+            .status-square {
+                width: 280px;
+                height: 280px;
+                margin: 20px;
+            }
+        }
+
         @media (max-width: 480px) {
             .billboard-title {
                 font-size: 2rem;
             }
+
             .billboard-subtitle {
                 font-size: 1.2rem;
             }
-            .billboard-features {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .get-started-link {
-                padding: 12px 25px;
-                font-size: 1rem;
-            }
-            .billboard-container {
-                padding: 30px 15px;
-            }
+
             .services h2,
-            .portfolio h2,
+            .about-text h2,
             .contact h2 {
                 font-size: 2rem;
             }
-            .service-grid {
-                grid-template-columns: 1fr;
-            }
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            .device-mockup {
-                height: 150px;
-            }
-            .macbook {
-                width: 150px;
-                height: 100px;
-                margin-right: 15px;
-            }
-            .phone {
-                width: 45px;
-                height: 90px;
-            }
-            .service-grid {
-                grid-template-columns: 1fr;
-            }
-            .status-square {
-                width: 200px;
-                height: 200px;
-            }
-            .spinner {
-                width: 60px;
-                height: 60px;
-            }
-            .checkmark {
-                width: 60px;
-                height: 60px;
-                font-size: 35px;
+
+            .contact-form {
+                padding: 30px 20px;
             }
         }
-
-/* --- Billing Toggle Switch Styles --- */
-.billing-toggle-wrapper {
-  text-align: center;
-  margin: 40px 0 20px;
-}
-
-.billing-switch {
-  position: relative;
-  display: inline-block;
-  width: 90px;
-  height: 36px;
-}
-
-.billing-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  background-color: #444;
-  border-radius: 34px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: 0.4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 28px;
-  width: 28px;
-  border-radius: 50%;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  transition: 0.4s;
-}
-
-.billing-switch input:checked + .slider {
-  background-color: #6ae36a;
-}
-
-.billing-switch input:checked + .slider:before {
-  transform: translateX(54px);
-}
-
-.label-text {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  color: #fff;
-  font-weight: 600;
-  margin-top: 8px;
-}
     </style>
 </head>
 <body>
-    <div class="shooting-stars" id="shooting-stars"></div>
-    
-    <header class="modern-header" id="main-header">
+    <!-- Shooting Stars Background -->
+    <div class="shooting-stars" id="shootingStars"></div>
+
+    <!-- Modern Header -->
+    <header class="modern-header">
         <div class="nav-container">
-            <img src="images/logo2.png" alt="Logo" class="site-logo">
+            <img src="images/logo.png" alt="J Development Logo" class="site-logo">
             
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#services">What We Offer</a></li>
-                <li><a href="#portfolio">Our Work</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-                <li class="mobile-phone">
-                    <a href="tel:8654385840">Call: 865-438-5840</a>
-                </li>
-            </ul>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
             
-            <a class="phone-link" href="tel:8654385840">Call: 865-438-5840</a>
+            <a href="tel:+1234567890" class="phone-link">📞 Call Now</a>
+            <a href="tel:+1234567890" class="mobile-phone">📞</a>
             
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button class="hamburger" id="hamburger">☰</button>
         </div>
     </header>
 
-    <main>
-        <!-- New Billboard Section -->
-        <div class="billboard-wrapper">
-            <div class="billboard-container">
-                <h1 class="billboard-title">Ready to Get the Site You Always Wanted?</h1>
-                <p class="billboard-subtitle">Professional websites starting at $0 down</p>
-                <div class="billboard-features">
-                    <div class="feature-item">Mobile Friendly</div>
-                    <div class="feature-item">Lightning Fast</div>
-                    <div class="feature-item">SEO Optimized</div>
+    <!-- Billboard Section -->
+    <section id="home" class="billboard-wrapper">
+        <div class="billboard-container">
+            <h1 class="billboard-title">J DEVELOPMENT</h1>
+            <p class="billboard-subtitle">Professional Web Development Solutions</p>
+            
+            <div class="billboard-features">
+                <div class="feature-item">Custom Websites</div>
+                <div class="feature-item">Mobile Responsive</div>
+                <div class="feature-item">SEO Optimized</div>
+            </div>
+            
+            <a href="#contact" class="get-started-link">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Web Development</h3>
+                    <p>Custom websites built with modern technologies and best practices for optimal performance and user experience.</p>
                 </div>
-                <a href="#contact" class="get-started-link">Get Started Today</a>
+                <div class="service-card">
+                    <h3>Mobile Development</h3>
+                    <p>Responsive mobile applications that work seamlessly across all devices and platforms.</p>
+                </div>
+                <div class="service-card">
+                    <h3>E-Commerce Solutions</h3>
+                    <p>Complete online store development with secure payment processing and inventory management.</p>
+                </div>
+                <div class="service-card">
+                    <h3>SEO Optimization</h3>
+                    <p>Search engine optimization to improve your website's visibility and drive organic traffic.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Maintenance & Support</h3>
+                    <p>Ongoing website maintenance, updates, and technical support to keep your site running smoothly.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Consulting</h3>
+                    <p>Strategic technology consulting to help you make informed decisions about your digital presence.</p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <section id="services" class="services">
-          <div class="container">
-            <h2>Services & Pricing</h2>
-        
-            <!-- 💳 Billing Toggle Switch -->
-            <div class="billing-toggle-wrapper">
-              <label class="billing-switch">
-                <input type="checkbox" id="billing-toggle" onchange="toggleBilling()" />
-                <span class="slider"></span>
-                <div class="label-text">
-                  <span>Monthly</span>
-                  <span>&nbsp;/&nbsp;</span>
-                  <span>Yearly</span>
-                </div>
-              </label>
-            </div>
-
-            <div class="service-grid">
-              <div class="service-card">
-                <h3>Static Website Package</h3>
-                <div class="price">$0 Down</div>
-                <div class="monthly-fee billing-monthly">$50/month maintenance</div>
-                <div class="yearly-fee billing-yearly" style="display:none;">$450/year maintenance</div>
-                <ul>
-                  <li class="included">Up to 3 pages</li>
-                  <li class="included">Mobile-friendly design</li>
-                  <li class="included">Lightning-fast loading</li>
-                  <li class="included">Basic contact form</li>
-                  <li class="included">SEO optimized</li>
-                  <li class="not-included">Domain (customer provides)</li>
-                  <li class="not-included">E-commerce functionality</li>
-                  <li class="not-included">Advanced forms</li>
-                  <li class="not-included">Custom integrations</li>
-                </ul>
-                <div class="domain-note">
-                  Additional pages: $50 each<br>
-                  Domain must be purchased separately by customer
-                </div>
-                <button class="select-button" onclick="selectPackage('static')">Select Package</button>
-              </div>
-        
-              <div class="service-card featured">
-                <h3>Full E-Commerce Package</h3>
-                <div class="price">$0 Down</div>
-                <div class="monthly-fee billing-monthly">$125/month maintenance</div>
-                <div class="yearly-fee billing-yearly" style="display:none;">$1100/year maintenance</div>
-                <ul>
-                  <li class="included">Everything in Static Package</li>
-                  <li class="included">Full online store</li>
-                  <li class="included">Payment processing</li>
-                  <li class="included">Inventory management</li>
-                  <li class="included">Advanced forms</li>
-                  <li class="included">Custom integrations</li>
-                  <li class="included">Customer accounts</li>
-                  <li class="included">Order tracking</li>
-                  <li class="included">Analytics dashboard</li>
-                </ul>
-                <div class="domain-note">
-                  Unlimited pages and features included<br>
-                  Domain must be purchased separately by customer
-                </div>
-                <button class="select-button" onclick="selectPackage('ecommerce')">Select Package</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="portfolio" class="portfolio">
-            <div class="container">
-                <h2>Portfolio</h2>
-                <p>Here are some websites I've created:</p>
-                <div class="portfolio-grid">
-                    <div class="portfolio-item">
-                        <div class="portfolio-card">
-                            <h3>The Checkered Flag Store</h3>
-                            <div class="device-mockup">
-                                <div class="macbook">
-                                    <div class="macbook-screen">
-                                        <img src="images/Screenshot 2025-05-31 at 10.39.02.png" alt="Checkered Flag Desktop View">
-                                    </div>
-                                </div>
-                                <div class="phone">
-                                    <div class="phone-screen">
-                                        <img src="images/IMG_2581.jpg" alt="Checkered Flag Mobile View">
-                                    </div>
-                                </div>
-                            </div>
-                            <p>E-commerce website with modern design and mobile optimization</p>
-                            <a href="https://thecheckeredflag.store" target="_blank" class="portfolio-link">View Site</a>
-                        </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-card">
-                            <h3>Browning's Repair Co</h3>
-                            <div class="device-mockup">
-                                <div class="macbook">
-                                    <div class="macbook-screen">
-                                        <img src="images/Screenshot 2025-05-31 at 10.38.23.png" alt="Brownings Desktop View">
-                                    </div>
-                                </div>
-                                <div class="phone">
-                                    <div class="phone-screen">
-                                        <img src="images/IMG_2580.jpg" alt="Brownings Mobile View">
-                                    </div>
-                                </div>
-                            </div>
-                            <p>Professional repair company website with clean layout and user-friendly navigation</p>
-                            <a href="https://browningsrc.store" target="_blank" class="portfolio-link">View Site</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Get In Touch</h2>
-                <p>Ready to get your website started? Fill out the form below and I'll get back to you soon!</p>
-                <form class="contact-form" action="https://formspree.io/f/mqabzwgp" method="POST" id="contact-form">
-                    <div class="form-group">
-                        <label for="name">Name *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="project-type">Project Type</label>
-                        <select id="project-type" name="project-type">
-                            <option value="static">Static Website</option>
-                            <option value="ecommerce">E-Commerce Package</option>
-                            <option value="custom">Custom Project</option>
-                            <option value="unsure">Not sure yet</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-method">Preferred Contact Method *</label>
-                        <select id="contact-method" name="contact-method" required>
-                            <option value="">Select preferred method</option>
-                            <option value="email">Email</option>
-                            <option value="phone">Phone Call</option>
-                            <option value="text">Text Message</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="preferred-time">Preferred Contact Time</label>
-                        <select id="preferred-time" name="preferred-time">
-                            <option value="">Select preferred time</option>
-                            <option value="morning">Morning (8AM - 12PM)</option>
-                            <option value="afternoon">Afternoon (12PM - 5PM)</option>
-                            <option value="evening">Evening (5PM - 8PM)</option>
-                            <option value="anytime">Anytime</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="timeline">When would you like to start?</label>
-                        <select id="timeline" name="timeline">
-                            <option value="">Select timeline</option>
-                            <option value="asap">As soon as possible</option>
-                            <option value="1-2weeks">Within 1-2 weeks</option>
-                            <option value="1month">Within a month</option>
-                            <option value="2-3months">2-3 months</option>
-                            <option value="flexible">I'm flexible</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="referral-source">How did you find us? *</label>
-                        <select id="referral-source" name="referral-source" required>
-                            <option value="">Select an option</option>
-                            <option value="word-of-mouth">Word of Mouth</option>
-                            <option value="yelp">Yelp</option>
-                            <option value="online-search">Online Search</option>
-                            <option value="facebook">Facebook</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Project Details *</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, what features you need, your business, etc." required></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">Send Message</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer>
+    <!-- About Section -->
+    <section id="about" class="about">
         <div class="container">
-            <p>&copy; 2024 Jeremiah's WebDev. All rights reserved.</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About J Development</h2>
+                    <p>We are a passionate team of developers dedicated to creating exceptional digital experiences. With years of experience in web development, we bring creativity and technical expertise to every project.</p>
+                    <p>Our mission is to help businesses establish a strong online presence through innovative web solutions that drive results and exceed expectations.</p>
+                    <p>From concept to deployment, we work closely with our clients to ensure their vision becomes reality.</p>
+                </div>
+                <div class="about-image">
+                    <img src="images/team.jpg" alt="J Development Team" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>J Development</h3>
+                    <p>Creating exceptional digital experiences through innovative web development solutions.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <p><a href="#services">Web Development</a></p>
+                    <p><a href="#services">Mobile Development</a></p>
+                    <p><a href="#services">E-Commerce Solutions</a></p>
+                    <p><a href="#services">SEO Optimization</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>📧 info@jdevelopment.com</p>
+                    <p>📞 +1 (555) 123-4567</p>
+                    <p>📍 123 Tech Street, Digital City</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <p><a href="#">Facebook</a></p>
+                    <p><a href="#">Twitter</a></p>
+                    <p><a href="#">LinkedIn</a></p>
+                    <p><a href="#">Instagram</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 J Development. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
     <!-- Form Status Modal -->
-    <div class="form-status-modal" id="form-status-modal">
+    <div class="form-status-modal" id="formStatusModal">
         <div class="status-square">
             <div class="spinner" id="spinner"></div>
             <div class="checkmark" id="checkmark">✓</div>
-            <div class="thank-you-text" id="thank-you-text">
+            <div class="thank-you-text" id="thankYouText">
                 <h3>Thank You!</h3>
-                <p>Your message has been sent successfully! I will contact you within 24 hours using your preferred method.</p>
+                <p>Your message has been sent successfully. We'll get back to you within 24 hours.</p>
             </div>
+            <div class="close-x" id="closeModal">&times;</div>
         </div>
     </div>
-    <div class="close-x" id="close-x">×</div>
 
     <script>
-        // ⭐ Shooting Stars
+        // Shooting Stars Animation
         function createShootingStar() {
-            const shootingStar = document.createElement('div');
-            shootingStar.className = 'shooting-star';
-            shootingStar.style.left = Math.random() * 100 + 'vw';
-            shootingStar.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            shootingStar.style.animationDelay = Math.random() * 2 + 's';
-            document.getElementById('shooting-stars').appendChild(shootingStar);
+            const star = document.createElement('div');
+            star.className = 'shooting-star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            
+            document.getElementById('shootingStars').appendChild(star);
+            
             setTimeout(() => {
-                if (shootingStar.parentNode) {
-                    shootingStar.parentNode.removeChild(shootingStar);
-                }
-            }, 8000);
+                star.remove();
+            }, 5000);
         }
-        
-        // 💳 Billing Toggle
-        function toggleBilling() {
-            const isYearly = document.getElementById('billing-toggle').checked;
-            document.querySelectorAll('.billing-monthly').forEach(el => el.style.display = isYearly ? 'none' : 'block');
-            document.querySelectorAll('.billing-yearly').forEach(el => el.style.display = isYearly ? 'block' : 'none');
-        }
-        
-        // ☎️ Mobile Menu & UI Behaviors
-        window.addEventListener('DOMContentLoaded', function () {
-            const hamburger = document.getElementById('hamburger');
-            const navMenu = document.getElementById('nav-menu');
-        
-            if (hamburger && navMenu) {
-                hamburger.addEventListener('click', function () {
-                    hamburger.classList.toggle('active');
-                    navMenu.classList.toggle('active');
-                });
-        
-                const navLinks = navMenu.querySelectorAll('a');
-                navLinks.forEach(link => {
-                    link.addEventListener('click', function () {
-                        hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
-                    });
-                });
-        
-                document.addEventListener('click', function (event) {
-                    if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
-                        hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
-                    }
-                });
-            }
-        
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
+
+        // Create shooting stars periodically
+        setInterval(createShootingStar, 800);
+
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
             });
-        
-            window.selectPackage = function (packageType) {
-                const projectTypeSelect = document.getElementById('project-type');
-                if (projectTypeSelect) {
-                    projectTypeSelect.value = packageType;
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('.modern-header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
                 }
-                document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            };
-        
-            // 📩 Form Modal Handling
-            const contactForm = document.getElementById('contact-form');
-            const modal = document.getElementById('form-status-modal');
-            const spinner = document.getElementById('spinner');
-            const checkmark = document.getElementById('checkmark');
-            const thankYouText = document.getElementById('thank-you-text');
-            const closeX = document.getElementById('close-x');
-        
-            if (contactForm) {
-                contactForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    const formData = new FormData(contactForm);
-                    showModal();
-                    fetch('https://formspree.io/f/mqabzwgp', {
-                        method: 'POST',
-                        body: formData,
-                        headers: { 'Accept': 'application/json' }
-                    })
-                        .then(response => {
-                            if (response.ok) {
-                                setTimeout(() => {
-                                    showCheckmark();
-                                    setTimeout(() => {
-                                        showThankYou();
-                                        setTimeout(() => {
-                                            showCloseX();
-                                            contactForm.reset();
-                                        }, 2000);
-                                    }, 2000);
-                                }, 5000);
-                            } else {
-                                throw new Error('Form submission failed');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            hideModal();
-                            alert('There was an error sending your message. Please try again or call us directly at 865-438-5840.');
-                        });
-                });
+            });
+        });
+
+        // Header Background Change on Scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.modern-header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(46, 46, 46, 0.98)';
+                header.style.backdropFilter = 'blur(15px)';
+            } else {
+                header.style.background = 'rgba(46, 46, 46, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
             }
-        
-            function showModal() {
-                modal.style.display = 'flex';
-                spinner.style.display = 'block';
-                checkmark.style.display = 'none';
-                thankYouText.style.display = 'none';
-                closeX.style.display = 'none';
-            }
-        
-            function showCheckmark() {
+        });
+
+        // Form Submission Handler
+        const contactForm = document.getElementById('contactForm');
+        const formStatusModal = document.getElementById('formStatusModal');
+        const spinner = document.getElementById('spinner');
+        const checkmark = document.getElementById('checkmark');
+        const thankYouText = document.getElementById('thankYouText');
+        const closeModal = document.getElementById('closeModal');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show modal with spinner
+            formStatusModal.style.display = 'flex';
+            spinner.style.display = 'block';
+            checkmark.style.display = 'none';
+            thankYouText.style.display = 'none';
+            
+            // Simulate form submission (replace with actual form submission logic)
+            setTimeout(() => {
+                // Hide spinner and show success
                 spinner.style.display = 'none';
                 checkmark.style.display = 'flex';
-            }
-        
-            function showThankYou() {
                 thankYouText.style.display = 'block';
-            }
-        
-            function showCloseX() {
-                closeX.style.display = 'flex';
-            }
-        
-            function hideModal() {
-                modal.style.display = 'none';
-                spinner.style.display = 'block';
-                checkmark.style.display = 'none';
-                thankYouText.style.display = 'none';
-                closeX.style.display = 'none';
-            }
-        
-            if (closeX) {
-                closeX.addEventListener('click', function () {
-                    hideModal();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-        
-            if (modal) {
-                modal.addEventListener('click', function (e) {
-                    if (e.target === modal) {
-                        hideModal();
-                    }
-                });
-            }
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Auto close modal after 3 seconds
+                setTimeout(() => {
+                    formStatusModal.style.display = 'none';
+                }, 3000);
+            }, 2000);
         });
-        
-        // 🧠 Page Load Enhancements
-        window.addEventListener('load', function () {
-            // Billing toggle default
-            const billingToggle = document.getElementById('billing-toggle');
-            if (billingToggle) {
-                billingToggle.checked = false;
-                toggleBilling();
-            }
-        
-            // Yelp popup once per session
-            if (!sessionStorage.getItem('yelpPopupShown')) {
-                const yelpPopup = document.getElementById('yelp-popup');
-                if (yelpPopup) {
-                    yelpPopup.style.display = 'flex';
-                    sessionStorage.setItem('yelpPopupShown', 'true');
-                }
-            }
-        
-            // Header scroll check
-            const header = document.getElementById('main-header');
-            if (window.scrollY > 50 && window.innerWidth > 768) {
-                header.classList.add('header-scrolled');
-            }
-        
-            // Initial shooting stars
-            for (let i = 0; i < 5; i++) {
-                setTimeout(createShootingStar, i * 200);
-            }
-        });
-        
-        // 🌠 Periodic Shooting Stars
-        setInterval(createShootingStar, 3000);
-        
-        // 📌 Header scroll transformation
-        window.addEventListener('scroll', function () {
-            const header = document.getElementById('main-header');
-            const currentScrollY = window.scrollY;
-            if (window.innerWidth > 768) {
-                if (currentScrollY > 50) {
-                    header.classList.add('header-scrolled');
-                } else {
-                    header.classList.remove('header-scrolled');
-                }
-            }
-        });
-    </script>
-    <!-- ✅ Yelp popup goes here -->
-<div id="yelp-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; display:flex; justify-content:center; align-items:center;">
-  <div style="background:#1a1a1a; border:3px solid #a020f0; border-radius:20px; padding:40px 30px; max-width:400px; text-align:center; color:#fff; box-shadow:0 0 30px rgba(160,32,240,0.6); position:relative;">
-    <h2 style="margin-bottom:15px; font-size:24px; color:#a020f0;">💜 Get 10% Off!</h2>
-    <p style="margin-bottom:20px;">Already a customer? Leave a review on Yelp and get 10% off your second month of service.</p>
-    <a href="https://www.yelp.com/biz/j-development-kodak?osq=J+Development&override_cta=Request+a+consultation" target="_blank" style="display:inline-block; padding:12px 25px; background:linear-gradient(45deg,#a020f0,#fff); color:#000; font-weight:bold; border-radius:30px; text-decoration:none; box-shadow:0 0 15px rgba(160,32,240,0.5);">Leave a Review</a>
-    <button onclick="document.getElementById('yelp-popup').style.display='none'" style="position:absolute; top:10px; right:15px; font-size:24px; background:none; border:none; color:#fff; cursor:pointer;">×</button>
-  </div>
-</div>
 
-<!-- Now close body and html -->
+        // Close modal when clicking X
+        closeModal.addEventListener('click', () => {
+            formStatusModal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside
+        formStatusModal.addEventListener('click', (e) => {
+            if (e.target === formStatusModal) {
+                formStatusModal.style.display = 'none';
+            }
+        });
+
+        // Intersection Observer for Animation on Scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards and other elements for animation
+        document.querySelectorAll('.service-card, .about-text, .about-image').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Parallax Effect for Billboard
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const billboard = document.querySelector('.billboard-wrapper');
+            const rate = scrolled * -0.5;
+            
+            if (billboard) {
+                billboard.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Dynamic Year in Footer
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentYear = new Date().getFullYear();
+            const footerText = document.querySelector('.footer-bottom p');
+            if (footerText) {
+                footerText.innerHTML = `&copy; ${currentYear} J Development. All rights reserved.`;
+            }
+        });
+
+        // Add loading animation to page
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Keyboard Navigation Support
+        document.addEventListener('keydown', (e) => {
+            // Close modal with Escape key
+            if (e.key === 'Escape' && formStatusModal.style.display === 'flex') {
+                formStatusModal.style.display = 'none';
+            }
+            
+            // Toggle mobile menu with Enter key when hamburger is focused
+            if (e.key === 'Enter' && document.activeElement === hamburger) {
+                navMenu.classList.toggle('active');
+            }
+        });
+
+        // Form Validation Enhancement
+        const formInputs = document.querySelectorAll('#contactForm input, #contactForm textarea');
+        
+        formInputs.forEach(input => {
+            input.addEventListener('blur', validateField);
+            input.addEventListener('input', clearValidation);
+        });
+
+        function validateField(e) {
+            const field = e.target;
+            const value = field.value.trim();
+            
+            // Remove existing error styling
+            field.style.borderColor = '#555';
+            
+            // Validate based on field type
+            if (field.hasAttribute('required') && !value) {
+                showFieldError(field, 'This field is required');
+                return false;
+            }
+            
+            if (field.type === 'email' && value) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    showFieldError(field, 'Please enter a valid email address');
+                    return false;
+                }
+            }
+            
+            if (field.type === 'tel' && value) {
+                const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+                if (!phoneRegex.test(value.replace(/[\s\-\(\)]/g, ''))) {
+                    showFieldError(field, 'Please enter a valid phone number');
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+
+        function showFieldError(field, message) {
+            field.style.borderColor = '#ff4444';
+            
+            // Remove existing error message
+            const existingError = field.parentNode.querySelector('.error-message');
+            if (existingError) {
+                existingError.remove();
+            }
+            
+            // Add error message
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.style.color = '#ff4444';
+            errorDiv.style.fontSize = '14px';
+            errorDiv.style.marginTop = '5px';
+            errorDiv.textContent = message;
+            field.parentNode.appendChild(errorDiv);
+        }
+
+        function clearValidation(e) {
+            const field = e.target;
+            field.style.borderColor = '#555';
+            
+            const errorMessage = field.parentNode.querySelector('.error-message');
+            if (errorMessage) {
+                errorMessage.remove();
+            }
+        }
+
+        // Enhanced Form Submission with Validation
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate all fields
+            let isValid = true;
+            formInputs.forEach(input => {
+                if (!validateField({ target: input })) {
+                    isValid = false;
+                }
+            });
+            
+            if (!isValid) {
+                return;
+            }
+            
+            // Show modal with spinner
+            formStatusModal.style.display = 'flex';
+            spinner.style.display = 'block';
+            checkmark.style.display = 'none';
+            thankYouText.style.display = 'none';
+            
+            // Collect form data
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            // Here you would typically send the data to your server
+            // For demo purposes, we'll simulate the submission
+            console.log('Form Data:', data);
+            
+            // Simulate form submission
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                checkmark.style.display = 'flex';
+                thankYouText.style.display = 'block';
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Auto close modal after 3 seconds
+                setTimeout(() => {
+                    formStatusModal.style.display = 'none';
+                }, 3000);
+            }, 2000);
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add click effect to buttons
+        document.querySelectorAll('.get-started-link, .submit-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.pointerEvents = 'none';
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
+
