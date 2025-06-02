@@ -801,108 +801,50 @@
         position: relative;
     }
     
-    /* ADD THE BILLING TOGGLE STYLES HERE */
-    /* Billing Toggle Styles */
     .billing-toggle-wrapper {
         display: flex;
         justify-content: center;
         margin-bottom: 40px;
     }
     
-    .billing-switch {
-        position: relative;
+    .billing-selector {
         display: flex;
         align-items: center;
-        cursor: pointer;
-        user-select: none;
-    }
-    
-    .billing-switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-    
-    .slider {
-        position: relative;
-        width: 80px;
-        height: 40px;
-        background: #333;
-        border: 2px solid #a020f0;
-        border-radius: 25px;
-        transition: all 0.3s ease;
-        margin: 0 15px;
-    }
-    
-    .slider:before {
-        position: absolute;
-        content: "";
-        height: 30px;
-        width: 30px;
-        left: 3px;
-        bottom: 3px;
-        background: #a020f0;
-        border-radius: 50%;
-        transition: all 0.3s ease;
-    }
-    
-    .billing-switch input:checked + .slider {
-        background: #a020f0;
-    }
-    
-    .billing-switch input:checked + .slider:before {
-        transform: translateX(40px);
-        background: #fff;
-    }
-    
-    .label-text {
-        display: flex;
-        align-items: center;
+        gap: 15px;
         font-size: 18px;
         font-weight: 600;
-        color: #fff;
     }
     
-    .label-text span:first-child {
-        margin-right: 15px;
-        transition: color 0.3s ease;
-    }
-    
-    .label-text span:last-child {
-        margin-left: 15px;
-        transition: color 0.3s ease;
+    .billing-option {
         color: #888;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 8px 12px;
+        border-radius: 6px;
     }
     
-    .billing-switch input:checked ~ .label-text span:first-child {
-        color: #888;
-    }
-    
-    .billing-switch input:checked ~ .label-text span:last-child {
+    .billing-option:hover {
         color: #a020f0;
     }
     
+    .billing-option.active {
+        color: #a020f0;
+        background: rgba(160, 32, 240, 0.1);
+    }
+    
+    .separator {
+        color: #555;
+        font-size: 20px;
+        font-weight: 400;
+    }
+    
     @media (max-width: 768px) {
-        .billing-toggle-wrapper {
-            margin-bottom: 30px;
-        }
-        
-        .label-text {
+        .billing-selector {
             font-size: 16px;
         }
         
-        .slider {
-            width: 70px;
-            height: 35px;
-        }
-        
-        .slider:before {
-            height: 27px;
-            width: 27px;
-        }
-        
-        .billing-switch input:checked + .slider:before {
-            transform: translateX(35px);
+        .billing-toggle-wrapper {
+            margin-bottom: 30px;
         }
     }
     
@@ -1522,17 +1464,12 @@
           <div class="container">
             <h2>Services & Pricing</h2>
         
-            <!-- 💳 Billing Toggle Switch -->
             <div class="billing-toggle-wrapper">
-              <label class="billing-switch">
-                <input type="checkbox" id="billing-toggle" onchange="toggleBilling()" />
-                <span class="slider"></span>
-                <div class="label-text">
-                  <span>Monthly</span>
-                  <span>&nbsp;/&nbsp;</span>
-                  <span>Yearly</span>
+                <div class="billing-selector">
+                    <span class="billing-option active" data-period="monthly">Monthly</span>
+                    <span class="separator">/</span>
+                    <span class="billing-option" data-period="yearly">Yearly</span>
                 </div>
-              </label>
             </div>
 
             <div class="service-grid">
@@ -1743,25 +1680,41 @@
                 }
             }, 8000);
         }
-        
-        // 💳 Billing Toggle
-        function toggleBilling() {
-            const isYearly = document.getElementById('billing-toggle').checked;
-            document.querySelectorAll('.billing-monthly').forEach(el => el.style.display = isYearly ? 'none' : 'block');
-            document.querySelectorAll('.billing-yearly').forEach(el => el.style.display = isYearly ? 'block' : 'none');
-        }
+
+        // 💳 Simple Billing Toggle (Updated)
+        document.addEventListener('DOMContentLoaded', function() {
+            const billingOptions = document.querySelectorAll('.billing-option');
+            
+            billingOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove active class from all options
+                    billingOptions.forEach(opt => opt.classList.remove('active'));
+                    
+                    // Add active class to clicked option
+                    this.classList.add('active');
+                    
+                    // Get the selected period
+                    const selectedPeriod = this.getAttribute('data-period');
+                    const isYearly = selectedPeriod === 'yearly';
+                    
+                    // Update pricing display
+                    document.querySelectorAll('.billing-monthly').forEach(el => el.style.display = isYearly ? 'none' : 'block');
+                    document.querySelectorAll('.billing-yearly').forEach(el => el.style.display = isYearly ? 'block' : 'none');
+                });
+            });
+        });
         
         // ☎️ Mobile Menu & UI Behaviors
         window.addEventListener('DOMContentLoaded', function () {
             const hamburger = document.getElementById('hamburger');
             const navMenu = document.getElementById('nav-menu');
-        
+                    
             if (hamburger && navMenu) {
                 hamburger.addEventListener('click', function () {
                     hamburger.classList.toggle('active');
                     navMenu.classList.toggle('active');
                 });
-        
+                        
                 const navLinks = navMenu.querySelectorAll('a');
                 navLinks.forEach(link => {
                     link.addEventListener('click', function () {
@@ -1769,7 +1722,7 @@
                         navMenu.classList.remove('active');
                     });
                 });
-        
+                        
                 document.addEventListener('click', function (event) {
                     if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
                         hamburger.classList.remove('active');
@@ -1777,7 +1730,7 @@
                     }
                 });
             }
-        
+                    
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -1787,7 +1740,7 @@
                     }
                 });
             });
-        
+                    
             window.selectPackage = function (packageType) {
                 const projectTypeSelect = document.getElementById('project-type');
                 if (projectTypeSelect) {
@@ -1795,6 +1748,7 @@
                 }
                 document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
             };
+        });
         
             // 📩 Form Modal Handling
             const contactForm = document.getElementById('contact-form');
