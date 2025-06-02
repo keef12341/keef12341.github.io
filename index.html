@@ -250,17 +250,17 @@
         }
         
         .modern-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            position: relative; /* change from fixed to relative */
+            margin: 60px auto 0; /* adds ~1 inch of space on top and centers it */
+            width: 90%; /* or use 1000px if you want fixed size */
+            max-width: 1000px;
             background-color: rgba(46, 46, 46, 0.95);
             border-bottom: 2px solid #a020f0;
-            box-shadow: 0 5px 15px rgba(160, 32, 240, 0.4);
             z-index: 1000;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 0 0 20px 20px;
+            transition: all 0.4s ease;
+            border-radius: 50px; /* fully rounded pill shape */
             backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(160, 32, 240, 0.4);
         }
 
         .nav-container {
