@@ -93,13 +93,15 @@
         /* Outer Space Billboard Section */
         .billboard-wrapper {
             background: radial-gradient(ellipse at center, #1a237e 0%, #0d1421 30%, #000814 60%, #000 100%);
-            padding: 180px 20px 80px;
+            padding: 120px 20px 80px;
             text-align: center;
             position: relative;
-            margin-top: 70px;
+            margin-top: 40px;
             overflow: hidden;
             min-height: 500px;
+            z-index: 0; /* make sure background stays behind everything */
         }
+
         .billboard-wrapper::before {
             content: '';
             position: absolute;
@@ -107,17 +109,21 @@
             left: 0;
             right: 0;
             bottom: 0;
+            z-index: -1; /* ensures stars stay behind everything */
             background-image: 
                 radial-gradient(2px 2px at 20px 30px, #fff, transparent),
                 radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
                 radial-gradient(1px 1px at 90px 40px, #fff, transparent),
                 radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
-                radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+                radial-gradient(2px 2px at 160px 120px, #fff, transparent),
+                radial-gradient(1px 1px at 200px 160px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(2px 2px at 240px 200px, #fff, transparent),
+                radial-gradient(1px 1px at 280px 240px, rgba(255,255,255,0.5), transparent),
+                radial-gradient(2px 2px at 300px 300px, #fff, transparent),
+                radial-gradient(2px 2px at 360px 360px, rgba(255,255,255,0.9), transparent);
             background-repeat: repeat;
-            background-size: 200px 100px;
-            animation: twinkle 4s ease-in-out infinite alternate;
-            pointer-events: none;
         }
+
         @keyframes twinkle {
             0% { opacity: 0.3; }
             100% { opacity: 0.8; }
@@ -250,17 +256,16 @@
         }
         
         .modern-header {
-            position: relative; /* change from fixed to relative */
-            margin: 60px auto 0; /* adds ~1 inch of space on top and centers it */
-            width: 90%; /* or use 1000px if you want fixed size */
+            position: relative;
+            margin: 60px auto 0;
+            width: 90%;
             max-width: 1000px;
             background-color: rgba(46, 46, 46, 0.95);
             border-bottom: 2px solid #a020f0;
-            z-index: 1000;
-            transition: all 0.4s ease;
-            border-radius: 50px; /* fully rounded pill shape */
-            backdrop-filter: blur(10px);
             box-shadow: 0 5px 15px rgba(160, 32, 240, 0.4);
+            z-index: 1000;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
         }
 
         .nav-container {
