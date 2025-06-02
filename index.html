@@ -370,35 +370,35 @@
         }
     }
 
-    /* Desktop Scroll Behavior - Clean Transition */
+    /* Desktop Scroll Behavior - Smooth Transition (NO SHAKE) */
     @media (min-width: 769px) {
         .modern-header {
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            will-change: transform, width, border-radius, padding;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-origin: center center;
         }
         
-        /* Desktop Scroll Transformation */
+        /* Desktop Scroll Transformation - Smooth */
         .modern-header.header-scrolled {
             position: fixed;
             top: 0;
-            left: 0;
-            width: 100vw;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
             max-width: none;
             border-radius: 0;
             padding: 10px 0;
             background-color: rgba(26, 26, 26, 0.98);
             box-shadow: 0 2px 20px rgba(160, 32, 240, 0.6);
-            transform: translateX(0) translateY(0);
         }
         
         .modern-header.header-scrolled .nav-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 30px;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
     }
-
+        
     .nav-container {
         display: flex;
         align-items: center;
@@ -1916,7 +1916,7 @@
         // 🌠 Periodic Shooting Stars
         setInterval(createShootingStar, 3000);
         
-        // Replace your existing scroll event listener with this
+        // Replace your scroll event listener with this fixed version
     window.addEventListener('scroll', function () {
         const header = document.getElementById('main-header');
         const backToTop = document.getElementById('back-to-top');
@@ -1939,11 +1939,21 @@
             }
         }
         
-        // Show/hide back to top arrow
+        // Show/hide back to top arrow (FIXED)
         if (currentScrollY > 300) {
             if (backToTop) backToTop.classList.add('visible');
         } else {
             if (backToTop) backToTop.classList.remove('visible');
+        }
+    });
+    
+    // Make sure back to top functionality is working
+    document.addEventListener('DOMContentLoaded', function() {
+        const backToTop = document.getElementById('back-to-top');
+        if (backToTop) {
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         }
     });
 
