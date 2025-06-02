@@ -289,7 +289,89 @@
         backdrop-filter: blur(10px);
         padding: 15px 30px;
     }
+
+    /* Header Scroll Transformation */
+    .modern-header.header-scrolled {
+        top: 0;
+        width: 100%;
+        max-width: none;
+        border-radius: 0;
+        padding: 10px 30px;
+        background-color: rgba(26, 26, 26, 0.98);
+        box-shadow: 0 2px 20px rgba(160, 32, 240, 0.6);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
     
+    .modern-header.header-scrolled .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    /* Mobile Header - Always Stick to Top */
+    @media (max-width: 768px) {
+        .modern-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            max-width: none;
+            border-radius: 0;
+            padding: 15px 20px;
+            background-color: rgba(26, 26, 26, 0.98);
+            box-shadow: 0 2px 15px rgba(160, 32, 240, 0.5);
+            transform: none;
+        }
+        
+        .modern-header .nav-container {
+            max-width: none;
+            width: 100%;
+        }
+        
+        /* Adjust billboard margin for mobile fixed header */
+        .billboard-container {
+            margin-top: 100px;
+        }
+    }
+    
+    /* Mobile Header - Stick to Top (Keep Pill Design) */
+    @media (max-width: 768px) {
+        .modern-header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+        
+        /* Add top margin to content so it doesn't hide behind fixed header */
+        .billboard-container {
+            margin-top: 120px;
+        }
+    }
+    
+    /* Desktop Scroll Behavior - Transform to Rectangle */
+    @media (min-width: 769px) {
+        .modern-header {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .modern-header.header-scrolled {
+            top: 0;
+            width: 100%;
+            max-width: none;
+            border-radius: 0;
+            padding: 10px 30px;
+            background-color: rgba(26, 26, 26, 0.98);
+            box-shadow: 0 2px 20px rgba(160, 32, 240, 0.6);
+            transform: translateX(0);
+        }
+        
+        .modern-header.header-scrolled .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    }
+
     .nav-container {
         display: flex;
         align-items: center;
