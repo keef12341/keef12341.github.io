@@ -692,6 +692,117 @@
         position: relative;
     }
     
+    /* ADD THE BILLING TOGGLE STYLES HERE */
+    /* Billing Toggle Styles */
+    .billing-toggle-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+    }
+    
+    .billing-switch {
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+    }
+    
+    .billing-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    
+    .slider {
+        position: relative;
+        width: 80px;
+        height: 40px;
+        background: #333;
+        border: 2px solid #a020f0;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        margin: 0 15px;
+    }
+    
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 30px;
+        width: 30px;
+        left: 3px;
+        bottom: 3px;
+        background: #a020f0;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+    
+    .billing-switch input:checked + .slider {
+        background: #a020f0;
+    }
+    
+    .billing-switch input:checked + .slider:before {
+        transform: translateX(40px);
+        background: #fff;
+    }
+    
+    .label-text {
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        font-weight: 600;
+        color: #fff;
+    }
+    
+    .label-text span:first-child {
+        margin-right: 15px;
+        transition: color 0.3s ease;
+    }
+    
+    .label-text span:last-child {
+        margin-left: 15px;
+        transition: color 0.3s ease;
+        color: #888;
+    }
+    
+    .billing-switch input:checked ~ .label-text span:first-child {
+        color: #888;
+    }
+    
+    .billing-switch input:checked ~ .label-text span:last-child {
+        color: #a020f0;
+    }
+    
+    @media (max-width: 768px) {
+        .billing-toggle-wrapper {
+            margin-bottom: 30px;
+        }
+        
+        .label-text {
+            font-size: 16px;
+        }
+        
+        .slider {
+            width: 70px;
+            height: 35px;
+        }
+        
+        .slider:before {
+            height: 27px;
+            width: 27px;
+        }
+        
+        .billing-switch input:checked + .slider:before {
+            transform: translateX(35px);
+        }
+    }
+    
+    .service-card:hover {
+        transform: translateY(-5px);
+        border-color: #a020f0;
+        box-shadow: 0 10px 25px rgba(160, 32, 240, 0.5);
+    }
+
     .service-card:hover {
         transform: translateY(-5px);
         border-color: #a020f0;
