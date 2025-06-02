@@ -333,22 +333,36 @@
         }
     }
     
-    /* Mobile Header - Stick to Top (Keep Pill Design) */
+    /* Mobile Header - Pill Design Stuck to Top */
     @media (max-width: 768px) {
         .modern-header {
             position: fixed;
-            top: 20px;
+            top: 15px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 1000;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 50px;
+            padding: 12px 25px;
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(160, 32, 240, 0.3);
+            box-shadow: 0 8px 25px rgba(160, 32, 240, 0.4);
+        }
+        
+        .modern-header .nav-container {
+            max-width: none;
+            width: 100%;
+            padding: 0;
         }
         
         /* Add top margin to content so it doesn't hide behind fixed header */
         .billboard-container {
-            margin-top: 120px;
+            margin-top: 100px;
         }
     }
-    
+
     /* Desktop Scroll Behavior */
     @media (min-width: 769px) {
         .modern-header {
