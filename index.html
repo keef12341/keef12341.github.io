@@ -250,23 +250,18 @@
         }
         
         .modern-header {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          background-color: rgba(0, 0, 0, 0.6);
-          border: 2px solid #a020f0;
-          box-shadow: 0 5px 15px rgba(160, 32, 240, 0.4);
-          z-index: 1000;
-          transition: all 0.4s ease;
-          border-radius: 0 0 20px 20px;
-          backdrop-filter: blur(10px);
-          padding: 20px 40px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(46, 46, 46, 0.95);
+            border-bottom: 2px solid #a020f0;
+            box-shadow: 0 5px 15px rgba(160, 32, 240, 0.4);
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 0 0 20px 20px;
+            backdrop-filter: blur(10px);
         }
-
 
         .nav-container {
             display: flex;
@@ -280,21 +275,24 @@
             width: auto;
         }
 
-        }
         .phone-link {
-            background-color: #a020f0;
-            color: #fff;
+            color: #1e1e1e;
             font-weight: bold;
             text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 25px;
+            background-color: #a020f0;
+            padding: 12px 20px;
+            border-radius: 30px;
             font-size: 14px;
-            box-shadow: 0 0 12px rgba(160, 32, 240, 0.6);
-            animation: phone-glow 4s ease-in-out infinite;
-            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(160, 32, 240, 0.5);
             white-space: nowrap;
-            display: inline-block;
+            transition: all 0.3s ease;
         }
+        .phone-link:hover {
+            background-color: #ffffff;
+            color: #000;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+
         /* ✨ Flash Animation */
         @keyframes phone-glow {
           0%, 100% {
@@ -308,11 +306,6 @@
           }
         }
 
-        .phone-link:hover {
-            background-color: #ffffff;
-            color: #000;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-        }
         .nav-menu {
             display: flex;
             list-style: none;
