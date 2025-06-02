@@ -472,6 +472,45 @@
         color: #fff;
         transform: scale(1.1);
     }
+
+            /* Back to Top Arrow */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(45deg, #a020f0, #ffffff);
+        border: 2px solid #a020f0;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 15px rgba(160, 32, 240, 0.5);
+    }
+
+    .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .back-to-top:hover {
+        background: linear-gradient(45deg, #ffffff, #a020f0);
+        transform: translateY(-3px);
+        box-shadow: 0 0 25px rgba(160, 32, 240, 0.8);
+    }
+
+    .back-to-top::before {
+        content: "↑";
+        font-size: 24px;
+        font-weight: bold;
+        color: #000;
+    }
     
     /* Mobile Responsive */
     @media (max-width: 768px) {
@@ -491,7 +530,6 @@
             top: 80px;
             left: -100%;
             width: 90%;
-            left: 5%;
             background: rgba(26, 26, 26, 0.98);
             flex-direction: column;
             justify-content: flex-start;
@@ -502,12 +540,11 @@
             border: 2px solid #a020f0;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(160, 32, 240, 0.4);
-            transform: translateX(-100%);
         }
-    
+
+
         .nav-menu.active {
             left: 5%;
-            transform: translateX(0);
         }
     
         .nav-menu li {
@@ -1659,10 +1696,12 @@
         // 🌠 Periodic Shooting Stars
         setInterval(createShootingStar, 3000);
         
-        // 📌 Header scroll transformation
+        // 📌 Header scroll transformation & Back to Top
         window.addEventListener('scroll', function () {
             const header = document.getElementById('main-header');
+            const backToTop = document.getElementById('back-to-top');
             const currentScrollY = window.scrollY;
+            
             if (window.innerWidth > 768) {
                 if (currentScrollY > 50) {
                     header.classList.add('header-scrolled');
@@ -1670,7 +1709,25 @@
                     header.classList.remove('header-scrolled');
                 }
             }
+            
+            // Show/hide back to top arrow
+            if (currentScrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
         });
+
+        // Back to top functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTop = document.getElementById('back-to-top');
+            if (backToTop) {
+                backToTop.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        });
+
     </script>
     <!-- ✅ Yelp popup goes here -->
 <div id="yelp-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; display:flex; justify-content:center; align-items:center;">
@@ -1682,6 +1739,10 @@
   </div>
 </div>
 
+<!-- Back to Top Arrow -->
+<div class="back-to-top" id="back-to-top"></div>
+
 <!-- Now close body and html -->
 </body>
 </html>
+
