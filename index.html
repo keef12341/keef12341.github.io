@@ -333,13 +333,12 @@
         }
     }
     
-    /* Mobile Header - Pill Design Stuck to Top */
     @media (max-width: 768px) {
         .modern-header {
             position: fixed;
             top: 15px;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) translateY(0);
             z-index: 1000;
             width: 90%;
             max-width: 400px;
@@ -349,6 +348,14 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(160, 32, 240, 0.3);
             box-shadow: 0 8px 25px rgba(160, 32, 240, 0.4);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
+            opacity: 1;
+        }
+        
+        .modern-header.header-hidden {
+            transform: translateX(-50%) translateY(-100px);
+            opacity: 0;
+            pointer-events: none;
         }
         
         .modern-header .nav-container {
@@ -363,29 +370,32 @@
         }
     }
 
-    /* Desktop Scroll Behavior */
+    /* Desktop Scroll Behavior - Clean Transition */
     @media (min-width: 769px) {
         .modern-header {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform, width, border-radius, padding;
         }
         
         /* Desktop Scroll Transformation */
         .modern-header.header-scrolled {
+            position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 100vw;
             max-width: none;
             border-radius: 0;
             padding: 10px 0;
             background-color: rgba(26, 26, 26, 0.98);
             box-shadow: 0 2px 20px rgba(160, 32, 240, 0.6);
-            transform: none;
+            transform: translateX(0) translateY(0);
         }
         
         .modern-header.header-scrolled .nav-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 30px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
     }
 
@@ -1906,37 +1916,36 @@
         // 🌠 Periodic Shooting Stars
         setInterval(createShootingStar, 3000);
         
-        // 📌 Header scroll transformation & Back to Top
-        window.addEventListener('scroll', function () {
-            const header = document.getElementById('main-header');
-            const backToTop = document.getElementById('back-to-top');
-            const currentScrollY = window.scrollY;
-            
-            if (window.innerWidth > 768) {
-                if (currentScrollY > 50) {
-                    header.classList.add('header-scrolled');
-                } else {
-                    header.classList.remove('header-scrolled');
-                }
-            }
-            
-            // Show/hide back to top arrow
-            if (currentScrollY > 300) {
-                backToTop.classList.add('visible');
+        // Replace your existing scroll event listener with this
+    window.addEventListener('scroll', function () {
+        const header = document.getElementById('main-header');
+        const backToTop = document.getElementById('back-to-top');
+        const currentScrollY = window.scrollY;
+        
+        // Desktop header transformation
+        if (window.innerWidth > 768) {
+            if (currentScrollY > 50) {
+                header.classList.add('header-scrolled');
             } else {
-                backToTop.classList.remove('visible');
+                header.classList.remove('header-scrolled');
             }
-        });
-
-        // Back to top functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const backToTop = document.getElementById('back-to-top');
-            if (backToTop) {
-                backToTop.addEventListener('click', function() {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
+        } 
+        // Mobile header hide/show
+        else {
+            if (currentScrollY > 100) {
+                header.classList.add('header-hidden');
+            } else {
+                header.classList.remove('header-hidden');
             }
-        });
+        }
+        
+        // Show/hide back to top arrow
+        if (currentScrollY > 300) {
+            if (backToTop) backToTop.classList.add('visible');
+        } else {
+            if (backToTop) backToTop.classList.remove('visible');
+        }
+    });
 
     </script>
     <!-- ✅ Yelp popup goes here -->
