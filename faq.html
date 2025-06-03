@@ -285,7 +285,7 @@
         </div>
 
         <p class="eta-text">
-            <strong>Estimated completion:</strong> <span id="eta-time"></span>
+            <strong>Time remaining:</strong> <span id="eta-time"></span>
         </p>
 
         <div class="contact-info">
@@ -306,21 +306,54 @@
     </div>
 
     <script>
-        // Set estimated completion time (2 hours from now)
-        function setEstimatedTime() {
-            const now = new Date();
-            const eta = new Date(now.getTime() + (2 * 60 * 60 * 1000)); // 2 hours from now
+        // Set countdown timer for 35 hours
+        function initializeCountdown() {
+            const countdownDuration = 35 * 60 * 60 * 1000; // 35 hours in milliseconds
+            const endTime = new Date().getTime() + countdownDuration;
             
-            const options = {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                timeZoneName: 'short'
-            };
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const timeLeft = endTime - now;
+                
+                if (timeLeft > 0) {
+                    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                    
+                    let countdownText = '';
+                    if (days > 0) {
+                        countdownText += `${days} day${days !== 1 ? 's' : ''}, `;
+                    }
+                    countdownText += `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    
+                    document.getElementById('eta-time').innerHTML = `<span style="font-family: monospace; font-size: 1.2em; color: #fff; background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 10px;">${countdownText}</span>`;
+                } else {
+                    document.getElementById('eta-time').innerHTML = '<span style="color: #4CAF50; font-weight: bold;">Maintenance Complete! Refreshing...</span>';
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3000);
+                }
+            }
             
+            // Update immediately and then every second
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+        
+        // Auto-refresh page every 30 minutes (but countdown continues)
+        function autoRefresh() {
+            setTimeout(function() {
+                window.location.reload();
+            }, 30 * 60 * 1000); // 30 minutes
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCountdown();
+            autoRefresh();
+        });
+                    
             document.getElementById('eta-time').textContent = eta.toLocaleDateString('en-US', options);
         }
 
