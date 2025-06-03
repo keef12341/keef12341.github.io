@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ - J Development | Professional Web Development Services</title>
-    <meta name="description" content="Frequently asked questions about J Development's web development services, contracts, pricing, and policies.">
+    <title>Site Maintenance - J Development</title>
+    <meta name="description" content="J Development is currently undergoing maintenance. We'll be back shortly with improvements.">
     <style>
         * {
             margin: 0;
@@ -14,385 +14,341 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .maintenance-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             font-weight: bold;
-            color: white;
-            text-decoration: none;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
         }
 
-        .nav-links {
+        .maintenance-icon {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .maintenance-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .maintenance-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.9s forwards;
+        }
+
+        .progress-container {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 4px;
+            margin: 2rem 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.2s forwards;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: white;
+            border-radius: 50px;
+            width: 0%;
+            animation: progressLoad 3s ease-in-out infinite;
+        }
+
+        .eta-text {
+            font-size: 1rem;
+            margin: 1rem 0;
+            opacity: 0.8;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.5s forwards;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.8s forwards;
+        }
+
+        .contact-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .contact-details {
             display: flex;
-            list-style: none;
-            gap: 2rem;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 1rem;
         }
 
-        .nav-links a {
+        .contact-details a {
             color: white;
             text-decoration: none;
-            font-weight: 500;
             transition: opacity 0.3s ease;
         }
 
-        .nav-links a:hover {
+        .contact-details a:hover {
             opacity: 0.8;
         }
 
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .faq-section {
-            background: white;
-            margin: 2rem 0;
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .faq-item {
-            border-bottom: 1px solid #eee;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-        }
-
-        .faq-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .faq-question {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #764ba2;
-            margin-bottom: 1rem;
-            cursor: pointer;
+        .social-links {
+            margin-top: 1.5rem;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: color 0.3s ease;
+            justify-content: center;
+            gap: 1rem;
         }
 
-        .faq-question:hover {
-            color: #667eea;
-        }
-
-        .faq-toggle {
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-answer {
-            color: #666;
-            line-height: 1.8;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-        }
-
-        .faq-item.active .faq-toggle {
-            transform: rotate(45deg);
-        }
-
-        .cta-section {
-            text-align: center;
-            padding: 3rem 0;
-            color: white;
-        }
-
-        .cta-button {
+        .social-link {
             display: inline-block;
-            background: white;
-            color: #764ba2;
-            padding: 1rem 2rem;
-            border-radius: 50px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.2);
             color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .shape:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            right: 30%;
+            animation-delay: 1s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes progressLoad {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 0%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(10px) rotate(240deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .maintenance-container {
+                padding: 1rem;
             }
 
-            .hero h1 {
+            .logo {
                 font-size: 2rem;
             }
 
-            .faq-section {
-                padding: 2rem 1rem;
-                margin: 1rem 0;
+            .maintenance-icon {
+                font-size: 3.5rem;
             }
 
-            .faq-question {
-                font-size: 1.1rem;
+            .maintenance-title {
+                font-size: 2rem;
+            }
+
+            .maintenance-subtitle {
+                font-size: 1rem;
+            }
+
+            .contact-info {
+                padding: 1.5rem;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <a href="/" class="logo">J Development</a>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="/faq.html">FAQ</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
 
-    <section class="hero">
-        <div class="container">
-            <h1>Frequently Asked Questions</h1>
-            <p>Get answers to common questions about our services, contracts, and policies</p>
-        </div>
-    </section>
+    <div class="maintenance-container">
+        <div class="logo">J Development</div>
+        
+        <div class="maintenance-icon pulse">🔧</div>
+        
+        <h1 class="maintenance-title">We'll Be Right Back!</h1>
+        
+        <p class="maintenance-subtitle">
+            We're currently performing scheduled maintenance to improve your experience. 
+            Our website will be back online shortly with enhanced performance and new features.
+        </p>
 
-    <section class="faq-section container">
-        <div class="faq-item">
-            <div class="faq-question">
-                Why do you require a 6-month contract?
-                <span class="faq-toggle">+</span>
-            </div>
-            <div class="faq-answer">
-                <p>Our 6-month contract ensures we can provide you with consistent, high-quality service and support. This timeframe allows us to:</p>
-                <ul style="margin: 1rem 0; padding-left: 2rem;">
-                    <li>Monitor your website's performance and make necessary optimizations</li>
-                    <li>Provide regular security updates and maintenance</li>
-                    <li>Build a strong working relationship with you</li>
-                    <li>Ensure your website achieves its full potential in search rankings</li>
-                    <li>Offer better pricing by spreading development costs over time</li>
-                </ul>
-                <p>This commitment benefits both parties and ensures your website remains secure, fast, and effective.</p>
-            </div>
+        <div class="progress-container">
+            <div class="progress-bar"></div>
         </div>
 
-        <div class="faq-item">
-            <div class="faq-question">
-                What happens if I need to cancel before the contract ends?
-                <span class="faq-toggle">+</span>
-            </div>
-            <div class="faq-answer">
-                <p>We understand that circumstances can change. If you need to cancel before your 6-month contract ends:</p>
-                <ul style="margin: 1rem 0; padding-left: 2rem;">
-                    <li>You'll need to provide 30 days written notice</li>
-                    <li>Any remaining balance for the contracted period will be due</li>
-                    <li>You'll retain full ownership of your website and all content</li>
-                    <li>We'll provide you with all necessary files and access credentials</li>
-                    <li>We'll assist with transferring your site to a new host if needed</li>
-                </ul>
-                <p>We always try to work with our clients to find solutions that work for everyone.</p>
-            </div>
-        </div>
+        <p class="eta-text">
+            <strong>Estimated completion:</strong> <span id="eta-time"></span>
+        </p>
 
-        <div class="faq-item">
-            <div class="faq-question">
-                What third-party services do you use and integrate?
-                <span class="faq-toggle">+</span>
+        <div class="contact-info">
+            <h3 class="contact-title">Need Immediate Assistance?</h3>
+            <div class="contact-details">
+                <span>📧 Email: <a href="mailto:contact@jeremiah.click">contact@jeremiah.click</a></span>
+                <span>📱 For urgent matters, please email us directly</span>
+                <span>⏰ We typically respond within 2-4 hours</span>
             </div>
-            <div class="faq-answer">
-                <p>We work with various trusted third-party services to enhance your website's functionality:</p>
-                <ul style="margin: 1rem 0; padding-left: 2rem;">
-                    <li><strong>Payment Processing:</strong> Stripe, PayPal, Square</li>
-                    <li><strong>Email Services:</strong> Mailchimp, ConvertKit, EmailJS</li>
-                    <li><strong>Analytics:</strong> Google Analytics, Google Search Console</li>
-                    <li><strong>Hosting:</strong> Netlify, Vercel, AWS</li>
-                    <li><strong>CDN:</strong> Cloudflare for improved speed and security</li>
-                    <li><strong>Forms:</strong> Formspree, Netlify Forms</li>
-                </ul>
-                <p>All integrations are included in your package, and we handle the setup and configuration for you.</p>
-            </div>
-        </div>
 
-        <div class="faq-item">
-            <div class="faq-question">
-                What is your refund policy?
-                <span class="faq-toggle">+</span>
-            </div>
-            <div class="faq-answer">
-                <p>Our refund policy is designed to be fair and transparent:</p>
-                <ul style="margin: 1rem 0; padding-left: 2rem;">
-                    <li><strong>First 14 days:</strong> Full refund if you're not satisfied with the initial design</li>
-                    <li><strong>After 14 days:</strong> Refunds are prorated based on services not yet provided</li>
-                    <li><strong>Monthly payments:</strong> No refund for the current month, but you can cancel future payments</li>
-                    <li><strong>Third-party costs:</strong> Domain registration and third-party service fees are non-refundable</li>
-                </ul>
-                <p>We stand behind our work and will always try to resolve any issues before considering a refund.</p>
+            <div class="social-links">
+                <a href="#" class="social-link" title="Facebook">📘</a>
+                <a href="#" class="social-link" title="Twitter">🐦</a>
+                <a href="#" class="social-link" title="LinkedIn">💼</a>
+                <a href="#" class="social-link" title="Instagram">📷</a>
             </div>
         </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                Do I own my website and content?
-                <span class="faq-toggle">+</span>
-            </div>
-            <div class="faq-answer">
-                <p>Yes, absolutely! You maintain full ownership of:</p>
-                <ul style="margin: 1rem 0; padding-left: 2rem;">
-                    <li>All content you provide (text, images, videos)</li>
-                    <li>Your domain name (which you purchase separately)</li>
-                    <li>Your website files and code after the initial contract period</li>
-                    <li>All customer data and analytics</li>
-                </ul>
-                <p>We simply provide the service of building, hosting, and maintaining your website. You're never locked in permanently.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                What's included in the monthly maintenance?
-                <span class="faq-toggle">+</span>
-            </div>
-            <div class="faq-answer">
-                <p>Your monthly maintenance fee covers comprehensive website care:</p>
-                <ul style="margin: 1rem 0; padding-left: 2rem;">
-                    <li>Security updates and monitoring</li>
-                    <li>Performance optimization</li>
-                    <li>Backup management</li>
-                    <li>Content updates (up to 2 hours per month)</li>
-                    <li>Technical support via email</li>
-                    <li>Uptime monitoring</li>
-                    <li>SEO maintenance and improvements</li>
-                    <li>Analytics reporting</li>
-                </ul>
-                <p>This ensures your website stays secure, fast, and up-to-date without you having to worry about technical details.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                How long does it take to build my website?
-                <span class="faq-toggle">+</span>
-            </div>
-            <div class="faq-answer">
-                <p>Timeline depends on the package and complexity:</p>
-                <ul style="margin: 1rem 0; padding-left: 2rem;">
-                    <li><strong>Static Website:</strong> 1-2 weeks after content is provided</li>
-                    <li><strong>E-Commerce Package:</strong> 2-4 weeks depending on product catalog size</li>
-                    <li><strong>Custom Projects:</strong> Timeline discussed during consultation</li>
-                </ul>
-                <p>We'll provide you with a detailed timeline and keep you updated throughout the process. The biggest factor in timeline is how quickly you can provide content and feedback.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                Can I make changes to my website after it's built?
-                <span class="faq-toggle">+</span>
-            </div>
-            <div class="faq-answer">
-                <p>Absolutely! We encourage you to keep your website fresh and updated:</p>
-                <ul style="margin: 1rem 0; padding-left: 2rem;">
-                    <li>Minor content updates are included in your monthly maintenance</li>
-                    <li>We can train you to make basic updates yourself</li>
-                    <li>Larger changes or new features can be added for additional fees</li>
-                    <li>We provide ongoing support to help with any questions</li>
-                </ul>
-                <p>Your website should grow with your business, and we're here to help make that happen.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <div class="container">
-            <h2 style="margin-bottom: 1rem;">Still Have Questions?</h2>
-            <p style="margin-bottom: 2rem;">We're here to help! Get in touch and we'll answer any questions you have.</p>
-            <a href="#contact" class="cta-button">Contact Us Today</a>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 J Development. All rights reserved.</p>
-        </div>
-    </footer>
+    </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const faqItems = document.querySelectorAll('.faq-item');
+        // Set estimated completion time (2 hours from now)
+        function setEstimatedTime() {
+            const now = new Date();
+            const eta = new Date(now.getTime() + (2 * 60 * 60 * 1000)); // 2 hours from now
             
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                timeZoneName: 'short'
+            };
+            
+            document.getElementById('eta-time').textContent = eta.toLocaleDateString('en-US', options);
+        }
+
+        // Auto-refresh page every 30 minutes
+        function autoRefresh() {
+            setTimeout(function() {
+                window.location.reload();
+            }, 30 * 60 * 1000); // 30 minutes
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            setEstimatedTime();
+            autoRefresh();
+        });
+
+        // Add some interactive elements
+        document.addEventListener('mousemove', function(e) {
+            const shapes = document.querySelectorAll('.shape');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 0.5;
+                const x = mouseX * speed;
+                const y = mouseY * speed;
                 
-                question.addEventListener('click', () => {
-                    const isActive = item.classList.contains('active');
-                    
-                    // Close all other items
-                    faqItems.forEach(otherItem => {
-                        otherItem.classList.remove('active');
-                    });
-                    
-                    // Toggle current item
-                    if (!isActive) {
-                        item.classList.add('active');
-                    }
-                });
+                shape.style.transform += ` translate(${x}px, ${y}px)`;
             });
         });
     </script>
