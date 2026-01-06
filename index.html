@@ -15,9 +15,10 @@
         }
 
         :root {
-            --navy: #0A1F44;
-            --gold: #D4AF37;
+            --dark-brown: #3D3934;
+            --tan: #D9CDB8;
             --cream: #F5F1E8;
+            --black: #000000;
             --red: #C1272D;
             --white: #FFFFFF;
             --gray: #6B7280;
@@ -37,7 +38,7 @@
 
         /* Header */
         header {
-            background: var(--navy);
+            background: var(--dark-brown);
             color: var(--white);
             padding: 1rem 0;
             position: fixed;
@@ -48,7 +49,7 @@
         }
 
         header.scrolled {
-            background: rgba(10, 31, 68, 0.98);
+            background: rgba(61, 57, 52, 0.98);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
@@ -62,11 +63,36 @@
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text-main {
+            font-family: 'Work Sans', sans-serif;
             font-size: 1.8rem;
             font-weight: 900;
-            color: var(--gold);
-            text-decoration: none;
+            color: var(--black);
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text-sub {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--black);
+            letter-spacing: 2px;
         }
 
         .contact-info {
@@ -78,13 +104,14 @@
         .phone {
             font-size: 1.3rem;
             font-weight: 700;
-            color: var(--gold);
+            color: var(--white);
             text-decoration: none;
             transition: transform 0.3s ease;
         }
 
         .phone:hover {
             transform: scale(1.05);
+            color: var(--tan);
         }
 
         .cta-button {
@@ -106,8 +133,8 @@
 
         /* Navigation */
         nav {
-            background: rgba(10, 31, 68, 0.95);
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(61, 57, 52, 0.95);
+            border-top: 1px solid rgba(217, 205, 184, 0.3);
         }
 
         .nav-container {
@@ -135,12 +162,12 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--gold);
+            background: var(--tan);
             transition: width 0.3s ease;
         }
 
         nav a:hover {
-            color: var(--gold);
+            color: var(--tan);
         }
 
         nav a:hover::after {
@@ -149,7 +176,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%);
+            background: linear-gradient(135deg, var(--dark-brown) 0%, #5a5450 100%);
             color: var(--white);
             padding: 12rem 2rem 8rem 2rem;
             position: relative;
@@ -163,7 +190,7 @@
             right: 0;
             width: 50%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0,50 Q25,25 50,50 T100,50" stroke="rgba(212,175,55,0.1)" stroke-width="2" fill="none"/></svg>') repeat;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0,50 Q25,25 50,50 T100,50" stroke="rgba(217,205,184,0.1)" stroke-width="2" fill="none"/></svg>') repeat;
             opacity: 0.3;
         }
 
@@ -185,7 +212,7 @@
 
         .hero .subtitle {
             font-size: 1.5rem;
-            color: var(--gold);
+            color: var(--tan);
             margin-bottom: 1rem;
             font-weight: 600;
             animation: fadeInUp 0.8s ease 0.2s backwards;
@@ -237,8 +264,8 @@
 
         .hero-secondary {
             background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
+            border: 2px solid var(--tan);
+            color: var(--tan);
             padding: 1.2rem 3rem;
             border-radius: 4px;
             text-decoration: none;
@@ -249,8 +276,8 @@
         }
 
         .hero-secondary:hover {
-            background: var(--gold);
-            color: var(--navy);
+            background: var(--tan);
+            color: var(--dark-brown);
             transform: translateY(-3px);
         }
 
@@ -282,13 +309,13 @@
 
         .badge-icon {
             font-size: 3rem;
-            color: var(--gold);
+            color: var(--dark-brown);
             margin-bottom: 0.5rem;
         }
 
         .badge h3 {
             font-size: 1.5rem;
-            color: var(--navy);
+            color: var(--dark-brown);
             margin-bottom: 0.3rem;
         }
 
@@ -312,7 +339,7 @@
         .section-header h2 {
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
-            color: var(--navy);
+            color: var(--dark-brown);
             margin-bottom: 1rem;
         }
 
@@ -367,7 +394,7 @@
 
         .service-card h3 {
             font-size: 1.8rem;
-            color: var(--navy);
+            color: var(--dark-brown);
             margin-bottom: 1rem;
             font-weight: 700;
         }
@@ -394,7 +421,7 @@
 
         /* Why Choose Us */
         .why-us {
-            background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%);
+            background: linear-gradient(135deg, var(--dark-brown) 0%, #5a5450 100%);
             color: var(--white);
             padding: 6rem 2rem;
             position: relative;
@@ -413,7 +440,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
             margin-bottom: 2rem;
-            color: var(--gold);
+            color: var(--tan);
         }
 
         .feature {
@@ -464,7 +491,7 @@
         .stat-number {
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
-            color: var(--gold);
+            color: var(--tan);
             font-weight: 900;
             display: block;
         }
@@ -500,7 +527,7 @@
             content: '"';
             font-family: 'Playfair Display', serif;
             font-size: 6rem;
-            color: var(--gold);
+            color: var(--tan);
             opacity: 0.2;
             position: absolute;
             top: -1rem;
@@ -518,11 +545,11 @@
 
         .testimonial-author {
             font-weight: 600;
-            color: var(--navy);
+            color: var(--dark-brown);
         }
 
         .stars {
-            color: var(--gold);
+            color: var(--tan);
             font-size: 1.2rem;
             margin-bottom: 1rem;
         }
@@ -571,7 +598,7 @@
 
         /* Footer */
         footer {
-            background: var(--navy);
+            background: var(--dark-brown);
             color: var(--white);
             padding: 4rem 2rem 2rem 2rem;
         }
@@ -586,7 +613,7 @@
         }
 
         .footer-section h3 {
-            color: var(--gold);
+            color: var(--tan);
             margin-bottom: 1rem;
             font-size: 1.3rem;
         }
@@ -601,7 +628,7 @@
         }
 
         .footer-section a:hover {
-            color: var(--gold);
+            color: var(--tan);
         }
 
         .footer-bottom {
@@ -618,7 +645,7 @@
             display: none;
             background: none;
             border: none;
-            color: var(--gold);
+            color: var(--tan);
             font-size: 1.8rem;
             cursor: pointer;
         }
@@ -678,7 +705,17 @@
     <!-- Header -->
     <header id="header">
         <div class="header-top">
-            <a href="#" class="logo">Edwards</a>
+            <a href="#" class="logo">
+                <svg width="60" height="60" viewBox="0 0 100 100" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                    <rect width="100" height="100" fill="white" rx="5"/>
+                    <path d="M30 70 L50 35 L70 70 Z" fill="#3D3934"/>
+                    <path d="M35 70 L50 45 L65 70 Z" fill="#3D3934" opacity="0.7"/>
+                </svg>
+                <div class="logo-text">
+                    <span class="logo-text-main" style="color: white;">EDWARDS</span>
+                    <span class="logo-text-sub" style="color: var(--tan);">HOME IMPROVEMENTS</span>
+                </div>
+            </a>
             <div class="contact-info">
                 <a href="tel:615-384-1810" class="phone">📞 615-384-1810</a>
                 <a href="#quote" class="cta-button">Get Free Quote</a>
