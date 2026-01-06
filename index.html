@@ -864,6 +864,44 @@
                 flex-direction: column;
                 gap: 1rem;
             }
+
+            /* Hide everything except hamburger on mobile */
+            .logo {
+                display: none;
+            }
+
+            .phone {
+                display: none;
+            }
+
+            .cta-button {
+                display: none;
+            }
+
+            /* Make header smaller and keep hamburger visible when scrolling */
+            header {
+                padding: 0.75rem 0;
+            }
+
+            .header-top {
+                justify-content: flex-end;
+            }
+
+            /* Keep hamburger menu fixed and visible when scrolling */
+            .mobile-menu-toggle {
+                position: fixed;
+                top: 1rem;
+                right: 1rem;
+                z-index: 1001;
+                background: var(--white);
+                padding: 0.75rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            }
+
+            header.scrolled .mobile-menu-toggle {
+                background: var(--white);
+            }
         }
 
         @media (max-width: 640px) {
