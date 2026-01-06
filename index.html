@@ -311,6 +311,17 @@
         .services {
             padding: 6rem 2rem;
             background: var(--light-gray);
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--tan), transparent);
         }
 
         .section-header {
@@ -411,6 +422,16 @@
             position: relative;
         }
 
+        .why-us::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--tan), transparent);
+        }
+
         .why-us-content {
             max-width: 1400px;
             margin: 0 auto;
@@ -440,7 +461,7 @@
             top: 0;
             width: 2rem;
             height: 2rem;
-            background: var(--tan);
+            background: #C1272D;
             color: var(--white);
             border-radius: 50%;
             display: flex;
@@ -497,6 +518,17 @@
         .testimonials {
             padding: 6rem 2rem;
             background: var(--white);
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--tan), transparent);
         }
 
         .testimonials-grid {
@@ -548,7 +580,7 @@
         }
 
         .stars {
-            color: var(--tan);
+            color: #D4AF37;
             font-size: 1.2rem;
             margin-bottom: 1rem;
         }
@@ -559,6 +591,17 @@
             color: var(--white);
             padding: 6rem 2rem;
             text-align: center;
+            position: relative;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
         }
 
         .cta-content {
@@ -649,6 +692,146 @@
             color: var(--charcoal);
             font-size: 1.8rem;
             cursor: pointer;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle:hover {
+            color: var(--tan);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(61, 57, 52, 0.98) 0%, rgba(44, 40, 37, 0.98) 100%);
+            z-index: 999;
+            padding: 6rem 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(201, 184, 154, 0.03) 35px, rgba(201, 184, 154, 0.03) 70px),
+                url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M10 10 L50 10 L90 10 M10 30 L90 30 M10 50 L70 50 M10 70 L85 70 M10 90 L60 90" stroke="rgba(201,184,154,0.05)" stroke-width="2" fill="none"/></svg>');
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: var(--tan);
+            font-size: 2.5rem;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-close:hover {
+            color: var(--white);
+            transform: rotate(90deg);
+        }
+
+        .mobile-menu-logo {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--tan);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .mobile-menu li {
+            margin: 1.5rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideInMobile 0.5s ease forwards;
+        }
+
+        .mobile-menu li:nth-child(1) { animation-delay: 0.1s; }
+        .mobile-menu li:nth-child(2) { animation-delay: 0.2s; }
+        .mobile-menu li:nth-child(3) { animation-delay: 0.3s; }
+        .mobile-menu li:nth-child(4) { animation-delay: 0.4s; }
+        .mobile-menu li:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes slideInMobile {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .mobile-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 2rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 1rem;
+            border-bottom: 2px solid transparent;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--tan);
+            border-bottom-color: var(--tan);
+        }
+
+        .mobile-menu-cta {
+            margin-top: 2rem;
+            opacity: 0;
+            animation: slideInMobile 0.5s ease 0.6s forwards;
+        }
+
+        .mobile-menu-cta a {
+            background: var(--tan);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            display: inline-block;
+        }
+
+        .mobile-menu-cta a:hover {
+            background: var(--white);
+            color: var(--charcoal);
+            border-bottom-color: transparent;
         }
 
         /* Responsive */
@@ -921,7 +1104,33 @@
         </div>
     </footer>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-logo">Edwards</div>
+        <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Close menu">✕</button>
+        <ul>
+            <li><a href="#home" onclick="toggleMobileMenu()">Home</a></li>
+            <li><a href="#services" onclick="toggleMobileMenu()">Services</a></li>
+            <li><a href="#about" onclick="toggleMobileMenu()">About Us</a></li>
+            <li><a href="#testimonials" onclick="toggleMobileMenu()">Reviews</a></li>
+            <li><a href="#contact" onclick="toggleMobileMenu()">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-cta">
+            <a href="tel:615-384-1810">📞 Call Now</a>
+        </div>
+    </div>
+
     <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        // Mobile menu button
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', toggleMobileMenu);
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
