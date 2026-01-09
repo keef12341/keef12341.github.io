@@ -33,6 +33,22 @@
             color: var(--navy);
             line-height: 1.6;
             overflow-x: hidden;
+            background: var(--white);
+            position: relative;
+        }
+
+        /* Subtle paper texture for depth */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="200" height="200" filter="url(%23noise)" opacity="0.02"/></svg>');
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.5;
         }
 
         /* Header */
@@ -324,6 +340,19 @@
             background: linear-gradient(90deg, transparent, var(--tan), transparent);
         }
 
+        .services::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(201, 184, 154, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
         .section-header {
             text-align: center;
             max-width: 800px;
@@ -348,6 +377,8 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .service-card {
@@ -592,6 +623,7 @@
             padding: 6rem 2rem;
             text-align: center;
             position: relative;
+            overflow: hidden;
         }
 
         .cta-section::before {
@@ -604,9 +636,29 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
         }
 
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 60px,
+                rgba(255, 255, 255, 0.02) 60px,
+                rgba(255, 255, 255, 0.02) 120px
+            );
+            pointer-events: none;
+            z-index: 0;
+        }
+
         .cta-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .cta-section h2 {
@@ -645,6 +697,22 @@
             background: var(--charcoal);
             color: var(--white);
             padding: 4rem 2rem 2rem 2rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(201, 184, 154, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 184, 154, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
         }
 
         .footer-content {
@@ -654,6 +722,8 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
             margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-section h3 {
@@ -682,6 +752,8 @@
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
             color: rgba(255, 255, 255, 0.6);
+            position: relative;
+            z-index: 1;
         }
 
         /* Mobile Menu */
