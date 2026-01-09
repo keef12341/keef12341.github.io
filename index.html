@@ -67,11 +67,19 @@
         }
 
         .logo {
-            font-family: 'Manrope', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--navy);
+            display: flex;
+            align-items: center;
             text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
         }
 
         .nav-links {
@@ -813,8 +821,8 @@
             }
 
             /* Mobile logo styling */
-            .logo {
-                font-size: 1.25rem;
+            .logo img {
+                height: 40px;
             }
 
             .mobile-menu-toggle {
@@ -827,7 +835,9 @@
     <!-- Header -->
     <header id="header">
         <nav>
-            <a href="#" class="logo">J Development</a>
+            <a href="#" class="logo">
+                <img src="images/logo2.png" alt="J Development">
+            </a>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
@@ -885,7 +895,7 @@
                 <h3>Static Website</h3>
                 <div class="price">
                     <span class="monthly-price">$160</span>
-                    <span class="yearly-price" style="display: none;">$1,728</span>
+                    <span class="yearly-price" style="display: none;">$1,920</span>
                     <span class="price-period">/month</span>
                 </div>
                 <p class="price-note">Perfect for small businesses and portfolios</p>
@@ -909,7 +919,7 @@
                 <h3>E-Commerce</h3>
                 <div class="price">
                     <span class="monthly-price">$200</span>
-                    <span class="yearly-price" style="display: none;">$2,160</span>
+                    <span class="yearly-price" style="display: none;">$2,400</span>
                     <span class="price-period">/month</span>
                 </div>
                 <p class="price-note">For online stores and growing businesses</p>
