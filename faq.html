@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Maintenance - J Development</title>
-    <meta name="description" content="J Development is currently undergoing maintenance. We'll be back shortly with improvements.">
+    <title>J Development - Professional Web Design & Development</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,376 +14,1027 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --navy: #0A2540;
+            --blue: #2563EB;
+            --purple: #7C3AED;
+            --teal: #14B8A6;
+            --slate: #1E293B;
+            --white: #FFFFFF;
+            --gray-50: #F8FAFC;
+            --gray-100: #F1F5F9;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --green: #10B981;
+            --orange: #F97316;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            overflow: hidden;
-        }
-
-        .maintenance-container {
-            text-align: center;
-            max-width: 600px;
-            padding: 2rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards;
-        }
-
-        .maintenance-icon {
-            font-size: 5rem;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.3s forwards;
-        }
-
-        .maintenance-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.6s forwards;
-        }
-
-        .maintenance-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            font-family: 'Inter', sans-serif;
+            color: var(--slate);
             line-height: 1.6;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.9s forwards;
+            background: var(--white);
         }
 
-        .progress-container {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50px;
-            padding: 4px;
-            margin: 2rem 0;
-            opacity: 0;
-            animation: fadeInUp 1s ease 1.2s forwards;
-        }
-
-        .progress-bar {
-            height: 8px;
-            background: white;
-            border-radius: 50px;
-            width: 0%;
-            animation: progressLoad 3s ease-in-out infinite;
-        }
-
-        .eta-text {
-            font-size: 1rem;
-            margin: 1rem 0;
-            opacity: 0.8;
-            opacity: 0;
-            animation: fadeInUp 1s ease 1.5s forwards;
-        }
-
-        .contact-info {
-            background: rgba(255, 255, 255, 0.1);
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            opacity: 0;
-            animation: fadeInUp 1s ease 1.8s forwards;
-        }
-
-        .contact-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            font-size: 1rem;
-        }
-
-        .contact-details a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .contact-details a:hover {
-            opacity: 0.8;
-        }
-
-        .social-links {
-            margin-top: 1.5rem;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .social-link {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: white;
+            border-bottom: 1px solid var(--gray-100);
+            z-index: 1000;
             transition: all 0.3s ease;
         }
 
-        .social-link:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
+        header.scrolled {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        .floating-shapes {
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--navy);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .cta-button {
+            background: var(--blue);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button.phone-cta {
+            color: var(--navy);
+            background: var(--white);
+            border: 2px solid var(--gray-100);
+        }
+
+        .cta-button.phone-cta:hover {
+            background: var(--gray-50);
+            color: var(--navy);
+        }
+
+        .cta-button:hover {
+            background: #1D4ED8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 6rem 2rem;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 50%, var(--purple) 100%);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(20, 184, 166, 0.2) 0%, transparent 70%);
+            bottom: -100px;
+            left: -100px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .hero-cta {
+            background: var(--white);
+            color: var(--blue);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge:nth-child(1) {
+            border: 2px solid var(--teal);
+        }
+
+        .badge:nth-child(2) {
+            border: 2px solid var(--orange);
+        }
+
+        .badge:nth-child(3) {
+            border: 2px solid var(--purple);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--gray-50) 0%, var(--white) 100%);
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(124, 58, 237, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .section-header h2 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+        }
+
+        .pricing-toggle {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .toggle-container {
+            display: inline-flex;
+            background: var(--white);
+            border-radius: 50px;
+            padding: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .toggle-button {
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            border: none;
+            background: transparent;
+            color: var(--gray-700);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-button.active {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        .pricing-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 12px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--blue), var(--purple), var(--teal));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .pricing-card:hover::before {
+            opacity: 1;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--blue);
+            position: relative;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.4);
+        }
+
+        .pricing-card h3 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.75rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            font-family: 'Manrope', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--blue);
+            margin: 1rem 0;
+        }
+
+        .price-period {
+            font-size: 1rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
+        .price-note {
+            color: var(--gray-600);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .features li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .features li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: var(--green);
+            font-weight: 700;
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+        }
+
+        .x-icon {
+            color: var(--gray-600);
+            opacity: 0.3;
+            flex-shrink: 0;
+        }
+
+        .select-button {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 8px;
+            border: none;
+            background: var(--blue);
+            color: var(--white);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .select-button:hover {
+            background: #1D4ED8;
+            transform: translateY(-2px);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--white) 0%, var(--gray-50) 100%);
+            position: relative;
+        }
+
+        .portfolio::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 80% 20%, rgba(20, 184, 166, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(249, 115, 22, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .portfolio-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .portfolio-item {
+            background: var(--white);
+            border-radius: 12px;
             overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid var(--gray-100);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+            border-color: var(--blue);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-content h3 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-content p {
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-link {
+            color: var(--blue);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .portfolio-link:hover {
+            text-decoration: underline;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            top: -200px;
+            left: 10%;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            bottom: -150px;
+            right: 10%;
+            animation: float 12s ease-in-out infinite reverse;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
             z-index: 1;
         }
 
-        .shape {
-            position: absolute;
+        .cta-section h2 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
+            background: var(--white);
+            color: var(--blue);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .cta-secondary:hover {
             background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--slate) 100%);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, transparent 70%);
+            bottom: -150px;
+            right: -150px;
+        }
+
+        footer p {
+            opacity: 0.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--navy);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--slate) 100%);
+            z-index: 1002;
+            padding: 6rem 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(37, 99, 235, 0.03) 35px, rgba(37, 99, 235, 0.03) 70px),
+                url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M10 10 L50 10 L90 10 M10 30 L90 30 M10 50 L70 50 M10 70 L85 70 M10 90 L60 90" stroke="rgba(37,99,235,0.05)" stroke-width="2" fill="none"/></svg>');
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        /* Hide mobile header bar when menu is open */
+        body.menu-open nav {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(37, 99, 235, 0.2);
+            border: 2px solid var(--blue);
+            color: var(--blue);
+            font-size: 2rem;
+            cursor: pointer;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
+            transition: all 0.3s ease;
         }
 
-        .shape:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
+        .mobile-menu-close:hover {
+            background: var(--blue);
+            color: var(--white);
+            transform: rotate(90deg);
         }
 
-        .shape:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            top: 60%;
-            right: 10%;
-            animation-delay: 2s;
+        .mobile-menu ul {
+            list-style: none;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
         }
 
-        .shape:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 4s;
+        .mobile-menu li {
+            margin: 1.5rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideInMobile 0.5s ease forwards;
         }
 
-        .shape:nth-child(4) {
-            width: 100px;
-            height: 100px;
-            top: 10%;
-            right: 30%;
-            animation-delay: 1s;
-        }
+        .mobile-menu li:nth-child(1) { animation-delay: 0.1s; }
+        .mobile-menu li:nth-child(2) { animation-delay: 0.2s; }
+        .mobile-menu li:nth-child(3) { animation-delay: 0.3s; }
+        .mobile-menu li:nth-child(4) { animation-delay: 0.4s; }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
+        @keyframes slideInMobile {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        @keyframes progressLoad {
-            0% { width: 0%; }
-            50% { width: 70%; }
-            100% { width: 0%; }
+        .mobile-menu a {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 1rem;
+            border-bottom: 2px solid transparent;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(120deg); }
-            66% { transform: translateY(10px) rotate(240deg); }
+        .mobile-menu a:hover {
+            color: var(--blue);
+            border-bottom-color: var(--blue);
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
+        .mobile-menu-cta {
+            margin-top: 2rem;
+            opacity: 0;
+            animation: slideInMobile 0.5s ease 0.5s forwards;
         }
 
-        .pulse {
-            animation: pulse 2s ease-in-out infinite;
+        .mobile-menu-cta a {
+            background: var(--blue);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            display: inline-block;
         }
 
+        .mobile-menu-cta a:hover {
+            background: var(--purple);
+            border-bottom-color: transparent;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .maintenance-container {
-                padding: 1rem;
+            .hero h1 {
+                font-size: 2.5rem;
             }
 
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .pricing-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                padding: 2rem;
+            }
+
+            /* Mobile header bar */
+            header {
+                padding: 0;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1001;
+                background: rgba(255, 255, 255, 0.98);
+                padding: 1rem 1.5rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                transition: opacity 0.3s ease;
+            }
+
+            /* Mobile logo styling */
             .logo {
-                font-size: 2rem;
+                font-size: 1.25rem;
             }
 
-            .maintenance-icon {
-                font-size: 3.5rem;
-            }
-
-            .maintenance-title {
-                font-size: 2rem;
-            }
-
-            .maintenance-subtitle {
-                font-size: 1rem;
-            }
-
-            .contact-info {
-                padding: 1.5rem;
-            }
-
-            .social-links {
-                flex-wrap: wrap;
+            .mobile-menu-toggle {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="floating-shapes">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">J Development</a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="tel:865-438-5840" class="cta-button phone-cta">Call: 865-438-5840</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+        </nav>
+    </header>
 
-    <div class="maintenance-container">
-        <div class="logo">J Development</div>
-        
-        <div class="maintenance-icon pulse">🔧</div>
-        
-        <h1 class="maintenance-title">We'll Be Right Back!</h1>
-        
-        <p class="maintenance-subtitle">
-            We're currently performing scheduled maintenance to improve your experience. 
-            Our website will be back online shortly with enhanced performance and new features.
-        </p>
-
-        <div class="progress-container">
-            <div class="progress-bar"></div>
-        </div>
-
-        <p class="eta-text">
-            <strong>Time remaining:</strong> <span id="eta-time"></span>
-        </p>
-
-        <div class="contact-info">
-            <h3 class="contact-title">Need Immediate Assistance?</h3>
-            <div class="contact-details">
-                <span>📧 Email: <a href="mailto:contact@jeremiah.click">contact@jeremiah.click</a></span>
-                <span>📱 For urgent matters, please email us directly</span>
-                <span>⏰ We typically respond within 2-4 hours</span>
-            </div>
-
-            <div class="social-links">
-                <a href="#" class="social-link" title="Facebook">📘</a>
-                <a href="#" class="social-link" title="Twitter">🐦</a>
-                <a href="#" class="social-link" title="LinkedIn">💼</a>
-                <a href="#" class="social-link" title="Instagram">📷</a>
-            </div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="toggleMenu()">×</button>
+        <ul>
+            <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+            <li><a href="#portfolio" onclick="toggleMenu()">Portfolio</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-cta">
+            <a href="tel:865-438-5840">📞 Call Now</a>
         </div>
     </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Professional Websites That Drive Results</h1>
+            <p>Get a stunning, mobile-friendly website with no upfront costs. Pay monthly and get ongoing support.</p>
+            <a href="#contact" class="hero-cta">Get Started Today</a>
+            <div class="trust-badges">
+                <div class="badge">✓ Mobile Friendly</div>
+                <div class="badge">✓ Lightning Fast</div>
+                <div class="badge">✓ SEO Optimized</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2>Simple, Transparent Pricing</h2>
+            <p>Choose the package that fits your needs. No hidden fees, no surprises.</p>
+        </div>
+
+        <div class="pricing-toggle">
+            <div class="toggle-container">
+                <button class="toggle-button active" onclick="togglePricing('monthly')">Monthly</button>
+                <button class="toggle-button" onclick="togglePricing('yearly')">12 Months</button>
+            </div>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- Static Package -->
+            <div class="pricing-card">
+                <h3>Static Website</h3>
+                <div class="price">
+                    <span class="monthly-price">$160</span>
+                    <span class="yearly-price" style="display: none;">$1,920</span>
+                    <span class="price-period">/month</span>
+                </div>
+                <p class="price-note">Perfect for small businesses and portfolios</p>
+                <ul class="features">
+                    <li><span class="check-icon">✓</span> Up to 3 pages</li>
+                    <li><span class="check-icon">✓</span> Mobile-friendly design</li>
+                    <li><span class="check-icon">✓</span> Lightning-fast loading</li>
+                    <li><span class="check-icon">✓</span> Basic contact form</li>
+                    <li><span class="check-icon">✓</span> SEO optimized</li>
+                    <li><span class="check-icon">✓</span> Free SSL certificate</li>
+                    <li><span class="x-icon">✗</span> E-commerce functionality</li>
+                    <li><span class="x-icon">✗</span> Advanced forms</li>
+                </ul>
+                <p style="font-size: 0.875rem; color: var(--gray-600); margin-bottom: 1rem;">Additional pages: $50 each</p>
+                <button class="select-button" onclick="scrollToContact('Static Website')">Get Started</button>
+            </div>
+
+            <!-- E-Commerce Package -->
+            <div class="pricing-card featured">
+                <span class="featured-badge">Most Popular</span>
+                <h3>E-Commerce</h3>
+                <div class="price">
+                    <span class="monthly-price">$200</span>
+                    <span class="yearly-price" style="display: none;">$2,400</span>
+                    <span class="price-period">/month</span>
+                </div>
+                <p class="price-note">For online stores and growing businesses</p>
+                <ul class="features">
+                    <li><span class="check-icon">✓</span> Everything in Static Package</li>
+                    <li><span class="check-icon">✓</span> Full online store</li>
+                    <li><span class="check-icon">✓</span> Payment processing</li>
+                    <li><span class="check-icon">✓</span> Inventory management</li>
+                    <li><span class="check-icon">✓</span> Advanced forms</li>
+                    <li><span class="check-icon">✓</span> Customer accounts</li>
+                    <li><span class="check-icon">✓</span> Order tracking</li>
+                    <li><span class="check-icon">✓</span> Analytics dashboard</li>
+                </ul>
+                <p style="font-size: 0.875rem; color: var(--gray-600); margin-bottom: 1rem;">Unlimited pages included</p>
+                <button class="select-button" onclick="scrollToContact('E-Commerce Package')">Get Started</button>
+            </div>
+        </div>
+
+        <p style="text-align: center; color: var(--gray-600); margin-top: 2rem; font-size: 0.875rem;">
+            * Domain must be purchased separately by customer
+        </p>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-header">
+            <h2>Our Work</h2>
+            <p>See what we've built for our clients</p>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="images/Screenshot 2025-05-31 at 10.39.02.png" alt="The Checkered Flag Store" class="portfolio-image">
+                <div class="portfolio-content">
+                    <h3>The Checkered Flag Store</h3>
+                    <p>E-commerce website with modern design and mobile optimization</p>
+                    <a href="https://thecheckeredflag.store" target="_blank" class="portfolio-link">View Site →</a>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="images/Screenshot 2025-05-31 at 10.38.23.png" alt="Browning's Repair Co" class="portfolio-image">
+                <div class="portfolio-content">
+                    <h3>Browning's Repair Co</h3>
+                    <p>Professional repair company website with clean layout</p>
+                    <a href="https://browningsrc.store" target="_blank" class="portfolio-link">View Site →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="cta-content">
+            <h2>Ready to Get Started?</h2>
+            <p>Let's build something amazing together. Get your professional website up and running in no time.</p>
+            <div class="cta-buttons">
+                <a href="tel:865-438-5840" class="cta-primary">📞 Call: 865-438-5840</a>
+                <a href="mailto:contact@jdevelopment.com" class="cta-secondary">📧 Send Email</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 J Development. All rights reserved.</p>
+    </footer>
 
     <script>
-        // Set countdown timer for 35 hours
-        function initializeCountdown() {
-            const countdownDuration = 35 * 60 * 60 * 1000; // 35 hours in milliseconds
-            const endTime = new Date().getTime() + countdownDuration;
-            
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const timeLeft = endTime - now;
-                
-                if (timeLeft > 0) {
-                    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                    
-                    let countdownText = '';
-                    if (days > 0) {
-                        countdownText += `${days} day${days !== 1 ? 's' : ''}, `;
-                    }
-                    countdownText += `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                    
-                    document.getElementById('eta-time').innerHTML = `<span style="font-family: monospace; font-size: 1.2em; color: #fff; background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 10px;">${countdownText}</span>`;
-                } else {
-                    document.getElementById('eta-time').innerHTML = '<span style="color: #4CAF50; font-weight: bold;">Maintenance Complete! Refreshing...</span>';
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 3000);
-                }
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
-            
-            // Update immediately and then every second
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-        }
-        
-        // Auto-refresh page every 30 minutes (but countdown continues)
-        function autoRefresh() {
-            setTimeout(function() {
-                window.location.reload();
-            }, 30 * 60 * 1000); // 30 minutes
-        }
-        
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeCountdown();
-            autoRefresh();
-        });
-                    
-            document.getElementById('eta-time').textContent = eta.toLocaleDateString('en-US', options);
-        }
-
-        // Auto-refresh page every 30 minutes
-        function autoRefresh() {
-            setTimeout(function() {
-                window.location.reload();
-            }, 30 * 60 * 1000); // 30 minutes
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            setEstimatedTime();
-            autoRefresh();
         });
 
-        // Add some interactive elements
-        document.addEventListener('mousemove', function(e) {
-            const shapes = document.querySelectorAll('.shape');
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+        }
 
-            shapes.forEach((shape, index) => {
-                const speed = (index + 1) * 0.5;
-                const x = mouseX * speed;
-                const y = mouseY * speed;
-                
-                shape.style.transform += ` translate(${x}px, ${y}px)`;
+        // Pricing toggle
+        function togglePricing(type) {
+            const buttons = document.querySelectorAll('.toggle-button');
+            const monthlyPrices = document.querySelectorAll('.monthly-price');
+            const yearlyPrices = document.querySelectorAll('.yearly-price');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (type === 'monthly') {
+                monthlyPrices.forEach(el => el.style.display = 'inline');
+                yearlyPrices.forEach(el => el.style.display = 'none');
+            } else {
+                monthlyPrices.forEach(el => el.style.display = 'none');
+                yearlyPrices.forEach(el => el.style.display = 'inline');
+            }
+        }
+
+        // Scroll to contact with pre-filled form
+        function scrollToContact(packageType) {
+            document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => {
+                const select = document.querySelector('select');
+                if (packageType === 'Static Website') {
+                    select.value = 'static';
+                } else {
+                    select.value = 'ecommerce';
+                }
+            }, 500);
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             });
         });
     </script>
