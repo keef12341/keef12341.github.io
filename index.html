@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>J Development - Professional Web Design & Development</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
@@ -99,6 +100,17 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+        }
+
+        .cta-button.phone-cta {
+            color: var(--navy);
+            background: var(--white);
+            border: 2px solid var(--gray-100);
+        }
+
+        .cta-button.phone-cta:hover {
+            background: var(--gray-50);
+            color: var(--navy);
         }
 
         .cta-button:hover {
@@ -445,7 +457,7 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 3rem;
         }
 
@@ -625,6 +637,7 @@
             color: var(--navy);
             font-size: 1.5rem;
             cursor: pointer;
+            padding: 0.5rem;
         }
 
         .mobile-menu {
@@ -634,11 +647,25 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--white);
-            z-index: 999;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--slate) 100%);
+            z-index: 1002;
             padding: 6rem 2rem;
             opacity: 0;
             transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(37, 99, 235, 0.03) 35px, rgba(37, 99, 235, 0.03) 70px),
+                url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M10 10 L50 10 L90 10 M10 30 L90 30 M10 50 L70 50 M10 70 L85 70 M10 90 L60 90" stroke="rgba(37,99,235,0.05)" stroke-width="2" fill="none"/></svg>');
+            opacity: 0.3;
+            z-index: -1;
         }
 
         .mobile-menu.active {
@@ -649,22 +676,97 @@
             opacity: 1;
         }
 
+        /* Hide mobile header bar when menu is open */
+        body.menu-open nav {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(37, 99, 235, 0.2);
+            border: 2px solid var(--blue);
+            color: var(--blue);
+            font-size: 2rem;
+            cursor: pointer;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-close:hover {
+            background: var(--blue);
+            color: var(--white);
+            transform: rotate(90deg);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .mobile-menu li {
+            margin: 1.5rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideInMobile 0.5s ease forwards;
+        }
+
+        .mobile-menu li:nth-child(1) { animation-delay: 0.1s; }
+        .mobile-menu li:nth-child(2) { animation-delay: 0.2s; }
+        .mobile-menu li:nth-child(3) { animation-delay: 0.3s; }
+        .mobile-menu li:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes slideInMobile {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .mobile-menu a {
             font-size: 1.5rem;
             margin: 1rem 0;
-            color: var(--navy);
+            color: var(--white);
             text-decoration: none;
             font-weight: 600;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 1rem;
+            border-bottom: 2px solid transparent;
         }
 
-        .mobile-close {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            font-size: 2rem;
-            background: none;
-            border: none;
-            cursor: pointer;
+        .mobile-menu a:hover {
+            color: var(--blue);
+            border-bottom-color: var(--blue);
+        }
+
+        .mobile-menu-cta {
+            margin-top: 2rem;
+            opacity: 0;
+            animation: slideInMobile 0.5s ease 0.5s forwards;
+        }
+
+        .mobile-menu-cta a {
+            background: var(--blue);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            display: inline-block;
+        }
+
+        .mobile-menu-cta a:hover {
+            background: var(--purple);
+            border-bottom-color: transparent;
         }
 
         /* Responsive */
@@ -689,6 +791,35 @@
             .contact-container {
                 padding: 2rem;
             }
+
+            /* Mobile header bar */
+            header {
+                padding: 0;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1001;
+                background: rgba(255, 255, 255, 0.98);
+                padding: 1rem 1.5rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                transition: opacity 0.3s ease;
+            }
+
+            /* Mobile logo styling */
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            .mobile-menu-toggle {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
@@ -701,7 +832,7 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="tel:865-438-5840" class="cta-button">Call: 865-438-5840</a></li>
+                <li><a href="tel:865-438-5840" class="cta-button phone-cta">Call: 865-438-5840</a></li>
             </ul>
             <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
         </nav>
@@ -709,11 +840,15 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-close" onclick="toggleMenu()">×</button>
-        <a href="#services" onclick="toggleMenu()">Services</a>
-        <a href="#portfolio" onclick="toggleMenu()">Portfolio</a>
-        <a href="#contact" onclick="toggleMenu()">Contact</a>
-        <a href="tel:865-438-5840" onclick="toggleMenu()">Call: 865-438-5840</a>
+        <button class="mobile-menu-close" onclick="toggleMenu()">×</button>
+        <ul>
+            <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+            <li><a href="#portfolio" onclick="toggleMenu()">Portfolio</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-cta">
+            <a href="tel:865-438-5840">📞 Call Now</a>
+        </div>
     </div>
 
     <!-- Hero Section -->
@@ -823,6 +958,24 @@
                     <a href="https://browningsrc.store" target="_blank" class="portfolio-link">View Site →</a>
                 </div>
             </div>
+
+            <div class="portfolio-item">
+                <img src="images/youngfaith-screenshot.png" alt="Young Faith Podcast" class="portfolio-image" style="object-fit: cover; background: linear-gradient(135deg, #0A2540 0%, #1E293B 100%);">
+                <div class="portfolio-content">
+                    <h3>Young Faith Podcast</h3>
+                    <p>Faith-based podcast website with Spotify integration and modern design</p>
+                    <a href="https://youngfaith.live" target="_blank" class="portfolio-link">View Site →</a>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="images/edwards-screenshot.png" alt="Edwards Home Improvements" class="portfolio-image" style="object-fit: cover; background: #FAF8F5;">
+                <div class="portfolio-content">
+                    <h3>Edwards Home Improvements</h3>
+                    <p>Professional home improvement company with 60+ years in business</p>
+                    <a href="https://keef12341.github.io" target="_blank" class="portfolio-link">View Site →</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -858,6 +1011,7 @@
         function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
             document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
         }
 
